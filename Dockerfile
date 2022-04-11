@@ -20,11 +20,11 @@ RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
 ENV PATH /opt/conda/envs/final_project_data_visualisation/bin:$PATH
 RUN echo "source activate final_project_data_visualisation" >~/.bashrc
 
-#WORKDIR /frontend
-#COPY ./frontend/package.json /frontend/
-##COPY ./frontend/package-lock.json /frontend/
-#RUN npm install
-#COPY ./frontend /frontend
-#RUN npm run build
+WORKDIR /frontend
+COPY ./frontend/package.json /frontend/
+#COPY ./frontend/package-lock.json /frontend/
+RUN npm install
+COPY ./frontend /frontend
+RUN npm run build
 
 WORKDIR /backend
