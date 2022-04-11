@@ -22,7 +22,7 @@ RUN echo "source activate final_project_data_visualisation" >~/.bashrc
 
 WORKDIR /frontend
 COPY ./frontend/package.json /frontend/
-#COPY ./frontend/package-lock.json /frontend/
+COPY ./frontend/package-lock.json /frontend/
 RUN npm install
 COPY ./frontend /frontend
 RUN npm run build
