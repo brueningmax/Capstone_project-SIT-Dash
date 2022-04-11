@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-const BASE_URL = 'backend/'
+BASE_URL = 'backend/'
 
 urlpatterns = [
     path(BASE_URL + 'admin/', admin.site.urls),
