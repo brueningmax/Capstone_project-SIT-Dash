@@ -32,10 +32,23 @@ schema_view = get_schema_view(
    public=True, # Set to False restrict access to protected endpoints
    permission_classes=(permissions.AllowAny,), # Permissions for docs access
 )
+from django.urls import path, include
 
 BASE_URL = 'backend/'
 
 urlpatterns = [
-   path(BASE_URL + 'admin/', admin.site.urls),
-   path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    # admin
+    path(BASE_URL + 'admin/', admin.site.urls),
+    # applications
+    path(BASE_URL + 'api/applications/', include('applications.urls')),
+    # bootcampLocations
+    path(BASE_URL + 'api/locations/', include('bootcampLocations.urls')),
+    # bootcamps
+    path(BASE_URL + 'api/bootcamps/', include('bootcamps.urls')),
+    # bootcampStudentRelations
+    path(BASE_URL + 'api/studentRelations/', include('bootcampStudentRelations.urls')),
+    # bootcampTypes
+    path(BASE_URL + 'api/types/', include('bootcampTypes.urls')),
+    # docs
+    path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
