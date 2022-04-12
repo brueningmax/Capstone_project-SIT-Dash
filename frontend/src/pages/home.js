@@ -2,6 +2,8 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import React, { useState, useEffect } from 'react'; 
 import Axios from 'axios'
+import NarrowBar from "../components/narrowbar";
+import MiddleBar from "../components/middlebar";
 
 const Home = () => {
 
@@ -21,6 +23,9 @@ const Home = () => {
     <div>
       <Header />
       Dashboard
+      <NarrowBar />
+      <NarrowBar />
+      <MiddleBar />
 
       <div className="latest-applications">
         <div>
