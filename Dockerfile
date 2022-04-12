@@ -7,15 +7,15 @@ RUN apt-get upgrade -y
 RUN apt-get install curl -y
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs
 
-RUN mkdir -p /backend
+RUN mkdir -p /bootcamps
 RUN mkdir -p /frontend
 RUN mkdir -p /scripts
 
-COPY ./backend /backend
+COPY bootcamps /bootcamps
 COPY ./scripts /scripts
 RUN chmod +x ./scripts*
 
-RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
+RUN /opt/conda/bin/conda env create -f /bootcamps/requirements.yml
 
 ENV PATH /opt/conda/envs/final_project_data_visualisation/bin:$PATH
 RUN echo "source activate final_project_data_visualisation" >~/.bashrc
@@ -27,4 +27,4 @@ RUN npm install
 COPY ./frontend /frontend
 RUN npm run build
 
-WORKDIR /backend
+WORKDIR /bootcamps
