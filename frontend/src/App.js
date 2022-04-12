@@ -5,6 +5,7 @@ import Bootcamps from './pages/bootcamps';
 import Home from './pages/home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React from 'react';
+import Sidebar from './components/sidebar';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/applications" element={<Applications />} />
         <Route path="/bootcamps" element={<Bootcamps />} />
+        <Route path="/sidebar" element={<Sidebar />} />
       </Routes>
     </BrowserRouter>
   );

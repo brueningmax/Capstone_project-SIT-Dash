@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import ast
 import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1&$nyi8&^ni-1pgh^%1&kt(h^%xx1k+9@^0@5fmkts7ue*p@&v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
+#DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
+DEBUG = os.getenv('DJANGO_DEBUG', 0)
 
 ALLOWED_HOSTS = ['*']
-
+# CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,19 +38,45 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+
+    # own
+    'applications',
+    'bootcamps',
+    'bootcampLocations',
+    'bootcampStudentRelations',
+    'bootcampTypes',
+    'users',
+
+    #3rdparty
+    'django_extensions',
+    'corsheaders',
+    'drf_yasg',
+    'rest_framework',
+
+     ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['http://46.101.245.70', 'http://localhost:8000']
+
 ROOT_URLCONF = 'project.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
+#     "https://luna-team-2.propulsion-learn.ch",
+]
+
 
 TEMPLATES = [
     {
@@ -125,3 +153,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-file
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.User'
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,  # Change settings to True to enable Django Login option
+    'LOGIN_URL': 'admin/',  # URL For Django Login
+    'LOGOUT_URL': 'admin/logout/',  # URL For Django Logout
+    'SECURITY_DEFINITIONS': { # Allows usage of Access token to make requests on the docs.
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}

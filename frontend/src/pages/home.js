@@ -2,7 +2,9 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import React, { useState, useEffect } from "react"; 
 import Axios from "axios"
-import Graph from "../components/graph";
+import Graph from "../components/graph"; 
+import NarrowBar from "../components/narrowbar";
+import MiddleBar from "../components/middlebar";
 
 const Home = () => {
 
@@ -54,6 +56,11 @@ const Home = () => {
   return (
     <div>
       <Header />
+      Dashboard
+      <NarrowBar />
+      <NarrowBar />
+      <MiddleBar />
+
       <div className="latest-applications">
 
           <h1>Latest Applications</h1>
