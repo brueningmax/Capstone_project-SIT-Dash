@@ -3,7 +3,6 @@ from django_extensions.db.models import TimeStampedModel
 from django.utils.translation import gettext_lazy as _
 
 
-
 class Bootcamp(TimeStampedModel):
     name = models.CharField(
         verbose_name=_('name'),

@@ -14,10 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 BASE_URL = 'backend/'
 
 urlpatterns = [
+    # admin
     path(BASE_URL + 'admin/', admin.site.urls),
-]
+    # applications
+    path(BASE_URL + 'api/applications/', include('applications.urls')),
+    # bootcampLocations
+    path(BASE_URL + 'api/locations/', include('bootcampLocations.urls')),
+    # bootcamps
+    path(BASE_URL + 'api/bootcamps/', include('bootcamps.urls')),
+    # bootcampStudentRelations
+    path(BASE_URL + 'api/studentRelations/', include('bootcampStudentRelations.urls')),
+    # bootcampTypes
+    path(BASE_URL + 'api/types/', include('bootcampTypes.urls')),
+    ]
