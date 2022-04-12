@@ -1,7 +1,8 @@
 
 from django.db import models
-from model_utils.models import TimeStampedModel
+from django_extensions.db.models import TimeStampedModel
 from django.utils.translation import gettext_lazy as _
+
 
 
 class Bootcamp(TimeStampedModel):
@@ -11,13 +12,13 @@ class Bootcamp(TimeStampedModel):
     )
     bootcamp_type = models.ForeignKey(
         verbose_name=_('bootcamps type'),
-        to='bootcamps.BootcampType',
+        to='bootcampTypes.BootcampType',
         on_delete=models.PROTECT,
         related_name='bootcamps'
     )
     bootcamp_location = models.ForeignKey(
         verbose_name=_('bootcamps location'),
-        to='bootcamps.BootcampLocation',
+        to='bootcampLocations.BootcampLocation',
         on_delete=models.PROTECT,
         related_name='bootcamps'
     )
