@@ -66,6 +66,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['http://46.101.245.70', 'http://localhost:8000']
+
 ROOT_URLCONF = 'project.urls'
 
 CORS_ALLOWED_ORIGINS = [
