@@ -24,7 +24,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Student Dashboard",
       default_version='v1',
-      description="Dashboard for Studen data",
+      description="Dashboard for Student data",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="learn@propulsionacademy.com"),
       license=openapi.License(name="BSD License"),
@@ -50,5 +50,5 @@ urlpatterns = [
     # bootcampTypes
     path(BASE_URL + 'api/types/', include('bootcampTypes.urls')),
     # docs
-    path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path(BASE_URL + 'api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
