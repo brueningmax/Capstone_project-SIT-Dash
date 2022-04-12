@@ -50,5 +50,5 @@ urlpatterns = [
     # bootcampTypes
     path(BASE_URL + 'api/types/', include('bootcampTypes.urls')),
     # docs
-    path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path(BASE_URL + 'api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
