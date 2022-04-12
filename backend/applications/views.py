@@ -4,7 +4,7 @@ from applications.models import Application
 from applications.serializers import ApplicationSerializer
 
 
-class ListApplications(ListAPIView):
+class ListAllApplications(ListAPIView):
     """
     get:
     Returns all the restaurants

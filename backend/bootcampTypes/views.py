@@ -1,13 +1,13 @@
 from rest_framework.generics import ListAPIView
-from backend.bootcampTypes.models import BootcampType
-from backend.bootcampTypes.serializers import BootcampTypesSerializer
+from bootcampTypes.models import BootcampType
+from bootcampTypes.serializers import BootcampTypeSerializer
 
 
-class ListBootcampType(ListAPIView):
+class ListAllBootcampType(ListAPIView):
     """
     get:
     Returns all the restaurants
     """
     queryset = BootcampType.objects.all()
     permission_classes = []
-    serializer_class = BootcampTypesSerializer
+    serializer_class = BootcampTypeSerializer

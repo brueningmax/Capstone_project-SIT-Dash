@@ -3,7 +3,7 @@ from bootcamps.models import Bootcamp
 from bootcamps.serializers import BootcampSerializer
 
 
-class ListBootcamp(ListAPIView):
+class ListAllBootcamp(ListAPIView):
     """
     get:
     Returns all the restaurants

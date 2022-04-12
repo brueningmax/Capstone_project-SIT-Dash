@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from bootcamp.models import Bootcamp
+from bootcamps.models import Bootcamp
 
 
 class BootcampSerializer(serializers.ModelSerializer):

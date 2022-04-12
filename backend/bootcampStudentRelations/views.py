@@ -1,9 +1,9 @@
 from rest_framework.generics import ListAPIView
-from backend.bootcampStudentRelations.models import BootcampStudentRelation
-from backend.bootcampStudentRelations.serializers import BootcampStudentRelationSerializer
+from bootcampStudentRelations.models import BootcampStudentRelation
+from bootcampStudentRelations.serializers import BootcampStudentRelationSerializer
 
 
-class ListBootcampStudentRelations(ListAPIView):
+class ListAllBootcampStudentRelations(ListAPIView):
     """
     get:
     Returns all the restaurants

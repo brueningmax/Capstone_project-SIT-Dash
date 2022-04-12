@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-1&$nyi8&^ni-1pgh^%1&kt(h^%xx1k+9@^0@5fmkts7ue*p@&v
 DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
 
 ALLOWED_HOSTS = ['*']
-
+# CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,15 +46,16 @@ INSTALLED_APPS = [
     'bootcampTypes',
     'users',
 
-
     #3rdparty
     'django_extensions',
-
-
+    'corsheaders',
+    'drf_yasg',
+    'rest_framework',
 
      ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,6 +66,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
+#     "https://luna-team-2.propulsion-learn.ch",
+]
+
 
 TEMPLATES = [
     {
@@ -143,3 +152,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-file
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,  # Change settings to True to enable Django Login option
+    'LOGIN_URL': 'admin/',  # URL For Django Login
+    'LOGOUT_URL': 'admin/logout/',  # URL For Django Logout
+    'SECURITY_DEFINITIONS': { # Allows usage of Access token to make requests on the docs.
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
