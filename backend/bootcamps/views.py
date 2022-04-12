@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from rest_framework.generics import ListAPIView
+from bootcamps.models import Bootcamp
+from bootcamps.serializers import BootcampSerializer
 
-# Create your views here.
+
+class ListBootcamp(ListAPIView):
+    """
+    get:
+    Returns all the restaurants
+    """
+    queryset = Bootcamp.objects.all()
+    permission_classes = []
+    serializer_class = BootcampSerializer
