@@ -6,7 +6,7 @@ const SideContainer = styled.main`
     width: 10vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: repeat(5, 40px);
+    grid-template-rows: repeat(5, 50px);
     grid-template-columns: 1fr;
     align-self: center;
     justify-self: center;
