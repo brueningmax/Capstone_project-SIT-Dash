@@ -46,21 +46,20 @@ INSTALLED_APPS = [
     'bootcampTypes',
     'users',
 
-
     #3rdparty
     'django_extensions',
-    #'corsheaders',
-
-
+    'corsheaders',
+    'drf_yasg',
+    'rest_framework',
 
      ]
 
 MIDDLEWARE = [
-    # 'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -68,12 +67,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'project.urls'
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8000",
-#     "http://localhost:3000",
-#     "http://127.0.0.1:8000",
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
 #     "https://luna-team-2.propulsion-learn.ch",
-# ]
+]
 
 
 TEMPLATES = [
@@ -153,3 +152,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-file
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,  # Change settings to True to enable Django Login option
+    'LOGIN_URL': 'admin/',  # URL For Django Login
+    'LOGOUT_URL': 'admin/logout/',  # URL For Django Logout
+    'SECURITY_DEFINITIONS': { # Allows usage of Access token to make requests on the docs.
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
