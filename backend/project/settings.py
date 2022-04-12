@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # own
-    'application',
-    'bootcamp',
-    'bootcamp_location',
-    'bootcamp_student_relation',
-    'bootcamp_type',
+    'applications',
+    'bootcamps',
+    'bootcampLocations',
+    'bootcampStudentRelations',
+    'bootcampTypes',
 
 
     #3rdparty
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.application'
+WSGI_APPLICATION = 'project.wsgi.applications'
 
 
 # Database
