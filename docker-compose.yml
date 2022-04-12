@@ -7,7 +7,7 @@ services:
       - 8000:8000
     command: "sh /scripts/dev.sh"
     volumes:
-      - ./bootcamps:/bootcamps
+      - ./backend:/backend
       - ./scripts:/scripts
     env_file:
       - ./env/dev.env

@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-
 class BootcampType(models.Model):
     type = models.CharField(
         verbose_name=_('Type'),
