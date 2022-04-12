@@ -4,6 +4,7 @@ import SideContainer from "../style/sidebar.style.js";
 const Sidebar = () => {
 
     return (
+        <>
       <SideContainer>
        
           <h2>SIT Admin</h2>
@@ -13,6 +14,7 @@ const Sidebar = () => {
           <p>Profile</p>
        
       </SideContainer>
+        </>
   ) 
   }
   

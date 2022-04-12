@@ -1,12 +1,72 @@
 import Footer from "../components/footer";
 import Header from "../components/header";
 
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+
 const Bootcamps = () => {
+
+  const [start_date, setStartDate] = useState("");
+  const [end_date, setEndDate] = useState("");
+  const [bootcamp_type, setBootcampType] = useState("");
+  const [bootcamp_location, setBootcampLocation] = useState("");
+
+  const handleSubmit = (e) => {
+    console.log(e);
+}
 
   return (
     <div>
       <Header />
       Bootcamps
+
+      Filters:
+
+      <form onSubmit={handleSubmit}>
+        
+        <label>
+          Start Date Range:
+          <input
+            name="start_date"
+            type="date"
+            value={start_date}
+            onChange={e => setStartDate(e.target.value)} />
+        </label>
+
+        <label>
+          End Date Range:
+          <input
+            name="end_date"
+            type="date"
+            value={end_date}
+            onChange={e => setEndDate(e.target.value)} />
+        </label>
+
+        <label>
+          Bootcamp Type:
+          <select
+            name="bootcamp_type"
+            value={bootcamp_type}
+            onChange={e => setBootcampType(e.target.value)}>
+              {/* <option value="default" disabled hidden>Select a value...</option> */}
+              <option value="Full Stack">Full Stack</option>
+              <option value="Data Science">Data Science</option>
+          </select>
+        </label>
+
+        <label>
+          Zurich
+          <input
+            name="bootcamp_location"
+            type="checkbox"
+            value="Zurich"
+            onChange={e => setBootcampLocation(e.target.value)} />
+        </label>
+
+        <input type="submit" value="Submit" />
+        
+      </form>
       <Footer />
     </div>
 ) 
