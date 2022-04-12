@@ -44,10 +44,12 @@ INSTALLED_APPS = [
     'bootcampLocations',
     'bootcampStudentRelations',
     'bootcampTypes',
+    'users',
 
 
     #3rdparty
-    'model_utils',
+    'django_extensions',
+
 
 
      ]
@@ -80,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.applications'
+WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database
@@ -139,3 +141,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-file
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.User'

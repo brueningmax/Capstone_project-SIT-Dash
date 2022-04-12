@@ -1,8 +1,7 @@
 from datetime import date
 from django.utils.translation import gettext_lazy as _
-
 from django.db import models
-from model_utils.models import TimeStampedModel
+from django_extensions.db.models import TimeStampedModel
 
 
 class Application(TimeStampedModel):
@@ -124,7 +123,7 @@ class Application(TimeStampedModel):
         null=True,
         blank=True,
     )
-    personal_passed = models.NullBooleanField(
+    personal_passed = models.BooleanField(
         verbose_name=_('p. passed'),
         help_text=_('setting this to true will trigger a notification'),
         null=True,
@@ -145,7 +144,7 @@ class Application(TimeStampedModel):
         null=True,
         blank=True
     )
-    technical_passed = models.NullBooleanField(
+    technical_passed = models.BooleanField(
         verbose_name=_('t. passed'),
         null=True,
         blank=True,
@@ -155,22 +154,22 @@ class Application(TimeStampedModel):
         null=True,
         blank=True
     )
-    accepted = models.NullBooleanField(
+    accepted = models.BooleanField(
         verbose_name=_('accepted'),
         null=True,
         blank=True,
     )
-    preparation_work_access = models.NullBooleanField(
+    preparation_work_access = models.BooleanField(
         verbose_name=_('preparation work access'),
         null=True,
         blank=True,
     )
-    reserve_tuition_paid = models.NullBooleanField(
+    reserve_tuition_paid = models.BooleanField(
         verbose_name=_('deposit'),
         null=True,
         blank=True,
     )
-    paid = models.NullBooleanField(
+    paid = models.BooleanField(
         verbose_name=_('paid'),
         null=True,
         blank=True,
@@ -198,7 +197,7 @@ class Application(TimeStampedModel):
     class Meta:
         ordering = ['-applied']
         unique_together = [
-            ('bootcamps', 'email'),
+            ('bootcamp', 'email'),
         ]
 
 
