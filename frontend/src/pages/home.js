@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
 import NarrowBar from "../components/narrowbar";
 import MiddleBar from "../components/middlebar";
+import Sidebar from "../components/sidebar";
+import MainPage from "../style/main.style";
 
 const Home = () => {
 
@@ -21,11 +23,16 @@ const Home = () => {
 
   return (
     <div>
+    <MainPage>
       <Header />
+      {/* <Sidebar /> */}
       Dashboard
       <NarrowBar />
       <NarrowBar />
+      <NarrowBar />
+      <NarrowBar />
       <MiddleBar />
+    </MainPage>
 
       <div className="latest-applications">
         <div>
