@@ -1,9 +1,7 @@
 from django.db import models
-
-from model_utils.models import TimeStampedModel
+from django_extensions.db.models import TimeStampedModel
 from django.utils.translation import gettext_lazy as _
-from backend.bootcamps.models import Bootcamp
-
+from bootcamps.models import Bootcamp
 
 class BootcampStudentRelation(TimeStampedModel):
     class VisitedBootcampStatus(models.TextChoices):

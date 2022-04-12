@@ -47,7 +47,8 @@ INSTALLED_APPS = [
 
 
     #3rdparty
-    'model_utils',
+    'django_extensions',
+
 
 
      ]
@@ -80,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.applications'
+WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database
