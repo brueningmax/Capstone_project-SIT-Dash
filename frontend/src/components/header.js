@@ -1,11 +1,15 @@
-import logo from "../assets/logo.png"
+import logo from '../assets/logo.png'
+import HeaderContainer from '../style/header.style';
 
 const Header = () => {
 
   return (
-    <div>
-      <img className="logo" src={logo}/>
-    </div>
+    <HeaderContainer className='header'>
+      <div >
+        Header
+        <img className="logo" src={logo}/>
+      </div>
+    </HeaderContainer>
 ) 
 }
 
