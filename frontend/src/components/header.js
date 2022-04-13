@@ -4,8 +4,8 @@ import HeaderContainer from '../style/header.style';
 const Header = () => {
 
   return (
-    <HeaderContainer>
-      <div>
+    <HeaderContainer className='header'>
+      <div >
         Header
         <img className="logo" src={logo}/>
       </div>

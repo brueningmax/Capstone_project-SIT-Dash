@@ -1,8 +1,8 @@
 import styled from 'styled-components' 
 
 const SideContainer = styled.main`
-    margin: 10px;
-    padding: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
     width: 10vw;
     height: 100vh;
     display: flex;

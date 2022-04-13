@@ -1,8 +1,12 @@
 import styled from 'styled-components'
     
 
-const MainPage = styled.main`
-    /* display: flex; */
+const MainPageStyle = styled.main`
+    margin: 0;
+    padding-top: 3vh;
+    padding-right: 5%;
+    display: grid;
+    grid-template-columns: 20vw 80vw;
 
 
 
@@ -10,4 +14,4 @@ const MainPage = styled.main`
 `
 
 
-export default MainPage;
+export default MainPageStyle;

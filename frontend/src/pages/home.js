@@ -55,11 +55,20 @@ const Home = () => {
 
   const bootcampsTable = 
     bootcampsData.map((item) =>
-      <tr key={item.name}>
-        <td>{item.name}</td>
-        <td>{item.bootcamp_location.location}</td>
-        <td>{item.start_date}</td>
-      </tr>
+      <MiddleBar
+        shortBootcampName = {item.name}
+        bootcampLocation = {item.bootcamp_location}
+        bootcampStartDate = {item.start_date}
+
+
+
+      />
+
+    //   <tr key={item.name}>
+    //     <td>{item.name}</td>
+    //     <td>{item.bootcamp_location.location}</td>
+    //     <td>{item.start_date}</td>
+    //   </tr>
     )
 
   const applicationsTable = 
@@ -97,12 +106,15 @@ const Home = () => {
           
           <h1>Upcoming Bootcamps</h1>
 
-          <table id="bootcamps-table">
+          {bootcampsTable}
+
+          {/* <table id="bootcamps-table">
             <tbody>
               {bootcampsTable}
             </tbody>
-          </table>  
-          <MiddleBar />
+          </table>   */}
+          {/* <MiddleBar /> */}
+          {}
           
       </div>
       <Graph applications={applicationsData} />

@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 const MiddleContainer = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
-    padding-left: 5%;
+    /* padding-left: 5%; */
     height: 15vh;
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    /* margin: auto; */
     /* background-color: red; */
     display: flex;
     align-items: center;
