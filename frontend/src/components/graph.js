@@ -5,32 +5,7 @@ import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Responsive
 function Graph(props) {
 
   const data = props.applications;
-
-  // const data = [
-  //   {
-  //     "first_name": "Mike",
-  //     "last_name": "Jack",
-  //     "bootcamp_name": "Full Stack",
-  //     "applied": "2022-04-21T18:25:43.511Z",
-  //     "bootcamp_location": "Zurich"
-  //   },
-  //   {
-  //     "first_name": "Max",
-  //     "last_name": "Max",
-  //     "bootcamp_name": "Full Stack",
-  //     "applied": "2022-04-23T18:25:43.511Z",
-  //     "bootcamp_location": "Zurich"
-  //   },
-  //   {
-  //     "first_name": "Avi",
-  //     "last_name": "Avi",
-  //     "bootcamp_name": "Full Stack",
-  //     "applied": "2022-03-23T18:25:43.511Z",
-  //     "bootcamp_location": "Zurich"
-  //   },
-
-  // ]
-
+  
   function getChartData(array) {
     const chartData = [];
 
@@ -67,6 +42,7 @@ function Graph(props) {
 
   return (
     <div>
+      <ResponsiveContainer width={'99%'} height={300}>
       <BarChart
         width={730}
         height={250}
@@ -85,7 +61,8 @@ function Graph(props) {
         <Tooltip content={<CustomTooltip />}/>
         <Legend />
         <Bar dataKey="count" fill="#82ca9d" />
-      </BarChart>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   )
 }
