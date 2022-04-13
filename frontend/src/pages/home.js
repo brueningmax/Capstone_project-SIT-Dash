@@ -58,6 +58,7 @@ const Home = () => {
   const bootcampsTable = 
     bootcampsData.map((item) =>
       <MiddleBar
+        key = {item.name}
         shortBootcampName = {item.name}
         bootcampLocation = {item.bootcamp_location}
         bootcampStartDate = {item.start_date}
