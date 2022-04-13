@@ -2,62 +2,34 @@ import React, { useState, useEffect } from "react";
 import { baseurl } from "../store/baseurl"; 
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, ResponsiveContainer } from "recharts";
 
-function Graph() {
+function Graph(props) {
 
-  // const [data, setData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(true);
+  const data = props.applications;
 
+  // const data = [
+  //   {
+  //     "first_name": "Mike",
+  //     "last_name": "Jack",
+  //     "bootcamp_name": "Full Stack",
+  //     "applied": "2022-04-21T18:25:43.511Z",
+  //     "bootcamp_location": "Zurich"
+  //   },
+  //   {
+  //     "first_name": "Max",
+  //     "last_name": "Max",
+  //     "bootcamp_name": "Full Stack",
+  //     "applied": "2022-04-23T18:25:43.511Z",
+  //     "bootcamp_location": "Zurich"
+  //   },
+  //   {
+  //     "first_name": "Avi",
+  //     "last_name": "Avi",
+  //     "bootcamp_name": "Full Stack",
+  //     "applied": "2022-03-23T18:25:43.511Z",
+  //     "bootcamp_location": "Zurich"
+  //   },
 
-  // useEffect(() => {
-  //   const runCall = async () => {
-  //     let apiValue = await fetchData();
-  //   }
-  //   const fetchData = async () => {
-  //     const requestOption = {
-  //       method: "GET",
-  //       redirect: ""
-  //     }
-
-  //     const apiUrl = { baseurl }
-      
-  //     try {
-  //       const response = await fetch(apiUrl,
-  //         requestOption);
-  //       return response.ok ? setData(response.text()) : null
-  //     } catch (err) {
-  //       console.log(err);
-  //       return null;
-  //     }
-  //   }
-  //   runCall();
-  // }, [])
-
-
-
-  const data = [
-    {
-      "first_name": "Mike",
-      "last_name": "Jack",
-      "bootcamp_name": "Full Stack",
-      "applied": "2022-04-21T18:25:43.511Z",
-      "bootcamp_location": "Zurich"
-    },
-    {
-      "first_name": "Max",
-      "last_name": "Max",
-      "bootcamp_name": "Full Stack",
-      "applied": "2022-04-23T18:25:43.511Z",
-      "bootcamp_location": "Zurich"
-    },
-    {
-      "first_name": "Avi",
-      "last_name": "Avi",
-      "bootcamp_name": "Full Stack",
-      "applied": "2022-03-23T18:25:43.511Z",
-      "bootcamp_location": "Zurich"
-    },
-
-  ]
+  // ]
 
   function getChartData(array) {
     const chartData = [];
