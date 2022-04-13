@@ -24,7 +24,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Student Dashboard",
       default_version='v1',
-      description="Dashboard for Studen data",
+      description="Dashboard for Student data",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="learn@propulsionacademy.com"),
       license=openapi.License(name="BSD License"),
