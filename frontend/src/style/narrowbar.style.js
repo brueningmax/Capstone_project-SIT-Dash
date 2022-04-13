@@ -3,11 +3,9 @@ import styled from 'styled-components'
 
 const NarrowContainer = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
-    padding-left: 5%;
+    /* padding-left: 5%; */
     height: 8vh;
-    width: 80%;
-    margin: auto;
-    /* background-color: red; */
+    width: 90%;
     display: flex;
     align-items: center;
     border: 1px solid black;
@@ -16,6 +14,7 @@ const NarrowContainer = styled.div`
     font-weight: bold;
     margin-bottom: 15px;
     div{
+        
         display: flex;
         column-gap: 20px;
     }

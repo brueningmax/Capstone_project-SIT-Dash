@@ -3,10 +3,12 @@ import Header from "../components/header";
 import React, { useState, useEffect } from "react"; 
 import Axios from "axios"
 import Graph from "../components/graph"; 
+import Sidebar from "../components/sidebar";
 import NarrowBar from "../components/narrowbar";
 import MiddleBar from "../components/middlebar";
 import MiddleContainer from "../style/middlebar.style";
 import { baseurl } from "../store/baseurl";
+import MainPageStyle from "../style/main.style";
 
 const Home = () => {
 
@@ -56,6 +58,7 @@ const Home = () => {
   const bootcampsTable = 
     bootcampsData.map((item) =>
       <MiddleBar
+        key = {item.name}
         shortBootcampName = {item.name}
         bootcampLocation = {item.bootcamp_location}
         bootcampStartDate = {item.start_date}
@@ -89,7 +92,11 @@ const Home = () => {
     <div>
     
       <Header />
-      {/* <Sidebar /> */}
+      <MainPageStyle>
+      <div className="sidebarleft">
+          <Sidebar />
+      </div>
+      <div className="mainbarright">
       Dashboard
       
 
@@ -98,26 +105,21 @@ const Home = () => {
           <h1>Latest Applications</h1>
 
             {applicationsTable}
-          {/* <table id="applications-table">
-            <tbody>
-              {applicationsTable}
-            </tbody>
-          </table> */}
+          
           
           <h1>Upcoming Bootcamps</h1>
 
           {bootcampsTable}
 
-          {/* <table id="bootcamps-table">
-            <tbody>
-              {bootcampsTable}
-            </tbody>
-          </table>   */}
-          {/* <MiddleBar /> */}
-          {}
+
+          <Graph applications={applicationsData} />
+
+         
           
       </div>
-      <Graph applications={applicationsData} />
+      </div>
+      
+      </MainPageStyle>
       <Footer />
     </div>
 ) 
