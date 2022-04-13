@@ -19,6 +19,6 @@ class BootcampsSerializer(serializers.ModelSerializer):
 class LatestApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('first_name', 'last_name')
+        fields = ('first_name', 'last_name', 'bootcamp')
     bootcamp = BootcampsSerializer(read_only=True)
 
