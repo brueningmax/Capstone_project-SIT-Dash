@@ -73,12 +73,12 @@ const Home = () => {
       />
     )
   
-  console.log(applicationsData)
+  // console.log(applicationsData)
   console.log(bootcampsData)
 
   return (
     <div>
-    <MainPage>
+    
       <Header />
       {/* <Sidebar /> */}
       Dashboard
