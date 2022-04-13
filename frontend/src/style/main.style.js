@@ -6,7 +6,7 @@ const MainPageStyle = styled.main`
     padding-top: 3vh;
     padding-right: 5%;
     display: grid;
-    grid-template-columns: 20vw 80vw;
+    grid-template-columns: 15vw 85vw;
 
 
 
