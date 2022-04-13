@@ -1,30 +1,54 @@
 import Footer from "../components/footer";
 import Header from "../components/header";
+import Sidebar from "../components/sidebar";
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+// import { getBootcamps } from "../store/actions";
+import { baseurl } from "../store/baseurl";
+import Axios from "axios";
+import MiddleBar from "../components/middlebar";
+import BootcampGraph from "../components/bootcampGraph";
+
 
 const Bootcamps = () => {
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [start_date, setStartDate] = useState("");
   const [end_date, setEndDate] = useState("");
   const [bootcamp_type, setBootcampType] = useState("");
   const [bootcamp_location, setBootcampLocation] = useState("");
+  const [bootcampsData, setBootcamps] = useState([]);
+
+  useEffect(() => {
+    getBootcamps();
+  }, [])
 
   const handleSubmit = (e) => {
-    console.log(e);
+    e.preventDefault();  
+    const url = `${baseurl}bootcamps/all/`;
+    const data = { start_date, end_date, bootcamp_type, bootcamp_location }
+    getBootcamps();
 }
+
+  const getBootcamps = async() => {
+  const response = await Axios(`${baseurl}bootcamps/all/`);
+    setBootcamps(response.data)
+  }
+
+  console.log(bootcampsData)
 
   return (
     <div>
+  
       <Header />
+      
       Bootcamps
 
       Filters:
-
-      <form onSubmit={handleSubmit}>
-        
+      <form>
         <label>
           Start Date Range:
           <input
@@ -64,11 +88,24 @@ const Bootcamps = () => {
             onChange={e => setBootcampLocation(e.target.value)} />
         </label>
 
-        <input type="submit" value="Submit" />
-        
+        <button type="button" value="Submit" onClick={handleSubmit}>
+          Filter
+        </button>
       </form>
-      <Footer />
-    </div>
+
+    {bootcampsData.map((item) =>
+      <MiddleBar
+        name={item.name}
+        location={item.bootcamp_location.location}
+        startDate={item.start_date}
+        key={item.name}
+      />
+    )}
+    
+      {/* <BootcampGraph bootcamps={bootcampsData} /> */}
+    <BootcampGraph />
+    <Footer />
+  </div>
 ) 
 }
 
