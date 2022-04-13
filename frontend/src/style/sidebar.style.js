@@ -1,16 +1,14 @@
 import styled from 'styled-components' 
 
 const SideContainer = styled.main`
-    margin: 10px;
-    padding: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
     width: 10vw;
     height: 100vh;
-    display: grid;
-    grid-template-rows: repeat(5, 50px);
-    grid-template-columns: 1fr;
-    align-self: center;
-    justify-self: center;
+    display: flex;
+    flex-direction: column;
     overflow: auto;
+    border: 1px solid black;
     
 `;
 
