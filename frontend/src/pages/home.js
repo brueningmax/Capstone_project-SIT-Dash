@@ -7,9 +7,27 @@ import NarrowBar from "../components/narrowbar";
 import MiddleBar from "../components/middlebar";
 import Sidebar from "../components/sidebar";
 import MainPage from "../style/main.style";
+import { baseurl } from "../store/baseurl";
 
 const Home = () => {
 
+  const [applicationsData, setLatestApplications] = useState([]);
+  const [bootcampsData, setLatestBootcamps] = useState([]);
+  
+  useEffect(() => {
+    getLatestApplications();
+    getLatestBootcamps();
+  }, [])
+  
+  const getLatestApplications = async() => {
+    const response = await Axios(`${baseurl}applications/all/`);
+    setLatestApplications(response.data)
+  }
+
+  const getLatestBootcamps = async() => {
+    const response = await Axios(`${baseurl}bootcamps/all/`);
+    setLatestBootcamps(response.data)
+  }
 
   // useEffect(() => {
   //   fetchLatestApplications();
