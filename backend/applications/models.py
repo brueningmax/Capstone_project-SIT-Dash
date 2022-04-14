@@ -196,9 +196,9 @@ class Application(TimeStampedModel):
 
     class Meta:
         ordering = ['-applied']
-        unique_together = [
-            ('bootcamp', 'email'),
-        ]
+        # unique_together = [
+        #     ('bootcamp', 'email'),
+        # ]
 
 
 

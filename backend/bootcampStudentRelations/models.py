@@ -21,7 +21,7 @@ class BootcampStudentRelation(TimeStampedModel):
     )
     notes = models.TextField(blank=True, max_length=1000)
 
-    def __str__(self):
-        student_name = self.student.user.get_full_name()
-        bootcamp = self.bootcamp.name
-        return f'{student_name} attended {bootcamp}'
+    # def __str__(self):
+        # student_name = self.student.user.get_full_name()
+        # bootcamp = self.bootcamp.name
+        # return f'{student_name} attended {bootcamp}'
