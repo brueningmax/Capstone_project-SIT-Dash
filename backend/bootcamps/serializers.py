@@ -18,6 +18,7 @@ class ApplicationUpComingSerializer(serializers.ModelSerializer):
 
 
 class BootcampUpComingSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Bootcamp
         fields = ('name', 'bootcamp_location', 'start_date', 'applications')
