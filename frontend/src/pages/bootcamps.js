@@ -28,18 +28,26 @@ const Bootcamps = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();  
-    const url = `${baseurl}bootcamps/all/`;
+    const url = `${baseurl}bootcamps/upcoming`;
     const data = { start_date, end_date, bootcamp_type, bootcamp_location }
     getBootcamps();
 }
 
   const getBootcamps = async() => {
-  const response = await Axios(`${baseurl}bootcamps/all/`);
+  const response = await Axios(`${baseurl}bootcamps/upcoming/`);
     setBootcamps(response.data)
   }
 
   console.log(bootcampsData)
 
+  const bootcampsTable = 
+    bootcampsData.map((item) =>
+      <li key={item.name}>
+        {item.name}
+        {item.bootcamp_location}
+        {item.start_date}
+      </li>
+    )
   return (
     <div>
   
@@ -93,17 +101,10 @@ const Bootcamps = () => {
         </button>
       </form>
 
-    {bootcampsData.map((item) =>
-      <MiddleBar
-        name={item.name}
-        location={item.bootcamp_location.location}
-        startDate={item.start_date}
-        key={item.name}
-      />
-    )}
+      {bootcampsTable}
     
-      {/* <BootcampGraph bootcamps={bootcampsData} /> */}
-    <BootcampGraph />
+      <BootcampGraph bootcamps={bootcampsData} />
+    {/* <BootcampGraph /> */}
     <Footer />
   </div>
 ) 
