@@ -28,7 +28,6 @@ class ListUpcomingBootcamp(GenericAPIView):
         today = datetime.now().date()
         Bootcamp.objects.filter(start_date__gt=today)
         queryset = self.get_queryset().filter(start_date__gt=today)
-
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
