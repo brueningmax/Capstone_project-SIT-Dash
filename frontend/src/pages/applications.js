@@ -1,5 +1,6 @@
 import Footer from "../components/footer";
 import Header from "../components/header";
+import NarrowBar from "../components/narrowbar";
 import Sidebar from "../components/sidebar";
 import MainPageStyle from "../style/main.style";
 import MiddleContainer from "../style/middlebar.style";
@@ -17,7 +18,11 @@ const Applications = () => {
           <Sidebar />
         </div>
         <div className="mainbarright">
-          <MiddleContainer />
+          <NarrowBar />
+          <NarrowBar />
+          <NarrowBar />
+          <NarrowBar />
+          <NarrowBar />
           <MiddleContainer />
           <MiddleContainer />
           <MiddleContainer />

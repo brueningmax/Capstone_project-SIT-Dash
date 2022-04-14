@@ -5,8 +5,6 @@ const MiddleContainer = styled.div`
     /* padding-left: 5%; */
     height: 15vh;
     width: 90%;
-    /* margin: auto; */
-    /* background-color: red; */
     display: flex;
     align-items: center;
     border: 1px solid black;

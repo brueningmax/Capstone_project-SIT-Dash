@@ -57,3 +57,4 @@ class Bootcamp(TimeStampedModel):
         bootcamp_model = 'part-time' if self.is_part_time else 'full-time'
         return f'{self.bootcamp_type.name} ({bootcamp_model}), {self.bootcamp_location.location.capitalize()} | {self.start_date.strftime("%d %b %Y")} - ' \
                f'{self.end_date.strftime("%d %b %Y")}'
+2
