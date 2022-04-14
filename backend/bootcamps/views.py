@@ -25,15 +25,13 @@ class ListUpcomingBootcamp(GenericAPIView):
     serializer_class = BootcampUpComingSerializer
 
     def get(self, request, *args, **kwargs):
-        #today = datetime.now().date()
-        # Bootcamp.objects.filter(start_date__gt=today)
-        #queryset = self.get_queryset().filter(start_date__gt=today)
-        queryset = self.get_queryset().filter(start_date='2022-09-11')
+        today = datetime.now().date()
+        Bootcamp.objects.filter(start_date__gt=today)
+        queryset = self.get_queryset().filter(start_date__gt=today)
+
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
-        # fieldname = ('status',)
-        # Application.objects.values(fieldname).order_by().annotate(the_count=Count(fieldname))
 
 
 
