@@ -60,7 +60,7 @@ const Home = () => {
       <MiddleBar
         key = {item.name}
         shortBootcampName = {item.name}
-        bootcampLocation = {item.bootcamp_location}
+        bootcampLocation = {item.bootcamp_location.location}
         bootcampStartDate = {item.start_date}
 
 
@@ -93,18 +93,18 @@ const Home = () => {
     
       <Header />
       <MainPageStyle>
-      <div className="sidebarleft">
-          <Sidebar />
-      </div>
-      <div className="mainbarright">
-      Dashboard
-      
+        <div className="sidebarleft">
+            <Sidebar />
+        </div>
+        {/* <div className="mainbarright"> */}
+          
 
-      <div className="latest-applications">
+        <div className="latest-applications">
+          Dashboard
 
           <h1>Latest Applications</h1>
 
-            {applicationsTable}
+          {applicationsTable}
           
           
           <h1>Upcoming Bootcamps</h1>
@@ -114,10 +114,10 @@ const Home = () => {
 
           <Graph applications={applicationsData} />
 
-         
           
-      </div>
-      </div>
+            
+        </div>
+        {/* </div> */}
       
       </MainPageStyle>
       <Footer />

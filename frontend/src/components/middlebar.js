@@ -2,17 +2,13 @@ import React from "react";
 import MiddleContainer from "../style/middlebar.style";
 
 const MiddleBar =(props) =>{
-    
-    console.log('propsy');
-    console.log(props);
-    console.log('koniec propsów');
 
     return(
         
         <MiddleContainer>
             <div>
                 <p>{props.shortBootcampName}</p>
-                <p>{props.bootcampLocation.location}</p>
+                <p>{props.bootcampLocation}</p>
                 <p>{props.bootcampStartDate}</p>
                 <div className="enrolled">
                     <h5>Enrolled</h5>
