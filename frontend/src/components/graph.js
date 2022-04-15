@@ -32,7 +32,7 @@ function Graph(props) {
     if (active) {
       return (
         <div className="custom-tooltip">
-          <p className="label">{`${label} Applications: ${payload[0].value}`}</p>
+          {/* <p className="label">{`${label} Applications: ${payload[0].value}`}</p> */}
         </div>
       );
     }

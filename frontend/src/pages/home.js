@@ -9,6 +9,8 @@ import MiddleBar from "../components/middlebar";
 import MiddleContainer from "../style/middlebar.style";
 import { baseurl } from "../store/baseurl";
 import MainPageStyle from "../style/main.style";
+import AppsGraph from "../components/applicationsGraph";
+import { Line } from "../components/applicationsGraph";
 
 const Home = () => {
 
@@ -114,12 +116,13 @@ const Home = () => {
 
           <Graph applications={applicationsData} />
 
-         
+            <AppsGraph Line={Line}/>
           
       </div>
       </div>
       
       </MainPageStyle>
+      
       <Footer />
     </div>
 ) 

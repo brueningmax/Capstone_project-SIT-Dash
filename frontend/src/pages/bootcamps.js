@@ -44,7 +44,7 @@ const Bootcamps = () => {
     bootcampsData.map((item) =>
       <li key={item.name}>
         {item.name}
-        {item.bootcamp_location}
+        <p>{item.bootcamp_location}</p>
         {item.start_date}
       </li>
     )
