@@ -3,9 +3,9 @@ import MiddleContainer from "../style/middlebar.style";
 
 const MiddleBar =(props) =>{
     
-    console.log('propsy');
-    console.log(props);
-    console.log('koniec propsów');
+    // console.log('propsy');
+    // console.log(props);
+    // console.log('koniec propsów');
 
     return(
         
