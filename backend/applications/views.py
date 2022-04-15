@@ -34,7 +34,7 @@ class GetDashboardGraphData(APIView):
         current_month = datetime.today().month
         current_year = datetime.today().year
         date_pairs = []
-        for i in range(1):
+        for i in range(18):
             date_pairs.append([current_month, current_year])
             current_month -= 1
             if current_month <= 0:
