@@ -365,6 +365,7 @@ export const Line = props => (layerProps) => {
         
         onMouseEnter={(_data, event) => {
           event.target.style.fill = '#ffffff';
+     
         }}
           onMouseLeave={(_data, event) => {
           console.log(event.target.style.fill)
