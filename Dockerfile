@@ -10,8 +10,9 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -
 RUN mkdir -p /backend
 RUN mkdir -p /frontend
 RUN mkdir -p /scripts
+RUN mkdir -p /static-files
 
-COPY backend /backend
+COPY ./backend /backend
 COPY ./scripts /scripts
 RUN chmod +x ./scripts*
 
