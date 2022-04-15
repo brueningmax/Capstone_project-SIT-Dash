@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+
 class BootcampLocation(models.Model):
     location = models.CharField(
         verbose_name=_('location'),
