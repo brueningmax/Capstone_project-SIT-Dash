@@ -32,6 +32,8 @@ class ListAllBootcamp(ListAPIView):
 #         return Response(serializer.data)
 
 class ListUpcomingBootcamp(APIView):
+    # get upcoming Bootcamps with sums of applications total and statuses
+
     def get(self, request, *args, **kwargs):
         today = datetime.now().date()
         queryset = Bootcamp.objects.filter(start_date__gt=today).order_by('start_date')[:3]
