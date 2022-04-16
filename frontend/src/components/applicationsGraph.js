@@ -1,13 +1,70 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { render } from "react-dom";
 import { ResponsiveLine } from "@nivo/line";
+import { closedCurvePropKeys } from "@nivo/core";
 
 
 
+
+
+
+  // const [lineColor, setColor] = useState('');
+
+  
+// export const Line = props => (layerProps) => {
+//   console.log(layerProps);
+//   // const { centerX, centerY } = layerProps;
+//   const selectedData = [].push(data[0])
+  
+//   return (
+//     // <text
+//     //   // x={centerX}
+//     //   // y={centerY}
+//     //   textAnchor="middle"
+//     //   dominantBaseline="central"
+//     //   style={{
+//     //     fontSize: "52px",
+//     //     fontWeight: "600"
+//     //   }}
+//     // >
+//     //   'hello'
+//     // </text>
+    
+//     <Line
+//       labelYOffset={0}
+//       width={100}
+//       height={100}
+//       data={selectedData}
+//       curve="monotoneX"
+//       margin={{
+//         top: 50,
+//         right: 50,
+//         bottom: 50,
+//         left: 50
+//       }}
+      
+//       xScale={{
+//         type: "point"
+//       }}
+      
+//       yScale={{
+//         type: "linear",
+//         min: "auto",
+//         max: "auto"
+//       }}
+//     />
+//   )
+// }
+
+
+ 
+const AppsGraph = () => {
+
+  
   const data = [
     {
       id: "Japan",
-      color: "hsl(237, 37%, 54%)",
+      // color: "hsl(237, 37%, 54%)",
       data: [
         {
           x: "jan",
@@ -53,7 +110,7 @@ import { ResponsiveLine } from "@nivo/line";
     },
     {
       id: "France",
-      color: "hsl(178, 65%, 46%)",
+      // color: "hsl(178, 65%, 46%)",
       data: [
         {
           x: "jan",
@@ -99,7 +156,7 @@ import { ResponsiveLine } from "@nivo/line";
     },
     {
       id: "US",
-      color: "hsl(1, 83%, 69%)",
+      // color: "hsl(1, 83%, 69%)",
       data: [
         {
           x: "jan",
@@ -145,7 +202,7 @@ import { ResponsiveLine } from "@nivo/line";
     },
     {
       id: "Germany",
-      color: "hsl(43, 100%, 60%)",
+      // color: "hsl(43, 100%, 60%)",
       data: [
         {
           x: "jan",
@@ -191,7 +248,7 @@ import { ResponsiveLine } from "@nivo/line";
     },
     {
       id: "Norway",
-      color: "hsl(153, 36%, 55%)",
+      // color: "hsl(153, 36%, 55%)",
       data: [
         {
           x: "jan",
@@ -236,140 +293,143 @@ import { ResponsiveLine } from "@nivo/line";
       ]
     }
   ];
+    // const originalColors = '({id, data}) => data[`${id}Color`]'
+    // const [chartColors, setChartColors] = useState(originalColors)
+    // console.log(chartColors);
+  const originalColors = ["green", "yellow", "blue", "pink", "orange"]
+  const [chartColors, setChartColors] = useState(originalColors)
+  const [selData, setSelData] = useState(data[0])
+  const [chartData, setChartData] = useState([])
 
-  // const [lineColor, setColor] = useState('');
+  console.log(chartData)
 
+  useEffect(() => {
+    setChartColors(originalColors);
+    setChartData(data);
+  }, []);
   
-export const Line = props => (layerProps) => {
-  console.log(layerProps);
-  // const { centerX, centerY } = layerProps;
-  const selectedData = [].push(data[0])
-  
-  return (
-    // <text
-    //   // x={centerX}
-    //   // y={centerY}
-    //   textAnchor="middle"
-    //   dominantBaseline="central"
-    //   style={{
-    //     fontSize: "52px",
-    //     fontWeight: "600"
-    //   }}
-    // >
-    //   'hello'
-    // </text>
-    
-    <Line
-      labelYOffset={0}
-      width={100}
-      height={100}
-      data={selectedData}
-      curve="monotoneX" 
-      margin={{
-        top: 50,
-        right: 50,
-        bottom: 50,
-        left: 50
-      }}
-      
-      xScale={{
-        type: "point"
-      }}
-      
-      yScale={{
-        type: "linear",
-        min: "auto",
-        max: "auto"
-      }}
-    />
-  )
-}
-
- 
-  const AppsGraph = () => {
   return (
   <div>
-    <div style={{ height: "400px", width: "100%" }}>
-      <ResponsiveLine
-        data={data}
-        curve="monotoneX" 
-        // blendMode="multiply"
-        margin={{
-          top: 50,
-          right: 50,
-          bottom: 50,
-          left: 50
+    <div style={{ height: "500px", width: "100%" }}>
+        <ResponsiveLine
+          data={chartData}
+          curve="natural"
+          // blendMode="multiply"
+          margin={{
+            top: 100,
+            right: 50,
+            bottom: 50,
+            left: 50
           }}
           
-        // colors={({id, data}) => data[`${id}Color`]}
+          // colors={{ scheme: "nivo"}}
+          colors={data.map((c, index) => chartColors[index])}
+          // colors={colors}
+          // colors={}
+
+          scheme={'nivo'}
+
+          // colorBy="index"
+          lineWidth={0}
         
-        xScale={{
-          type: "point"
-        }}
-        
-        yScale={{
-          type: "linear",
-          min: "auto",
-          max: "auto"
-        }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          orient: "top",
-          tickSize: 5,
-          tickPadding: 15,
-          tickRotation: 0,
-          legend: "",
-          legendOffset: 36
-        }}
-        axisLeft={{
-          orient: "right",
-          tickSize: 5,
-          tickPadding: 10,
-          tickRotation: 0,
-          legend: "",
-          legendOffset: 0
+          xScale={{
+            type: "point"
           }}
         
-        dotSize={10}
-        dotColor="inherit:darker(0.9)"
-        dotBorderWidth={1}
-        dotBorderColor="#ffffff"
-        dotLabel="y"
-        dotLabelYOffset={0}
+          yScale={{
+            type: "linear",
+            min: "auto",
+            max: "300"
+          }}
+          axisTop={null}
+          axisRight={null}
+          axisBottom={{
+            orient: "top",
+            tickSize: 10,
+            tickPadding: 15,
+            tickRotation: 0,
+            legend: "",
+            legendOffset: 36
+          }}
+          axisLeft={{
+            orient: "right",
+            tickSize: 5,
+            tickPadding: 10,
+            tickRotation: 0,
+            legend: "",
+            legendOffset: 0
+          }}
+        
+          dotSize={10}
+          dotColor="inherit:darker(0.9)"
+          dotBorderWidth={1}
+          dotBorderColor="#ffffff"
+          dotLabel="y"
+          dotLabelYOffset={0}
+          pointLabelYOffset={0}
           
-        enableArea={true}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
-        legends={[]}
-        useMesh={true}
-        isInteractive={true}
+          enableArea={true}
+          areaOpacity={0.7}
+          animate={true}
+          motionStiffness={90}
+          motionDamping={15}
+          legends={[]}
+          useMesh={true}
+          isInteractive={true}
+
         
         
-        // pointSize={10}
-        // pointColor="white"
-        // pointBorderWidth={2}
-        // pointBorderColor={{ from: 'serieColor' }}
-        // pointLabel="y"
-        // pointLabelYOffset={-12}
+          // pointSize={10}
+          // pointColor="white"
+          // pointBorderWidth={2}
+          // pointBorderColor={{ from: 'serieColor' }}
+          // pointLabel="y"
+          // pointLabelYOffset={-12}
           
           
         
-        // 
-        // enableArea={true}
-        // motionStiffness={90}
-        // motionDamping={15}
-        // legends={[]}
-        // isInteractive={true}
+          // 
+          // enableArea={true}
+          // motionStiffness={90}
+          // motionDamping={15}
+          // legends={[]}
+          // isInteractive={true}
         
-        onMouseEnter={(_data, event) => {
-          event.target.style.fill = '#ffffff';
-     
+          onMouseEnter={(point, event) => {
+            console.log(point)
+
+            const selectedIndex = data.findIndex(item => item.id === point.serieId)
+            // const selectedIndex = chartColors[index].value
+            const selectedColor = "red"
+            // const newColors = chartColors.map((color, index) => {
+            //   if (selectedIndex == index) {
+            //     return "hsl(0, 100%, 50%)"
+            //   }
+            //   return color
+            // })
+            const newSortedData = [...chartData]
+            newSortedData.unshift(newSortedData.splice(selectedIndex, 1)[0])
+            setChartData(newSortedData)
+            console.log(chartData)
+            console.log(newSortedData)
+            
+
+            const newColors = [...chartColors]
+            // newColors[selectedIndex] = selectedColor;
+            newColors.splice(selectedIndex, 1)
+            newColors.unshift(selectedColor)
+            setChartColors(newColors);
+            // const newData =  data[selectedIndex]
+            // console.log(newData)
+            // setSelData(newData)
+            // console.log(selData)
         }}
-          onMouseLeave={(_data, event) => {
-          console.log(event.target.style.fill)
-          event.target.style.fill = '#FFFFFF';
+          onMouseLeave={(point, event) => {
+
+            setChartColors(originalColors)
+            setChartData(data)
+            console.log(chartColors)
+            // setSelData([])
         }}
 
         layers={[
@@ -386,10 +446,52 @@ export const Line = props => (layerProps) => {
           'mesh',
           ]}
         />
+      </div>
+      
+      <div className="secondGraph">
+        <SecondGraph selectedData={selData}/>
+        </div>
     </div>
-  </div>
+
   )
 
 }
 
 export default AppsGraph;
+
+const SecondGraph = (props) => {
+  const data = props.selectedData
+  return (
+    <ResponsiveLine
+      
+     curve="natural"
+          margin={{
+            top: 100,
+            right: 50,
+            bottom: 50,
+            left: 50
+          }}
+    
+          // colors={["red"]}
+
+          lineWidth={3}
+        
+          xScale={{
+            type: "point"
+          }}
+        
+          yScale={{
+            type: "linear",
+            min: "auto",
+            max: "300"
+          }}
+          axisTop={null}
+          axisRight={null}
+          axisBottom={null}
+          axisLeft={null}
+        
+          enableGridY={false}
+
+    />
+  );
+};

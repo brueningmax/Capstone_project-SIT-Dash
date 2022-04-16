@@ -116,7 +116,7 @@ const Home = () => {
 
           <Graph applications={applicationsData} />
 
-            <AppsGraph Line={Line}/>
+            <AppsGraph />
           
       </div>
       </div>

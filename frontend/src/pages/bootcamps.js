@@ -12,6 +12,7 @@ import MiddleBar from "../components/middlebar";
 import BootcampGraph from "../components/bootcampGraph";
 
 
+
 const Bootcamps = () => {
 
   const navigate = useNavigate();
@@ -52,7 +53,6 @@ const Bootcamps = () => {
     <div>
   
       <Header />
-      
       Bootcamps
 
       Filters:
