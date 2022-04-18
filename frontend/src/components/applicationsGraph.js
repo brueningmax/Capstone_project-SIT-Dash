@@ -8,7 +8,18 @@ import { line } from "d3-shape";
  
 const AppsGraph = (props) => {
 
-  
+  const requestedData = props.data
+
+  // data = ["Short Courses", "Immersive Bootcamps", "Part-Time Bootcamps", "Total"].map(function(item, index) => {
+  // return {
+  //   id: item,
+  //   data
+  //     }
+  // })
+  console.log(props.data)
+
+
+
   const data = [
     {
       id: "Japan",
@@ -338,8 +349,10 @@ const AppsGraph = (props) => {
 
 
             //resorting data to place selected chart at index 0 so the chart appears in front of all other charts.
-            const newSortedData = [...chartData]
-            newSortedData.unshift(newSortedData.splice(selectedIndex, 1)[0])
+            // const newSortedData = [...chartData]
+            const newSortedData = []
+            // newSortedData.unshift(newSortedData.splice(selectedIndex, 1)[0])
+            newSortedData.push(chartData[selectedIndex])
             setChartData(newSortedData)
             //
             
@@ -384,14 +397,14 @@ const AppsGraph = (props) => {
           'axes',
           'areas',
           // Line,
-          SecondGraph,
+          // SecondGraph,
           'crosshair',
           'lines',
           'slices',
           'points',
           'legends',
           'mesh',
-          selData,
+          // selData,
           ]}
         />
       </div>
@@ -404,63 +417,8 @@ const AppsGraph = (props) => {
   )
 
 }
-
 export default AppsGraph;
 
-// const SecondGraph = (props) => {
-//   const selectedData = props.selectedData;
-//   const [data, setData] = useState([]);
-
-
-//   const myFunction = () => {
-//     setData([])
-//   }
-  
-//   console.log(data)
-
-//   useEffect(() => {
-//     myFunction();
-//     return () => {
-//       setData(selectedData);
-//     }
-//   }, []);
-  
-
-  
-//   return (
-//     <ResponsiveLine
-      
-//      curve="natural"
-//           margin={{
-//             top: 100,
-//             right: 50,
-//             bottom: 50,
-//             left: 50
-//           }}
-    
-//           // colors={["red"]}
-
-//           lineWidth={3}
-        
-//           xScale={{
-//             type: "point"
-//           }}
-        
-//           yScale={{
-//             type: "linear",
-//             min: "auto",
-//             max: "300"
-//           }}
-//           axisTop={null}
-//           axisRight={null}
-//           axisBottom={null}
-//           axisLeft={null}
-        
-//           enableGridY={false}
-
-//     />
-//   );
-// };
 
 const SecondGraph = ({selData, xScale, yScale, innerHeight }) => {
     // const newData = selData;
