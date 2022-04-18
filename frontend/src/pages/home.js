@@ -22,63 +22,39 @@ const Home = () => {
     getLatestBootcamps();
   }, [])
   
-  const getLatestApplications = async() => {
+  const getLatestApplications = async () => {
     const response = await Axios(`${baseurl}applications/all/`);
     setLatestApplications(response.data)
   }
 
-  const getLatestBootcamps = async() => {
+  const getLatestBootcamps = async () => {
     const response = await Axios(`${baseurl}bootcamps/all/`);
     setLatestBootcamps(response.data)
   }
-  
-  // const data = [
-  //   {
-  //     "first_name": "Mike",
-  //     "last_name": "Jack",
-  //     "bootcamp_name": "Full Stack",
-  //     "applied": "2022-04-21T18:25:43.511Z",
-  //     "bootcamp_location": "Zurich"
-  //   },
-  //   {
-  //     "first_name": "Max",
-  //     "last_name": "Max",
-  //     "bootcamp_name": "Full Stack",
-  //     "applied": "2022-04-23T18:25:43.511Z",
-  //     "bootcamp_location": "Zurich"
-  //   },
-  //   {
-  //     "first_name": "Avi",
-  //     "last_name": "Avi",
-  //     "bootcamp_name": "Full Stack",
-  //     "applied": "2022-03-23T18:25:43.511Z",
-  //     "bootcamp_location": "Zurich"
-  //   },
 
-  // ]
-
-  const bootcampsTable = 
+  const bootcampsTable =
     bootcampsData.map((item) =>
       <MiddleBar
-        key = {item.name}
-        shortBootcampName = {item.name}
-        bootcampLocation = {item.bootcamp_location}
-        bootcampStartDate = {item.start_date}
+        key={item.name}
+        shortBootcampName={item.name}
+        bootcampLocation={item.bootcamp_location}
+        bootcampStartDate={item.start_date}
 
 
 
       />
 
-    //   <tr key={item.name}>
-    //     <td>{item.name}</td>
-    //     <td>{item.bootcamp_location.location}</td>
-    //     <td>{item.start_date}</td>
-    //   </tr>
+      //   <tr key={item.name}>
+      //     <td>{item.name}</td>
+      //     <td>{item.bootcamp_location.location}</td>
+      //     <td>{item.start_date}</td>
+      //   </tr>
     )
 
-  const applicationsTable = 
+  const applicationsTable =
     applicationsData.map((item) =>
       <NarrowBar
+        data={{item}}
         lastName={item.last_name}
         firstName={item.first_name}
         bootcampName={item.bootcamp.name}

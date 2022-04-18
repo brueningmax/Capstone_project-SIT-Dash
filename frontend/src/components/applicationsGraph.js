@@ -2,69 +2,16 @@ import React, { Fragment, useState, useEffect } from "react";
 import { render } from "react-dom";
 import { ResponsiveLine } from "@nivo/line";
 import { closedCurvePropKeys } from "@nivo/core";
-
-
-
-
-
-
-  // const [lineColor, setColor] = useState('');
-
-  
-// export const Line = props => (layerProps) => {
-//   console.log(layerProps);
-//   // const { centerX, centerY } = layerProps;
-//   const selectedData = [].push(data[0])
-  
-//   return (
-//     // <text
-//     //   // x={centerX}
-//     //   // y={centerY}
-//     //   textAnchor="middle"
-//     //   dominantBaseline="central"
-//     //   style={{
-//     //     fontSize: "52px",
-//     //     fontWeight: "600"
-//     //   }}
-//     // >
-//     //   'hello'
-//     // </text>
-    
-//     <Line
-//       labelYOffset={0}
-//       width={100}
-//       height={100}
-//       data={selectedData}
-//       curve="monotoneX"
-//       margin={{
-//         top: 50,
-//         right: 50,
-//         bottom: 50,
-//         left: 50
-//       }}
-      
-//       xScale={{
-//         type: "point"
-//       }}
-      
-//       yScale={{
-//         type: "linear",
-//         min: "auto",
-//         max: "auto"
-//       }}
-//     />
-//   )
-// }
-
+import { Defs } from "@nivo/core";
+import { line } from "d3-shape";
 
  
-const AppsGraph = () => {
+const AppsGraph = (props) => {
 
   
   const data = [
     {
       id: "Japan",
-      // color: "hsl(237, 37%, 54%)",
       data: [
         {
           x: "jan",
@@ -110,7 +57,6 @@ const AppsGraph = () => {
     },
     {
       id: "France",
-      // color: "hsl(178, 65%, 46%)",
       data: [
         {
           x: "jan",
@@ -296,7 +242,7 @@ const AppsGraph = () => {
     // const originalColors = '({id, data}) => data[`${id}Color`]'
     // const [chartColors, setChartColors] = useState(originalColors)
     // console.log(chartColors);
-  const originalColors = ["green", "yellow", "blue", "pink", "orange"]
+  const originalColors = ["#82c91e", "#228be6", "#fa5252", "#000000", "#868e96"]
   const [chartColors, setChartColors] = useState(originalColors)
   const [selData, setSelData] = useState(data[0])
   const [chartData, setChartData] = useState([])
@@ -306,6 +252,7 @@ const AppsGraph = () => {
   useEffect(() => {
     setChartColors(originalColors);
     setChartData(data);
+    setSelData(data[0]);
   }, []);
   
   return (
@@ -313,7 +260,7 @@ const AppsGraph = () => {
     <div style={{ height: "500px", width: "100%" }}>
         <ResponsiveLine
           data={chartData}
-          curve="natural"
+          curve="monotoneX"
           // blendMode="multiply"
           margin={{
             top: 100,
@@ -324,13 +271,9 @@ const AppsGraph = () => {
           
           // colors={{ scheme: "nivo"}}
           colors={data.map((c, index) => chartColors[index])}
-          // colors={colors}
-          // colors={}
-
-          scheme={'nivo'}
-
-          // colorBy="index"
+          // lineWidth={2}
           lineWidth={0}
+          
         
           xScale={{
             type: "point"
@@ -360,75 +303,78 @@ const AppsGraph = () => {
             legendOffset: 0
           }}
         
-          dotSize={10}
-          dotColor="inherit:darker(0.9)"
-          dotBorderWidth={1}
-          dotBorderColor="#ffffff"
-          dotLabel="y"
-          dotLabelYOffset={0}
-          pointLabelYOffset={0}
+          // dotSize={10}
+          // dotColor="inherit:darker(0.9)"
+          // dotBorderWidth={1}
+          // dotBorderColor="#ffffff"
+          // dotLabel="y"
+          // dotLabelYOffset={0}
+          // pointLabelYOffset={0}
           
+          pointSize={0}
           enableArea={true}
-          areaOpacity={0.7}
+          areaOpacity={.7}
           animate={true}
           motionStiffness={90}
           motionDamping={15}
           legends={[]}
           useMesh={true}
           isInteractive={true}
+          pointLabelYOffset={0}
 
-        
-        
-          // pointSize={10}
-          // pointColor="white"
-          // pointBorderWidth={2}
-          // pointBorderColor={{ from: 'serieColor' }}
-          // pointLabel="y"
-          // pointLabelYOffset={-12}
-          
-          
-        
-          // 
-          // enableArea={true}
-          // motionStiffness={90}
-          // motionDamping={15}
-          // legends={[]}
-          // isInteractive={true}
-        
           onMouseEnter={(point, event) => {
             console.log(point)
 
-            const selectedIndex = data.findIndex(item => item.id === point.serieId)
+            ////set color of selected graph to red
+            // const selectedIndex = data.findIndex(item => item.id === point.serieId)
+            // const selectedColor = "red"
+            ////
+            
             // const selectedIndex = chartColors[index].value
-            const selectedColor = "red"
-            // const newColors = chartColors.map((color, index) => {
-            //   if (selectedIndex == index) {
-            //     return "hsl(0, 100%, 50%)"
-            //   }
-            //   return color
-            // })
+            
+            //set color of non-selected graphs to grey
+            const selectedIndex = data.findIndex(item => item.id === point.serieId)
+            const selectedColor = chartColors[selectedIndex]
+
+
+            //resorting data to place selected chart at index 0 so the chart appears in front of all other charts.
             const newSortedData = [...chartData]
             newSortedData.unshift(newSortedData.splice(selectedIndex, 1)[0])
             setChartData(newSortedData)
-            console.log(chartData)
-            console.log(newSortedData)
+            //
             
+            // console.log(chartData)
+            // console.log(newSortedData)
+            
+            ////resorting colors to place the color of the selected chart at index 0 of chartColors to match the newSortedData
 
-            const newColors = [...chartColors]
-            // newColors[selectedIndex] = selectedColor;
-            newColors.splice(selectedIndex, 1)
-            newColors.unshift(selectedColor)
+            //OPTION 1: change color of selected chart and make it appear in front of other charts
+            // const newColors = [...chartColors]
+            // newColors.splice(selectedIndex, 1)
+            // newColors.unshift(selectedColor)
+            // setChartColors(newColors);
+            
+            //OPTION 2: keep color of selected chart but make all others grey
+            // const newColors = [...chartColors]
+            // newColors.splice(selectedIndex, 1)
+            // newColors.unshift(selectedColor)
+            // setChartColors(newColors);
+
+            const newColors = [selectedColor, "grey", "grey", "grey","grey"]
             setChartColors(newColors);
-            // const newData =  data[selectedIndex]
+
+            const newData =  data[selectedIndex]
             // console.log(newData)
-            // setSelData(newData)
-            // console.log(selData)
+            setSelData(newData)
+            console.log(selData)
+            // selData = selData
         }}
           onMouseLeave={(point, event) => {
 
             setChartColors(originalColors)
             setChartData(data)
             console.log(chartColors)
+            setSelData([])
             // setSelData([])
         }}
 
@@ -438,19 +384,21 @@ const AppsGraph = () => {
           'axes',
           'areas',
           // Line,
+          SecondGraph,
           'crosshair',
           'lines',
           'slices',
           'points',
           'legends',
           'mesh',
+          selData,
           ]}
         />
       </div>
       
-      <div className="secondGraph">
+      {/* <div className="secondGraph" style={{ height: "500px", width: "100%", position:"absolute" }}>
         <SecondGraph selectedData={selData}/>
-        </div>
+        </div>  */}
     </div>
 
   )
@@ -459,39 +407,148 @@ const AppsGraph = () => {
 
 export default AppsGraph;
 
-const SecondGraph = (props) => {
-  const data = props.selectedData
-  return (
-    <ResponsiveLine
+// const SecondGraph = (props) => {
+//   const selectedData = props.selectedData;
+//   const [data, setData] = useState([]);
+
+
+//   const myFunction = () => {
+//     setData([])
+//   }
+  
+//   console.log(data)
+
+//   useEffect(() => {
+//     myFunction();
+//     return () => {
+//       setData(selectedData);
+//     }
+//   }, []);
+  
+
+  
+//   return (
+//     <ResponsiveLine
       
-     curve="natural"
-          margin={{
-            top: 100,
-            right: 50,
-            bottom: 50,
-            left: 50
-          }}
+//      curve="natural"
+//           margin={{
+//             top: 100,
+//             right: 50,
+//             bottom: 50,
+//             left: 50
+//           }}
     
-          // colors={["red"]}
+//           // colors={["red"]}
 
-          lineWidth={3}
+//           lineWidth={3}
         
-          xScale={{
-            type: "point"
-          }}
+//           xScale={{
+//             type: "point"
+//           }}
         
-          yScale={{
-            type: "linear",
-            min: "auto",
-            max: "300"
-          }}
-          axisTop={null}
-          axisRight={null}
-          axisBottom={null}
-          axisLeft={null}
+//           yScale={{
+//             type: "linear",
+//             min: "auto",
+//             max: "300"
+//           }}
+//           axisTop={null}
+//           axisRight={null}
+//           axisBottom={null}
+//           axisLeft={null}
         
-          enableGridY={false}
+//           enableGridY={false}
 
-    />
-  );
-};
+//     />
+//   );
+// };
+
+const SecondGraph = ({selData, xScale, yScale, innerHeight }) => {
+    // const newData = selData;
+  const newData = [
+    {
+      id: "Norway",
+      // color: "hsl(153, 36%, 55%)",
+      data: [
+        {
+          x: "jan",
+          y: 271
+        },
+        {
+          x: "feb",
+          y: 16
+        },
+        {
+          x: "mar",
+          y: 23
+        },
+        {
+          x: "apr",
+          y: 69
+        },
+        {
+          x: "may",
+          y: 99
+        },
+        {
+          x: "jun",
+          y: 22
+        },
+        {
+          x: "jul",
+          y: 281
+        },
+        {
+          x: "aug",
+          y: 52
+        },
+        {
+          x: "sep",
+          y: 102
+        },
+        {
+          x: "oct",
+          y: 86
+        }
+      ]
+    }
+  ]
+    const [data, setData] = useState(newData);
+  
+  
+    const myFunction = () => {
+      setData(newData)
+    }
+    
+    console.log(data)
+  
+    useEffect(() => {
+      myFunction();
+      return () => {
+        setData(newData);
+      }
+    }, []);
+    
+  
+  console.log(data)  
+  const lineGenerator = line()
+     .defined(d => d.data)
+      .x(d => xScale(d.data.x))
+      .y(d => yScale(d.data.y))
+      // .style("monotoneX")
+  
+    return (
+      <>
+       <Fragment>
+        <path
+          d={lineGenerator(newData[0])}
+          fill="black"
+          fillOpacity={0.6}
+          stroke="#3daff7"
+          strokeWidth={2}
+          style={{ pointerEvents: "none" }}
+          />
+       </Fragment>
+      </>
+    );
+  };
+
