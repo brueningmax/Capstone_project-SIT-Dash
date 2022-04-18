@@ -8,251 +8,287 @@ import { line } from "d3-shape";
  
 const AppsGraph = (props) => {
 
-  const requestedData = props.data
+  const [requestedData, setRequestedData] = useState(null);
 
-  // data = ["Short Courses", "Immersive Bootcamps", "Part-Time Bootcamps", "Total"].map(function(item, index) => {
-  // return {
-  //   id: item,
-  //   data
-  //     }
-  // })
-  console.log(props.data)
+  // const requestedData = props.data;
+  console.log(requestedData)
+
+  // const getApplicationData = (requestedData) => {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve({
+  //         requestedData
+  //       })
+  //     }, 1500)
+  //   })
+  // }
+
+ 
+    
+  useEffect(() => {
+    // props.data
+    //   .then(data =>
+    //     setRequestedData(data)
 
 
+    const fetchData = async () => {
+      await props.fetchData()
+          }
+    fetchData();
+  }, [])
 
-  const data = [
-    {
-      id: "Japan",
-      data: [
-        {
-          x: "jan",
-          y: 291
-        },
-        {
-          x: "feb",
-          y: 58
-        },
-        {
-          x: "mar",
-          y: 281
-        },
-        {
-          x: "apr",
-          y: 204
-        },
-        {
-          x: "may",
-          y: 72
-        },
-        {
-          x: "jun",
-          y: 228
-        },
-        {
-          x: "jul",
-          y: 105
-        },
-        {
-          x: "aug",
-          y: 15
-        },
-        {
-          x: "sep",
-          y: 161
-        },
-        {
-          x: "oct",
-          y: 209
-        }
-      ]
-    },
-    {
-      id: "France",
-      data: [
-        {
-          x: "jan",
-          y: 49
-        },
-        {
-          x: "feb",
-          y: 105
-        },
-        {
-          x: "mar",
-          y: 124
-        },
-        {
-          x: "apr",
-          y: 43
-        },
-        {
-          x: "may",
-          y: 79
-        },
-        {
-          x: "jun",
-          y: 48
-        },
-        {
-          x: "jul",
-          y: 251
-        },
-        {
-          x: "aug",
-          y: 244
-        },
-        {
-          x: "sep",
-          y: 12
-        },
-        {
-          x: "oct",
-          y: 61
-        }
-      ]
-    },
-    {
-      id: "US",
-      // color: "hsl(1, 83%, 69%)",
-      data: [
-        {
-          x: "jan",
-          y: 151
-        },
-        {
-          x: "feb",
-          y: 160
-        },
-        {
-          x: "mar",
-          y: 64
-        },
-        {
-          x: "apr",
-          y: 23
-        },
-        {
-          x: "may",
-          y: 232
-        },
-        {
-          x: "jun",
-          y: 295
-        },
-        {
-          x: "jul",
-          y: 19
-        },
-        {
-          x: "aug",
-          y: 224
-        },
-        {
-          x: "sep",
-          y: 139
-        },
-        {
-          x: "oct",
-          y: 282
-        }
-      ]
-    },
-    {
-      id: "Germany",
-      // color: "hsl(43, 100%, 60%)",
-      data: [
-        {
-          x: "jan",
-          y: 122
-        },
-        {
-          x: "feb",
-          y: 95
-        },
-        {
-          x: "mar",
-          y: 60
-        },
-        {
-          x: "apr",
-          y: 89
-        },
-        {
-          x: "may",
-          y: 164
-        },
-        {
-          x: "jun",
-          y: 15
-        },
-        {
-          x: "jul",
-          y: 212
-        },
-        {
-          x: "aug",
-          y: 248
-        },
-        {
-          x: "sep",
-          y: 187
-        },
-        {
-          x: "oct",
-          y: 253
-        }
-      ]
-    },
-    {
-      id: "Norway",
-      // color: "hsl(153, 36%, 55%)",
-      data: [
-        {
-          x: "jan",
-          y: 271
-        },
-        {
-          x: "feb",
-          y: 16
-        },
-        {
-          x: "mar",
-          y: 23
-        },
-        {
-          x: "apr",
-          y: 69
-        },
-        {
-          x: "may",
-          y: 99
-        },
-        {
-          x: "jun",
-          y: 22
-        },
-        {
-          x: "jul",
-          y: 281
-        },
-        {
-          x: "aug",
-          y: 52
-        },
-        {
-          x: "sep",
-          y: 102
-        },
-        {
-          x: "oct",
-          y: 86
-        }
-      ]
+
+  function getChartData(requestedData) {
+    const data = ["short_courses", "immersive_bootcamps", "part_time_bootcamps", "total"].map(function (item, index) {
+    const monthData = []
+
+    for (const key in requestedData) {
+      const obj = { x: `${requestedData[key].month} ${requestedData[key].year}`, y: requestedData[key][item] };
+      monthData.push(obj)
     }
-  ];
-    // const originalColors = '({id, data}) => data[`${id}Color`]'
-    // const [chartColors, setChartColors] = useState(originalColors)
-    // console.log(chartColors);
+  
+    return (
+    {
+    id: item,
+    data: monthData
+    }
+  )
+  })
+  return data;
+}
+  const data = getChartData(requestedData);
+
+  // const data = [
+  //   {
+  //     id: "Japan",
+  //     data: [
+  //       {
+  //         x: "jan",
+  //         y: 291
+  //       },
+  //       {
+  //         x: "feb",
+  //         y: 58
+  //       },
+  //       {
+  //         x: "mar",
+  //         y: 281
+  //       },
+  //       {
+  //         x: "apr",
+  //         y: 204
+  //       },
+  //       {
+  //         x: "may",
+  //         y: 72
+  //       },
+  //       {
+  //         x: "jun",
+  //         y: 228
+  //       },
+  //       {
+  //         x: "jul",
+  //         y: 105
+  //       },
+  //       {
+  //         x: "aug",
+  //         y: 15
+  //       },
+  //       {
+  //         x: "sep",
+  //         y: 161
+  //       },
+  //       {
+  //         x: "oct",
+  //         y: 209
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     id: "France",
+  //     data: [
+  //       {
+  //         x: "jan",
+  //         y: 49
+  //       },
+  //       {
+  //         x: "feb",
+  //         y: 105
+  //       },
+  //       {
+  //         x: "mar",
+  //         y: 124
+  //       },
+  //       {
+  //         x: "apr",
+  //         y: 43
+  //       },
+  //       {
+  //         x: "may",
+  //         y: 79
+  //       },
+  //       {
+  //         x: "jun",
+  //         y: 48
+  //       },
+  //       {
+  //         x: "jul",
+  //         y: 251
+  //       },
+  //       {
+  //         x: "aug",
+  //         y: 244
+  //       },
+  //       {
+  //         x: "sep",
+  //         y: 12
+  //       },
+  //       {
+  //         x: "oct",
+  //         y: 61
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     id: "US",
+  //     // color: "hsl(1, 83%, 69%)",
+  //     data: [
+  //       {
+  //         x: "jan",
+  //         y: 151
+  //       },
+  //       {
+  //         x: "feb",
+  //         y: 160
+  //       },
+  //       {
+  //         x: "mar",
+  //         y: 64
+  //       },
+  //       {
+  //         x: "apr",
+  //         y: 23
+  //       },
+  //       {
+  //         x: "may",
+  //         y: 232
+  //       },
+  //       {
+  //         x: "jun",
+  //         y: 295
+  //       },
+  //       {
+  //         x: "jul",
+  //         y: 19
+  //       },
+  //       {
+  //         x: "aug",
+  //         y: 224
+  //       },
+  //       {
+  //         x: "sep",
+  //         y: 139
+  //       },
+  //       {
+  //         x: "oct",
+  //         y: 282
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     id: "Germany",
+  //     // color: "hsl(43, 100%, 60%)",
+  //     data: [
+  //       {
+  //         x: "jan",
+  //         y: 122
+  //       },
+  //       {
+  //         x: "feb",
+  //         y: 95
+  //       },
+  //       {
+  //         x: "mar",
+  //         y: 60
+  //       },
+  //       {
+  //         x: "apr",
+  //         y: 89
+  //       },
+  //       {
+  //         x: "may",
+  //         y: 164
+  //       },
+  //       {
+  //         x: "jun",
+  //         y: 15
+  //       },
+  //       {
+  //         x: "jul",
+  //         y: 212
+  //       },
+  //       {
+  //         x: "aug",
+  //         y: 248
+  //       },
+  //       {
+  //         x: "sep",
+  //         y: 187
+  //       },
+  //       {
+  //         x: "oct",
+  //         y: 253
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     id: "Norway",
+  //     // color: "hsl(153, 36%, 55%)",
+  //     data: [
+  //       {
+  //         x: "jan",
+  //         y: 271
+  //       },
+  //       {
+  //         x: "feb",
+  //         y: 16
+  //       },
+  //       {
+  //         x: "mar",
+  //         y: 23
+  //       },
+  //       {
+  //         x: "apr",
+  //         y: 69
+  //       },
+  //       {
+  //         x: "may",
+  //         y: 99
+  //       },
+  //       {
+  //         x: "jun",
+  //         y: 22
+  //       },
+  //       {
+  //         x: "jul",
+  //         y: 281
+  //       },
+  //       {
+  //         x: "aug",
+  //         y: 52
+  //       },
+  //       {
+  //         x: "sep",
+  //         y: 102
+  //       },
+  //       {
+  //         x: "oct",
+  //         y: 86
+  //       }
+  //     ]
+  //   }
+  // ];
+ 
   const originalColors = ["#82c91e", "#228be6", "#fa5252", "#000000", "#868e96"]
   const [chartColors, setChartColors] = useState(originalColors)
   const [selData, setSelData] = useState(data[0])
@@ -263,11 +299,14 @@ const AppsGraph = (props) => {
   useEffect(() => {
     setChartColors(originalColors);
     setChartData(data);
-    setSelData(data[0]);
+    // setSelData(data[0]);
   }, []);
   
   return (
-  <div>
+    <div>
+      {data === [] ? (
+        <p>loading...</p>
+      ) : (
     <div style={{ height: "500px", width: "100%" }}>
         <ResponsiveLine
           data={chartData}
@@ -293,7 +332,7 @@ const AppsGraph = (props) => {
           yScale={{
             type: "linear",
             min: "auto",
-            max: "300"
+            max: "10"
           }}
           axisTop={null}
           axisRight={null}
@@ -407,11 +446,8 @@ const AppsGraph = (props) => {
           // selData,
           ]}
         />
-      </div>
-      
-      {/* <div className="secondGraph" style={{ height: "500px", width: "100%", position:"absolute" }}>
-        <SecondGraph selectedData={selData}/>
-        </div>  */}
+        </div>
+        )}
     </div>
 
   )
@@ -420,93 +456,93 @@ const AppsGraph = (props) => {
 export default AppsGraph;
 
 
-const SecondGraph = ({selData, xScale, yScale, innerHeight }) => {
-    // const newData = selData;
-  const newData = [
-    {
-      id: "Norway",
-      // color: "hsl(153, 36%, 55%)",
-      data: [
-        {
-          x: "jan",
-          y: 271
-        },
-        {
-          x: "feb",
-          y: 16
-        },
-        {
-          x: "mar",
-          y: 23
-        },
-        {
-          x: "apr",
-          y: 69
-        },
-        {
-          x: "may",
-          y: 99
-        },
-        {
-          x: "jun",
-          y: 22
-        },
-        {
-          x: "jul",
-          y: 281
-        },
-        {
-          x: "aug",
-          y: 52
-        },
-        {
-          x: "sep",
-          y: 102
-        },
-        {
-          x: "oct",
-          y: 86
-        }
-      ]
-    }
-  ]
-    const [data, setData] = useState(newData);
+// const SecondGraph = ({selData, xScale, yScale, innerHeight }) => {
+//     // const newData = selData;
+//   const newData = [
+//     {
+//       id: "Norway",
+//       // color: "hsl(153, 36%, 55%)",
+//       data: [
+//         {
+//           x: "jan",
+//           y: 271
+//         },
+//         {
+//           x: "feb",
+//           y: 16
+//         },
+//         {
+//           x: "mar",
+//           y: 23
+//         },
+//         {
+//           x: "apr",
+//           y: 69
+//         },
+//         {
+//           x: "may",
+//           y: 99
+//         },
+//         {
+//           x: "jun",
+//           y: 22
+//         },
+//         {
+//           x: "jul",
+//           y: 281
+//         },
+//         {
+//           x: "aug",
+//           y: 52
+//         },
+//         {
+//           x: "sep",
+//           y: 102
+//         },
+//         {
+//           x: "oct",
+//           y: 86
+//         }
+//       ]
+//     }
+//   ]
+//     const [data, setData] = useState(newData);
   
   
-    const myFunction = () => {
-      setData(newData)
-    }
+//     const myFunction = () => {
+//       setData(newData)
+//     }
     
-    console.log(data)
+//     console.log(data)
   
-    useEffect(() => {
-      myFunction();
-      return () => {
-        setData(newData);
-      }
-    }, []);
+//     useEffect(() => {
+//       myFunction();
+//       return () => {
+//         setData(newData);
+//       }
+//     }, []);
     
   
-  console.log(data)  
-  const lineGenerator = line()
-     .defined(d => d.data)
-      .x(d => xScale(d.data.x))
-      .y(d => yScale(d.data.y))
-      // .style("monotoneX")
+//   console.log(data)  
+//   const lineGenerator = line()
+//      .defined(d => d.data)
+//       .x(d => xScale(d.data.x))
+//       .y(d => yScale(d.data.y))
+//       // .style("monotoneX")
   
-    return (
-      <>
-       <Fragment>
-        <path
-          d={lineGenerator(newData[0])}
-          fill="black"
-          fillOpacity={0.6}
-          stroke="#3daff7"
-          strokeWidth={2}
-          style={{ pointerEvents: "none" }}
-          />
-       </Fragment>
-      </>
-    );
-  };
+//     return (
+//       <>
+//        <Fragment>
+//         <path
+//           d={lineGenerator(newData[0])}
+//           fill="black"
+//           fillOpacity={0.6}
+//           stroke="#3daff7"
+//           strokeWidth={2}
+//           style={{ pointerEvents: "none" }}
+//           />
+//        </Fragment>
+//       </>
+//     );
+//   };
 
