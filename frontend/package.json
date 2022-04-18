@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@nivo/"
     "@nivo/core": "0.77.0",
     "@nivo/bar": "^0.77.0",
     "@testing-library/jest-dom": "^5.16.4",
