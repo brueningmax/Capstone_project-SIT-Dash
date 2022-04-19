@@ -69,16 +69,16 @@ class ListUpcomingBootcamp(APIView):
                         response[entry]['applications']['serious'] += 1
                     case 'not_serious':
                         response[entry]['applications']['not_serious'] += 1
-                    case 'accepted':
-                        response[entry]['applications']['accepted'] += 1
                     case 'enrolled':
                         response[entry]['applications']['enrolled'] += 1
-                    case 'to_review':
-                        response[entry]['applications']['to_review'] += 1
                     case 'dropped_out':
                         response[entry]['applications']['dropped_out'] += 1
-                    case _:
+                    case 'graduated':
                         response[entry]['applications']['else'] += 1
+                    case 'found_job':
+                        response[entry]['applications']['else'] += 1
+                    case _:
+                        response[entry]['applications']['to_review'] += 1
 
         return Response(response)
 
