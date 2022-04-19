@@ -20,7 +20,7 @@ const Home = () => {
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] = useState([]);
 
   const [numLatestApplications, setNumLatestApplications] = useState(5)
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(8)
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3)
   
   useEffect(() => {
     getLatestApplications();
@@ -51,36 +51,31 @@ const Home = () => {
     console.log(applicationsGraphDataFiltered)
   }
 
-  const bootcampsTable =
-    bootcampsData.map((item) =>
-      <MiddleBar
-        key={item.name}
-        shortBootcampName={item.name}
-        bootcampLocation={item.bootcamp_location}
-        bootcampStartDate={item.start_date}
+  // const bootcampsTable =
+  //   bootcampsData.map((item) =>
+  //     <MiddleBar
+  //       data={item}
+  //       key={item.id}
 
-
-
-      />
+        // shortBootcampName={item.name}
+        // bootcampLocation={item.bootcamp_location}
+        // bootcampStartDate={item.start_date}
+      // />
 
       //   <tr key={item.name}>
       //     <td>{item.name}</td>
       //     <td>{item.bootcamp_location.location}</td>
       //     <td>{item.start_date}</td>
       //   </tr>
-    )
+    // )
 
-  const applicationsTable =
-    applicationsData.map((item) =>
-      <NarrowBar
-        data={{item}}
-        lastName={item.last_name}
-        firstName={item.first_name}
-        bootcampName={item.bootcamp.name}
-        bootcampLocation={item.bootcamp.bootcamp_location}
-        key={item.last_name}
-      />
-    )
+  // const applicationsTable =
+  //   applicationsData.map((item) =>
+  //     <NarrowBar
+  //       data={item}
+  //       key={item.id}
+  //     />
+  //   )
   
   // console.log(applicationsGraphData)
   // console.log(bootcampsData)
@@ -101,12 +96,12 @@ const Home = () => {
 
           <h1>Latest Applications</h1>
 
-            {applicationsTable}
+          {applicationsData.map((item) => <NarrowBar data={item} key={item.id} />)}
           
           
           <h1>Upcoming Bootcamps</h1>
 
-          {bootcampsTable}
+          {bootcampsData.map((item) => <MiddleBar data={item} key={item.id} /> )}
 
 
           <Graph applications={applicationsData} />

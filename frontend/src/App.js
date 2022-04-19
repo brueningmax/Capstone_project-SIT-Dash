@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Applications from './pages/applications';
 import Bootcamps from './pages/bootcamps';
@@ -14,7 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/applications" element={<Applications />} />
         <Route path="/bootcamps" element={<Bootcamps />} />
-        <Route path="/sidebar" element={<Sidebar />} />
+        {/* <Route path="/sidebar" element={<Sidebar />} /> */}
       </Routes>
     </BrowserRouter>
   );
