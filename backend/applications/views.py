@@ -119,17 +119,17 @@ class GetDashboardGraphData(APIView):
 class FilteringApplicationView(ListAPIView):
     queryset = Application.objects.all()
     permission_classes = []
-    serializer_class = ApplicationSerializer
+    serializer_class = LatestApplicationSerializer
 
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()
-        if request.data['status'] is not None:
+        if request.data.get('status') is not None:
             queryset = queryset.filter(status=request.data['status'])
-        if request.data['start_date'] is not None:
+        if request.data.get('start_date') is not None:
             queryset = queryset.filter(bootcamp__start_date=request.data['start_date'])
-        if request.data['bootcamp_location'] is not None:
+        if request.data.get('bootcamp_location') is not None:
             queryset = queryset.filter(bootcamp__bootcamp_location__location=request.data['bootcamp_location'])
-        serializer = self.get_serializer(queryset)
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
 
