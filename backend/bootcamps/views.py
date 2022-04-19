@@ -45,6 +45,7 @@ class ListUpcomingBootcamp(APIView):
                 'id': queryset[entry].pk,
                 'name': queryset[entry].name,
                 'start_date': queryset[entry].start_date,
+                'bootcamp_location': queryset[entry].bootcamp_location.location,
                 'applications': {
                     'serious': 0,
                     'not_serious': 0,

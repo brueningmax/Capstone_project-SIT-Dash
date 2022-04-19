@@ -6,10 +6,10 @@ const NarrowBar = (props) => {
     return(
         <NarrowContainer>
             <div>
-                <p>{props.firstName} {props.lastName}</p>
-                <p>{props.bootcampName}</p>
-                <p>{props.bootcampLocation}</p>
-                <p>Zurich</p>
+                <p>{props.data.first_name} {props.data.last_name}</p>
+                <p>{props.data.bootcamp.name}</p>
+                <p>{props.data.bootcamp.start_date}</p>
+                <p>{props.data.bootcamp.bootcamp_location.location}</p>
             </div>
         </NarrowContainer>
     )
