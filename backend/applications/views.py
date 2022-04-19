@@ -22,7 +22,7 @@ class ListAllApplications(ListAPIView):
     serializer_class = ApplicationAllSerializer
 
 
-class ListLatestApplications(ListAPIView):
+class ListLatestApplications(GenericAPIView):
     """
     get:
     Returns all the restaurants
@@ -30,6 +30,11 @@ class ListLatestApplications(ListAPIView):
     queryset = Application.objects.all().order_by('-applied')
     permission_classes = []
     serializer_class = LatestApplicationSerializer
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()[:kwargs.get('num')]
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, status=200)
 
 class GetDashboardGraphData(APIView):
     def get(self, request, *args, **kwargs):
