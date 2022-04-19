@@ -4,18 +4,32 @@ from bootcampLocations.models import BootcampLocation
 
 from bootcamps.models import Bootcamp
 
-
-class ApplicationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Application
-        fields = '__all__'
-        depth = 1
-
-
 class BootcampsLocationLatestSerializer(serializers.ModelSerializer):
     class Meta:
         model = BootcampLocation
         fields = ('location',)
+
+class ApplicationAllSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = '__all__'
+
+
+class BootcampsFilterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bootcamp
+        fields = '__all__'
+    bootcamp_location = BootcampsLocationLatestSerializer(read_only=True)
+
+class ApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = ('status', 'bootcamp',)
+
+    bootcamp = BootcampsFilterSerializer(read_only=True)
+
+
+
 
 
 class BootcampsSerializer(serializers.ModelSerializer):
