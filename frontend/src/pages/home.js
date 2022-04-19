@@ -18,6 +18,7 @@ const Home = () => {
   const [bootcampsData, setLatestBootcamps] = useState([]);
   const [applicationsGraphData, setApplicationsGraphData] = useState([]);
   const [numLatestApplications, setNumLatestApplications] = useState(5)
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(8)
   
   useEffect(() => {
     getLatestApplications();
@@ -31,7 +32,7 @@ const Home = () => {
   }
 
   const getLatestBootcamps = async () => {
-    const response = await Axios(`${baseurl}bootcamps/all/`);
+    const response = await Axios(`${baseurl}bootcamps/upcoming/${numUpcomingBootcamps}`);
     setLatestBootcamps(response.data)
   }
 

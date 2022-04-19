@@ -36,7 +36,7 @@ class ListUpcomingBootcamp(APIView):
 
     def get(self, request, *args, **kwargs):
         today = datetime.now().date()
-        queryset = Bootcamp.objects.filter(start_date__gt=today).order_by('start_date')[:3]
+        queryset = Bootcamp.objects.filter(start_date__gt=today).order_by('start_date')[:kwargs.get('num')]
         response = []
 
         #preparing the bootcamp-objects in response
@@ -80,7 +80,7 @@ class ListUpcomingBootcamp(APIView):
                     case _:
                         response_element['applications']['to_review'] += 1
 
-                response.append(response_element)
+            response.append(response_element)
 
         return Response(response)
 
