@@ -12,6 +12,8 @@ before_script:
 pull:
   stage: pull
   allow_failure: true
+  only:
+    - master
   script:
     - docker pull "$CI_REGISTRY_IMAGE":latest
 #pullin from our latest image
@@ -33,6 +35,8 @@ push image:
 
 push latest:
   stage: push
+  only:
+    - master
   script:
     - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE":latest
     - docker push "$CI_REGISTRY_IMAGE":latest
@@ -41,6 +45,8 @@ push latest:
 cleanup:
   stage: cleanup
   when: always
+  only:
+    - master
   script:
     - docker rmi -f "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME"
     - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml down --remove-orphans
