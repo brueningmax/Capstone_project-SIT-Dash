@@ -12,6 +12,7 @@ import MiddleBar from "../components/middlebar";
 import BootcampGraph from "../components/bootcampGraph";
 
 
+
 const Bootcamps = () => {
 
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const Bootcamps = () => {
     bootcampsData.map((item) =>
       <li key={item.name}>
         {item.name}
-        {item.bootcamp_location}
+        <p>{item.bootcamp_location}</p>
         {item.start_date}
       </li>
     )
@@ -52,7 +53,6 @@ const Bootcamps = () => {
     <div>
   
       <Header />
-      
       Bootcamps
 
       Filters:

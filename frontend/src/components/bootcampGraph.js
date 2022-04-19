@@ -50,7 +50,7 @@ function BootcampGraph(props) {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="enrolled" stackId="a" fill="#8884d8" />
+        <Bar dataKey="enrolled" stackId="a" fill="#8884d8" />
         <Bar dataKey="serious" stackId="a" fill="#82ca9d" />
         <Bar dataKey="not_serious" stackId="a" fill="#ffc658" />
         </BarChart>
