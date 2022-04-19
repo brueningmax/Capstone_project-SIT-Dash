@@ -21,7 +21,7 @@ const Bootcamps = () => {
   const [end_date, setEndDate] = useState("");
   const [bootcamp_type, setBootcampType] = useState("");
   const [bootcamp_location, setBootcampLocation] = useState("");
-  const [bootcampsData, setBootcamps] = useState([]);
+  const [bootcampsData, setBootcamps] = useState({});
 
   useEffect(() => {
     getBootcamps();
@@ -35,7 +35,7 @@ const Bootcamps = () => {
 }
 
   const getBootcamps = async() => {
-  const response = await Axios(`${baseurl}bootcamps/upcoming/`);
+    const response = await Axios(`${baseurl}bootcamps/upcoming/`);
     setBootcamps(response.data)
   }
 

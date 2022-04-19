@@ -17,11 +17,13 @@ const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
   const [bootcampsData, setLatestBootcamps] = useState([]);
   const [applicationsGraphData, setApplicationsGraphData] = useState([]);
-  
+  const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] = useState([]);
+
   useEffect(() => {
     getLatestApplications();
     getLatestBootcamps();
     getApplicationsGraphData();
+    getApplicationsGraphDataFiltered();
   }, [])
   
   const getLatestApplications = async () => {
@@ -37,6 +39,13 @@ const Home = () => {
   const getApplicationsGraphData = async () => {
     const response = await Axios(`${baseurl}applications/graph_data/dashboard/`);
     setApplicationsGraphData(response.data)
+    console.log(applicationsGraphData)
+  }
+
+  const getApplicationsGraphDataFiltered = async () => {
+    const response = await Axios(`${baseurl}applications/graph_data/dashboard/`, {filtered: 1});
+    setApplicationsGraphDataFiltered(response.data)
+    console.log(applicationsGraphDataFiltered)
   }
 
   const bootcampsTable =
