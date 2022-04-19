@@ -37,7 +37,7 @@ class ListLatestApplications(GenericAPIView):
         return Response(serializer.data, status=200)
 
 class GetDashboardGraphData(APIView):
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         #building date pairs for the last 18 Months
         current_month = datetime.today().month
         current_year = datetime.today().year
