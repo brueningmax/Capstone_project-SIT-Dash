@@ -5,8 +5,8 @@ import Bootcamps from './pages/bootcamps';
 import Home from './pages/home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React from 'react';
+import '../src/tailwind.css';
 import Sidebar from './components/sidebar';
-
 function App() {
   return (
     <BrowserRouter>
