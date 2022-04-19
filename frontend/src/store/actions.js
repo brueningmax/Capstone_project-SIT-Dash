@@ -19,3 +19,20 @@ export const getBootcamps = (dispatch,
     console.log(response);
   })
 }
+
+
+export const getApplicationsGraphData = () => async dispatch => {
+    
+  try{
+      const response = await axios.get(`${baseurl}applications/graph_data/dashboard/`)
+      console.log(response.data)
+      dispatch( {
+          type: "GET_APPS_GRAPH_DATA",
+          payload: response.data
+      })
+  }
+  catch(e){
+      return e
+  }
+
+}

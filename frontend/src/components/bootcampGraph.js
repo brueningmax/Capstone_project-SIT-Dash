@@ -4,47 +4,40 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 
 function BootcampGraph(props) {
 
-  // const data = props.bootcamps;
+  const data = props.bootcamps;
 
-  const data = [
-    {
-      name: "full stack",
-      location: "Zurich",
-      start_date: "2022-04-13",
-      enrolled: 5,
-      serious: 2,
-      nonserious: 3,
-      total: 10
-    },
+  console.log(data);
 
-    {
-      name: "data science",
-      location: "munich",
-      start_date: "2022-05-13",
-      enrolled: 2,
-      serious: 1,
-      nonserious: 6,
-      total: 9
-    },
+  function getChartData(array) {
+ 
+    const newArr = data.map(function (item, index) {
+      const applicationsArray = item.applications.map(function (item) {
+        return item.status
+      });
 
-    {
-      name: "crypto",
-      location: "zurich",
-      start_date: "2022-07-13",
-      enrolled: 10,
-      serious: 2,
-      nonserious: 1,
-      total: 13
-    }
-  ]
-  
+      console.log(applicationsArray);
+      return {
+        name: item.name,
+        location: item.bootcamp_location,
+        start_date: item.start_date,
+        enrolled: applicationsArray.filter(x => x == "enrolled").length,
+        serious: applicationsArray.filter(x => x == "serious").length,
+        not_serious: applicationsArray.filter(x => x == "not_serious").length, 
+      };
+    })
+    return newArr;   
+  }
+
+  const chartData = getChartData(data);
+
+  console.log(chartData);
 
   return (
     <ResponsiveContainer width={'99%'} height={300}>
         <BarChart
           width={500}
           height={300}
-          data={data}
+          data={chartData}
           margin={{
             top: 20,
             right: 30,
@@ -57,9 +50,9 @@ function BootcampGraph(props) {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="enrolled" stackId="a" fill="#8884d8" />
+        <Bar dataKey="enrolled" stackId="a" fill="#8884d8" />
         <Bar dataKey="serious" stackId="a" fill="#82ca9d" />
-        <Bar dataKey="nonserious" stackId="a" fill="#ffc658" />
+        <Bar dataKey="not_serious" stackId="a" fill="#ffc658" />
         </BarChart>
     </ResponsiveContainer>
   )
