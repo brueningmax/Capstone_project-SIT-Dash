@@ -1,7 +1,6 @@
 from django.urls import path
 
-from applications.views import ListAllApplications, ListLatestApplications, GetDashboardGraphData, \
-    FilteringApplicationView
+from applications.views import ListAllApplications, ListLatestApplications, GetDashboardGraphData, FilteringApplicationView
 
 urlpatterns = [
     # /backend/api/applications/

@@ -119,7 +119,7 @@ class GetDashboardGraphData(APIView):
 class FilteringApplicationView(ListAPIView):
     queryset = Application.objects.all()
     permission_classes = []
-    serializer_class = ApplicationSerializer
+    serializer_class = LatestApplicationSerializer
 
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()
