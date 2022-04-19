@@ -37,11 +37,11 @@ class ListUpcomingBootcamp(APIView):
     def get(self, request, *args, **kwargs):
         today = datetime.now().date()
         queryset = Bootcamp.objects.filter(start_date__gt=today).order_by('start_date')[:3]
-        response = {}
+        response = []
 
         #preparing the bootcamp-objects in response
         for entry in range(len(queryset)):
-            response[entry] = {
+            response_element = {
                 'id': queryset[entry].pk,
                 'name': queryset[entry].name,
                 'start_date': queryset[entry].start_date,
@@ -60,25 +60,27 @@ class ListUpcomingBootcamp(APIView):
             # filtering applications for bootcamps and iterating through them, checking and summing up statuses
             applications = Application.objects.filter(bootcamp=queryset[entry].pk)
             num_applications = len(applications)
-            response[entry]['applications']['total'] = num_applications
+            response_element['applications']['total'] = num_applications
 
             #summing up
             for application_entry in range(num_applications):
                 match applications[application_entry].status:
                     case 'serious':
-                        response[entry]['applications']['serious'] += 1
+                        response_element['applications']['serious'] += 1
                     case 'not_serious':
-                        response[entry]['applications']['not_serious'] += 1
+                        response_element['applications']['not_serious'] += 1
                     case 'enrolled':
-                        response[entry]['applications']['enrolled'] += 1
+                        response_element['applications']['enrolled'] += 1
                     case 'dropped_out':
-                        response[entry]['applications']['dropped_out'] += 1
+                        response_element['applications']['dropped_out'] += 1
                     case 'graduated':
-                        response[entry]['applications']['else'] += 1
+                        response_element['applications']['else'] += 1
                     case 'found_job':
-                        response[entry]['applications']['else'] += 1
+                        response_element['applications']['else'] += 1
                     case _:
-                        response[entry]['applications']['to_review'] += 1
+                        response_element['applications']['to_review'] += 1
+
+                response.append(response_element)
 
         return Response(response)
 
