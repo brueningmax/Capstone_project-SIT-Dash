@@ -22,7 +22,7 @@ class ListAllApplications(ListAPIView):
     serializer_class = ApplicationAllSerializer
 
 
-class ListLatestApplications(ListAPIView):
+class ListLatestApplications(GenericAPIView):
     """
     get:
     Returns all the restaurants
@@ -31,8 +31,13 @@ class ListLatestApplications(ListAPIView):
     permission_classes = []
     serializer_class = LatestApplicationSerializer
 
-class GetDashboardGraphData(APIView):
     def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()[:kwargs.get('num')]
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, status=200)
+
+class GetDashboardGraphData(APIView):
+    def post(self, request, *args, **kwargs):
         #building date pairs for the last 18 Months
         current_month = datetime.today().month
         current_year = datetime.today().year

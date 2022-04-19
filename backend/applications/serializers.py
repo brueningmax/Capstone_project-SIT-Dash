@@ -43,7 +43,7 @@ class BootcampsSerializer(serializers.ModelSerializer):
 class LatestApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('first_name', 'last_name', 'bootcamp', 'status', 'applied', 'linkedin_profile',
+        fields = ('id', 'first_name', 'last_name', 'bootcamp', 'status', 'applied', 'linkedin_profile',
                   'cv', 'personal_passed', 'technical_passed')
     bootcamp = BootcampsSerializer(read_only=True)
 
