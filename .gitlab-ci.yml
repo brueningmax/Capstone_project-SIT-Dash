@@ -20,6 +20,8 @@ pull:
 
 build:
   stage: build
+  only:
+    - master
   script:
     - docker build --tag="$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" --cache-from="$CI_REGISTRY_IMAGE":latest .
 # building a temporary image with new names
@@ -58,6 +60,8 @@ cleanup:
 deploy:
   stage: deploy
   when: manual
+  only:
+    - master
   script:
     - docker-compose -f docker-compose.deploy.yml pull
     - docker-compose -f docker-compose.deploy.yml down --remove-orphans
