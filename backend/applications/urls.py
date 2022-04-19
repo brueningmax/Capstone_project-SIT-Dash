@@ -5,7 +5,7 @@ from applications.views import ListAllApplications, ListLatestApplications, GetD
 urlpatterns = [
     # /backend/api/applications/
     path('all/', ListAllApplications.as_view()),
-    path('latest/', ListLatestApplications.as_view()),
+    path('latest/<int:num>', ListLatestApplications.as_view()),
     path('filter/', FilteringApplicationView.as_view()),
     path('graph_data/dashboard/', GetDashboardGraphData.as_view()),
 ]
