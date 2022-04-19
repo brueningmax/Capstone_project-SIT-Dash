@@ -8,8 +8,9 @@ const NarrowBar = (props) => {
             <div>
                 <p>{props.firstName} {props.lastName}</p>
                 <p>{props.bootcampName}</p>
+                <p>{props.bootcampStartDate}</p>
                 <p>{props.bootcampLocation}</p>
-                <p>Zurich</p>
+                
             </div>
         </NarrowContainer>
     )
