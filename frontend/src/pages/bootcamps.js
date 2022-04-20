@@ -1,7 +1,3 @@
-import Footer from "../components/footer";
-import Header from "../components/header";
-import Sidebar from "../components/sidebar";
-
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -52,7 +48,7 @@ const Bootcamps = () => {
   return (
     <div>
   
-      <Header />
+      
       Bootcamps
 
       Filters:
@@ -105,7 +101,7 @@ const Bootcamps = () => {
     
       <BootcampGraph bootcamps={bootcampsData} />
     {/* <BootcampGraph /> */}
-    <Footer />
+    
   </div>
 ) 
 }

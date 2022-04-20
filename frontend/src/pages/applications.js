@@ -1,9 +1,7 @@
-import Footer from "../components/footer";
-import Header from "../components/header";
+
 import NarrowBar from "../components/narrowbar";
 import Sidebar from "../components/sidebar";
-import MainPageStyle from "../style/main.style";
-import MiddleContainer from "../style/middlebar.style";
+
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -51,7 +49,7 @@ const Applications = () => {
   return (
     <div>
 
-      <Header />
+      
       Filters:
       <form>
         <label>
@@ -67,7 +65,7 @@ const Applications = () => {
 
 
       </form>
-      <MainPageStyle>
+      
         <div className="sidebarleft">
           <Sidebar />
         </div>
@@ -78,13 +76,11 @@ const Applications = () => {
           <NarrowBar />
           <NarrowBar />
           <NarrowBar />
-          <MiddleContainer />
-          <MiddleContainer />
-          <MiddleContainer />
+        
           Applications
         </div>
-      </MainPageStyle>
-      <Footer />
+      
+      
     </div>
 ) 
 }
