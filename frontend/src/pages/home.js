@@ -105,8 +105,9 @@ const Home = () => {
 
 
           <Graph applications={applicationsData} />
+          <Graph applications={applicationsData} />
 
-          <AppsGraph data={applicationsGraphData} />
+          {/* <AppsGraph data={applicationsGraphData} /> */}
           
             
         </div>
