@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ResponsiveLine } from "@nivo/line";
 import '../style/toggle.css';
 
+ 
 function AppsGraph(props) {
 
   const [requestedData, setRequestedData] = useState([]);
@@ -85,7 +86,7 @@ function AppsGraph(props) {
             left: 50
           }}
           colors={chartData.map((c, index) => chartColors[index])}
-          lineWidth={0} 
+          lineWidth={0}
           xScale={{
             type: "point"
           }}
@@ -105,7 +106,7 @@ function AppsGraph(props) {
             tickSize: 5,
             tickPadding: 10,
           }}
-        
+
           pointSize={0}
           enableArea={true}
           enableGridX={false}
@@ -143,7 +144,7 @@ function AppsGraph(props) {
             const newSortedData = []
             newSortedData.push(chartData[selectedIndex])
             setChartData(newSortedData)
-            
+
             // set chart color as the selected color
             setChartColors([selectedColor]);
         }}
