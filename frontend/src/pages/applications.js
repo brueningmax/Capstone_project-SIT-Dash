@@ -1,3 +1,4 @@
+
 import LatestApplicationsCard from "../components/latestApplicationsCard";
 import Sidebar from "../components/sidebar";
 
