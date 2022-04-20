@@ -30,23 +30,23 @@ const Home = () => {
   }, [])
   
   const getLatestApplications = async () => {
-    const response = await Axios(`${baseurl}applications/latest/${numLatestApplications}`);
+    const response = await Axios(`${baseurl}applications/all/`);
     setLatestApplications(response.data)
   }
 
   const getLatestBootcamps = async () => {
-    const response = await Axios(`${baseurl}bootcamps/upcoming/${numUpcomingBootcamps}`);
+    const response = await Axios(`${baseurl}bootcamps/all/`);
     setLatestBootcamps(response.data)
   }
 
   const getApplicationsGraphData = async () => {
-    const response = await Axios(`${baseurl}applications/graph_data/dashboard/`);
+    const response = await Axios.post(`${baseurl}applications/graph_data/dashboard/`);
     setApplicationsGraphData(response.data)
     console.log(applicationsGraphData)
   }
 
   const getApplicationsGraphDataFiltered = async () => {
-    const response = await Axios(`${baseurl}applications/graph_data/dashboard/`, {filtered: 1});
+    const response = await Axios.post(`${baseurl}applications/graph_data/dashboard/`, { filtered: "1" } );
     setApplicationsGraphDataFiltered(response.data)
     console.log(applicationsGraphDataFiltered)
   }
@@ -106,7 +106,7 @@ const Home = () => {
 
           <Graph applications={applicationsData} />
 
-          <AppsGraph data={applicationsGraphData} />
+          <AppsGraph data={applicationsGraphData} filteredData={applicationsGraphDataFiltered} />
           
       </div>
       </div>
