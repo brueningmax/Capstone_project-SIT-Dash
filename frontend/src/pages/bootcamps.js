@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 // import { getBootcamps } from "../store/actions";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
-import MiddleBar from "../components/middlebar";
 import BootcampGraph from "../components/bootcampGraph";
 
 
@@ -17,7 +16,7 @@ const Bootcamps = () => {
   const [end_date, setEndDate] = useState("");
   const [bootcamp_type, setBootcampType] = useState("");
   const [bootcamp_location, setBootcampLocation] = useState("");
-  const [bootcampsData, setBootcamps] = useState({});
+  const [bootcampsData, setBootcamps] = useState([]);
 
   useEffect(() => {
     getBootcamps();
@@ -31,20 +30,19 @@ const Bootcamps = () => {
 }
 
   const getBootcamps = async() => {
-    const response = await Axios(`${baseurl}bootcamps/upcoming/`);
+    const response = await Axios(`${baseurl}bootcamps/upcoming/10`);
+    console.log(response.data)
     setBootcamps(response.data)
   }
 
-  console.log(bootcampsData)
-
-  const bootcampsTable = 
-    bootcampsData.map((item) =>
-      <li key={item.name}>
-        {item.name}
-        <p>{item.bootcamp_location}</p>
-        {item.start_date}
-      </li>
-    )
+  // const bootcampsTable = 
+  //   bootcampsData.map((item) =>
+  //     <li key={item.name}>
+  //       {item.name}
+  //       <p>{item.bootcamp_location}</p>
+  //       {item.start_date}
+  //     </li>
+    // )
   return (
     <div>
   
@@ -97,7 +95,7 @@ const Bootcamps = () => {
         </button>
       </form>
 
-      {bootcampsTable}
+      {bootcampsData.map((item) => <MiddleBar data={item} key={item.id} /> )}
     
       <BootcampGraph bootcamps={bootcampsData} />
     {/* <BootcampGraph /> */}

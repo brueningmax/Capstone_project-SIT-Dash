@@ -1,5 +1,5 @@
 
-import NarrowBar from "../components/narrowbar";
+import LatestApplicationsCard from "../components/latestApplicationsCard";
 import Sidebar from "../components/sidebar";
 
 import { useState, useEffect } from "react"
@@ -31,18 +31,6 @@ const Applications = () => {
     setApplications(response.data)
     console.log(response.data)
     }
-  
-
-  const allApplications = applicationsData.map ((item) =>
-    <NarrowBar
-      lastName={item.last_name}
-      firstName={item.first_name}
-      bootcampName={item.bootcamp.name}
-      bootcampLocation={item.bootcamp.bootcamp_location}
-      key={item.last_name}
-      />
-
-  )
 
 
 
@@ -61,23 +49,15 @@ const Applications = () => {
             onChange={e =>setStartDateApplications(e.target.value) }
           />
         </label>
-
-
-
       </form>
       
         <div className="sidebarleft">
           <Sidebar />
         </div>
         <div className="mainbarright">
-          {allApplications}
-          <NarrowBar />
-          <NarrowBar />
-          <NarrowBar />
-          <NarrowBar />
-          <NarrowBar />
-        
+
           Applications
+          {applicationsData.map((item) => <LatestApplicationsCard data={item} key={item.id} />)}
         </div>
       
       
