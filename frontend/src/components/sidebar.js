@@ -8,7 +8,6 @@ const Sidebar = () => {
 
   const highligted = "flex items-center w-full h-12 px-3 mt-2 text-gray-400 bg-indigo-700 text-indigo-100 rounded"
   const normal = "flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
-  // {currentLocation.pathname == '/' ? highligted : normal}
   return(
 
 <div className="flex flex-col items-center w-40 h-full overflow-hidden text-indigo-300 bg-indigo-900 rounded">
