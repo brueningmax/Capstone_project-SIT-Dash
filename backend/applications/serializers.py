@@ -29,9 +29,6 @@ class ApplicationSerializer(serializers.ModelSerializer):
     bootcamp = BootcampsFilterSerializer(read_only=True)
 
 
-
-
-
 class BootcampsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bootcamp

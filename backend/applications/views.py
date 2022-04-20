@@ -19,7 +19,7 @@ class ListAllApplications(ListAPIView):
     """
     queryset = Application.objects.all()
     permission_classes = []
-    serializer_class = ApplicationAllSerializer
+    serializer_class = LatestApplicationSerializer
 
 
 class ListLatestApplications(GenericAPIView):
