@@ -1,9 +1,15 @@
-import React from "react"
-import {Link} from "react-router-dom"
+import React, { useEffect } from "react"
+import {Link, useLocation} from "react-router-dom"
 
 
 const Sidebar = () => {
-    return(
+
+  const currentLocation = useLocation();
+
+  const highligted = "flex items-center w-full h-12 px-3 mt-2 text-gray-400 bg-indigo-700 text-indigo-100 rounded"
+  const normal = "flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
+  // {currentLocation.pathname == '/' ? highligted : normal}
+  return(
 
 <div className="flex flex-col items-center w-40 h-full overflow-hidden text-indigo-300 bg-indigo-900 rounded">
   
@@ -13,7 +19,7 @@ const Sidebar = () => {
   <div className="w-full px-2">
     <div className="flex flex-col items-center w-full mt-3 border-t border-gray-700">
       <Link
-        className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
+        className={currentLocation.pathname == '/' ? highligted : normal}
         to="/"
       >
         <svg
@@ -33,7 +39,7 @@ const Sidebar = () => {
         <span className="ml-2 text-sm font-medium">Dasboard</span>
       </Link>
       <Link
-        className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
+        className={currentLocation.pathname == '/applications' ? highligted : normal}
         to="/applications"
       >
         <svg
@@ -53,7 +59,7 @@ const Sidebar = () => {
         <span className="ml-2 text-sm font-medium">Applications</span>
       </Link>
       <Link
-        className="flex items-center w-full h-12 px-3 mt-2 text-gray-400 bg-indigo-700 text-indigo-100 rounded"
+        className={currentLocation.pathname == '/bootcamps' ? highligted : normal}
         to="/bootcamps"
       >
         <svg
