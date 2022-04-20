@@ -104,7 +104,7 @@ const Home = () => {
           {bootcampsData.map((item) => <MiddleBar data={item} key={item.id} /> )}
 
 
-          <Graph applications={applicationsData} />
+          {/* <Graph applications={applicationsData} /> */}
 
           <AppsGraph data={applicationsGraphData} filteredData={applicationsGraphDataFiltered} />
           
