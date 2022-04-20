@@ -1,5 +1,5 @@
 
-import NarrowBar from "../components/narrowbar";
+import LatestApplicationsCard from "../components/latestApplicationsCard";
 import Sidebar from "../components/sidebar";
 
 import { useState, useEffect } from "react"
@@ -34,7 +34,7 @@ const Applications = () => {
   
 
   const allApplications = applicationsData.map ((item) =>
-    <NarrowBar
+    <LatestApplicationsCard
       lastName={item.last_name}
       firstName={item.first_name}
       bootcampName={item.bootcamp.name}
@@ -71,11 +71,7 @@ const Applications = () => {
         </div>
         <div className="mainbarright">
           {allApplications}
-          <NarrowBar />
-          <NarrowBar />
-          <NarrowBar />
-          <NarrowBar />
-          <NarrowBar />
+          
         
           Applications
         </div>
