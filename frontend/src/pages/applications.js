@@ -31,10 +31,6 @@ const Applications = () => {
     setApplications(response.data)
     console.log(response.data)
     }
-  
-
-
-  )
 
 
 
@@ -61,7 +57,7 @@ const Applications = () => {
         <div className="mainbarright">
 
           Applications
-          {applicationsData.map((item) => <NarrowBar data={item} key={item.id} />)}
+          {applicationsData.map((item) => <LatestApplicationsCard data={item} key={item.id} />)}
         </div>
       
       
