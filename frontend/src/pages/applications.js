@@ -56,7 +56,7 @@ const Applications = () => {
         </div>
         <div className="mainbarright">
 
-          Applications
+          
           {applicationsData.map((item) => <LatestApplicationsCard data={item} key={item.id} />)}
         </div>
       
