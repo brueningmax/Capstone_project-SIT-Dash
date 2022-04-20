@@ -1,10 +1,7 @@
 import React from "react";
 
-const MiddleBar = (props) => {
-  // console.log('propsy');
-  // console.log(props);
-  // console.log('koniec propsów');
-
+const UpComingBootcampsCard = (props) => {
+ 
   return (
     <div className="h-4/5 w-1/4 flex flex-col border-red-600 border-2 border-solid items-center  justify-center">
       <p>{props.data.name}</p>
@@ -40,4 +37,4 @@ const MiddleBar = (props) => {
   );
 };
 
-export default MiddleBar;
+export default UpComingBootcampsCard;

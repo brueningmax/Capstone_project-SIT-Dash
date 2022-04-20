@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Graph from "../components/graph";
 import Sidebar from "../components/sidebar";
-import NarrowBar from "../components/narrowbar";
-import MiddleBar from "../components/middlebar";
+import LatestApplicationsCard from "../components/latestApplicationsCard";
+import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 
 import { baseurl } from "../store/baseurl";
 // import MainPageStyle from "../style/main.style";
@@ -89,7 +89,7 @@ const Home = () => {
         <div className="flex w-full h-2/4 border-green-600 border-solid border-4">
           <div className="flex h-full w-2/4 border-yellow-300  border-solid border-2 justify-evenly items-center">
             {applicationsData.map((item) => (
-              <NarrowBar data={item} key={item.id} />
+              <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
           <div className="flex h-full w-2/4 border-black border-2 border-solid">
@@ -102,7 +102,7 @@ const Home = () => {
         <div className="flex w-full h-2/4 border-blue-400 border-solid border-4">
           <div className="flex h-full w-2/4 border-yellow-300  border-solid border-2 justify-evenly items-center">
             {bootcampsData.map((item) => (
-              <MiddleBar data={item} key={item.id} />
+              <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
           <div className="flex h-full w-2/4 border-black border-2 border-solid">
