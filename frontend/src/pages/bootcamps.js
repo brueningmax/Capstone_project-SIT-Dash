@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 // import { getBootcamps } from "../store/actions";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
-import MiddleBar from "../components/middlebar";
 import BootcampGraph from "../components/bootcampGraph";
 
 
