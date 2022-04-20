@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
 import BootcampGraph from "../components/bootcampGraph";
-
+import UpComingBootcampCard from "../components/upComingBootcampCard"
 
 
 const Bootcamps = () => {
@@ -95,7 +95,7 @@ const Bootcamps = () => {
         </button>
       </form>
 
-      {bootcampsData.map((item) => <MiddleBar data={item} key={item.id} /> )}
+      {bootcampsData.map((item) => <UpComingBootcampCard data={item} key={item.id} /> )}
     
       <BootcampGraph bootcamps={bootcampsData} />
     {/* <BootcampGraph /> */}
