@@ -10,6 +10,7 @@ import MiddleContainer from "../style/middlebar.style";
 import { baseurl } from "../store/baseurl";
 import MainPageStyle from "../style/main.style";
 import AppsGraph from "../components/applicationsGraph";
+import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 import { Line } from "../components/applicationsGraph";
 
 const Home = () => {
@@ -106,9 +107,11 @@ const Home = () => {
           {bootcampsData.map((item) => <MiddleBar data={item} key={item.id} /> )}
 
 
-          <Graph applications={applicationsData} />
+          {/* <Graph applications={applicationsData} /> */}
 
-          <AppsGraph data={applicationsGraphData} filteredData={applicationsGraphDataFiltered} />
+            <AppsGraph data={applicationsGraphData} filteredData={applicationsGraphDataFiltered} />
+            
+            <UpcomingBootcampsGraph data={bootcampsData} />
           
       </div>
       </div>
