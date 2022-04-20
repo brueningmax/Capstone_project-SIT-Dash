@@ -10,6 +10,7 @@ import MiddleContainer from "../style/middlebar.style";
 import { baseurl } from "../store/baseurl";
 import MainPageStyle from "../style/main.style";
 import AppsGraph from "../components/applicationsGraph";
+import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 import { Line } from "../components/applicationsGraph";
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] = useState([]);
 
   const [numLatestApplications, setNumLatestApplications] = useState(5)
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3)
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(8)
   
   useEffect(() => {
     getLatestApplications();
@@ -29,24 +30,26 @@ const Home = () => {
     getApplicationsGraphDataFiltered();
   }, [])
   
-  const getLatestApplications = async () => {
+ const getLatestApplications = async () => {
     const response = await Axios(`${baseurl}applications/latest/${numLatestApplications}`);
     setLatestApplications(response.data)
   }
 
-  const getLatestBootcamps = async () => {
+
+ const getLatestBootcamps = async () => {
     const response = await Axios(`${baseurl}bootcamps/upcoming/${numUpcomingBootcamps}`);
     setLatestBootcamps(response.data)
   }
 
+
   const getApplicationsGraphData = async () => {
-    const response = await Axios(`${baseurl}applications/graph_data/dashboard/`);
+    const response = await Axios.post(`${baseurl}applications/graph_data/dashboard/`);
     setApplicationsGraphData(response.data)
     console.log(applicationsGraphData)
   }
 
   const getApplicationsGraphDataFiltered = async () => {
-    const response = await Axios(`${baseurl}applications/graph_data/dashboard/`, {filtered: 1});
+    const response = await Axios.post(`${baseurl}applications/graph_data/dashboard/`, { filtered: "1" } );
     setApplicationsGraphDataFiltered(response.data)
     console.log(applicationsGraphDataFiltered)
   }
@@ -104,10 +107,11 @@ const Home = () => {
           {bootcampsData.map((item) => <MiddleBar data={item} key={item.id} /> )}
 
 
-          <Graph applications={applicationsData} />
-          <Graph applications={applicationsData} />
+          {/* <Graph applications={applicationsData} /> */}
 
-          {/* <AppsGraph data={applicationsGraphData} /> */}
+            <AppsGraph data={applicationsGraphData} filteredData={applicationsGraphDataFiltered} />
+            
+            <UpcomingBootcampsGraph data={bootcampsData} />
           
             
         </div>
