@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
 import BootcampGraph from "../components/bootcampGraph";
-import UpComingBootcampCard from "../components/upComingBootcampCard"
+import UpComingBootcampCard from "../components/upcomingBootcampCard"
 
 
 const Bootcamps = () => {
