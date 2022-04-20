@@ -20,7 +20,7 @@ const Home = () => {
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] = useState([]);
 
   const [numLatestApplications, setNumLatestApplications] = useState(5)
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3)
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(8)
   
   useEffect(() => {
     getLatestApplications();
@@ -29,15 +29,17 @@ const Home = () => {
     getApplicationsGraphDataFiltered();
   }, [])
   
-  const getLatestApplications = async () => {
-    const response = await Axios(`${baseurl}applications/all/`);
+ const getLatestApplications = async () => {
+    const response = await Axios(`${baseurl}applications/latest/${numLatestApplications}`);
     setLatestApplications(response.data)
   }
 
-  const getLatestBootcamps = async () => {
-    const response = await Axios(`${baseurl}bootcamps/all/`);
+
+ const getLatestBootcamps = async () => {
+    const response = await Axios(`${baseurl}bootcamps/upcoming/${numUpcomingBootcamps}`);
     setLatestBootcamps(response.data)
   }
+
 
   const getApplicationsGraphData = async () => {
     const response = await Axios.post(`${baseurl}applications/graph_data/dashboard/`);
