@@ -33,14 +33,6 @@ const Applications = () => {
     }
   
 
-  const allApplications = applicationsData.map ((item) =>
-    <LatestApplicationsCard
-      lastName={item.last_name}
-      firstName={item.first_name}
-      bootcampName={item.bootcamp.name}
-      bootcampLocation={item.bootcamp.bootcamp_location}
-      key={item.last_name}
-      />
 
   )
 
@@ -61,19 +53,15 @@ const Applications = () => {
             onChange={e =>setStartDateApplications(e.target.value) }
           />
         </label>
-
-
-
       </form>
       
         <div className="sidebarleft">
           <Sidebar />
         </div>
         <div className="mainbarright">
-          {allApplications}
-          
-        
+
           Applications
+          {applicationsData.map((item) => <NarrowBar data={item} key={item.id} />)}
         </div>
       
       
