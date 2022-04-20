@@ -1,22 +1,19 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { render } from "react-dom";
+import React, { useState, useEffect } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { closedCurvePropKeys } from "@nivo/core";
-import { Defs } from "@nivo/core";
-import { line } from "d3-shape";
+import '../style/toggle.css';
 
 function AppsGraph(props) {
 
   const [requestedData, setRequestedData] = useState([]);
   const [chartData, setChartData] = useState([])
-  const originalColors = ["#82c91e", "#228be6", "#fa5252", "#000000", "#868e96"]
+  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#ccebc5"]
   const [chartColors, setChartColors] = useState(originalColors)
   const [toggleValue, setValue] = useState(true);
 
   //checking the toggle value to show all or only filtered values
   useEffect(() => {
-    toggleValue ? setRequestedData(props.data) : setRequestedData(props.filteredData);
-    toggleValue ? setChartData(getChartData(props.data)) : setChartData(getChartData(props.filteredData));
+    toggleValue ? setRequestedData(props.filteredData) : setRequestedData(props.data);
+    toggleValue ? setChartData(getChartData(props.filteredData)) : setChartData(getChartData(props.data));
   }, [props, toggleValue])
 
   //function to convert API data into a format that can be used by Nivo Charts
@@ -45,9 +42,10 @@ function AppsGraph(props) {
   const data = getChartData(requestedData);
 
   //toggle component for filtering data
-  const Switch = ({ isOn, handleToggle }) => {
+  const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
       <>
+        <p>Total</p>
         <input
           checked={isOn}
           onChange={handleToggle}
@@ -56,11 +54,12 @@ function AppsGraph(props) {
           type="checkbox"
         />
         <label
+          style={{ background: isOn && onColor }}
           className="react-switch-label"
-          htmlFor={`react-switch-new`}
-        >
+          htmlFor={`react-switch-new`}>
           <span className={`react-switch-button`} />
         </label>
+        <p>Enrolled</p>
       </>
     );
   };
@@ -70,6 +69,7 @@ function AppsGraph(props) {
     <div className="app">
       <Switch
         isOn={toggleValue}
+        onColor="#ccebc5"
         handleToggle={() => setValue(!toggleValue)}
       />
     </div>
@@ -97,25 +97,19 @@ function AppsGraph(props) {
           axisTop={null}
           axisRight={null}
           axisBottom={{
-            orient: "top",
             tickSize: 10,
             tickPadding: 15,
             tickRotation: 0,
-            legend: "",
-            legendOffset: 36
           }}
           axisLeft={{
-            orient: "right",
             tickSize: 5,
             tickPadding: 10,
-            tickRotation: 0,
-            legend: "",
-            legendOffset: 0
           }}
         
           pointSize={0}
           enableArea={true}
-          areaOpacity={.7}
+          enableGridX={false}
+          areaOpacity={1}
           animate={true}
           motionStiffness={90}
           motionDamping={15}
