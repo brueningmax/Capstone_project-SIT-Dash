@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
 
 const Sidebar = () => {
@@ -6,14 +7,14 @@ const Sidebar = () => {
 
 <div className="flex flex-col items-center w-40 h-full overflow-hidden text-indigo-300 bg-indigo-900 rounded">
   
-  <a className="flex items-center w-full px-3 mt-3" href="#">
+  <Link className="flex items-center w-full px-3 mt-3" to="/">
     <span className="ml-2 text-xl font-bold text-white">SIT Academy</span>
-  </a>
+  </Link>
   <div className="w-full px-2">
     <div className="flex flex-col items-center w-full mt-3 border-t border-gray-700">
-      <a
+      <Link
         className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
-        href="#"
+        to="/"
       >
         <svg
           className="w-6 h-6 stroke-current"
@@ -30,10 +31,10 @@ const Sidebar = () => {
           />
         </svg>
         <span className="ml-2 text-sm font-medium">Dasboard</span>
-      </a>
-      <a
+      </Link>
+      <Link
         className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
-        href="#"
+        to="/applications"
       >
         <svg
           className="w-6 h-6 stroke-current"
@@ -50,10 +51,10 @@ const Sidebar = () => {
           />
         </svg>
         <span className="ml-2 text-sm font-medium">Applications</span>
-      </a>
-      <a
+      </Link>
+      <Link
         className="flex items-center w-full h-12 px-3 mt-2 text-gray-400 bg-indigo-700 text-indigo-100 rounded"
-        href="#"
+        to="/bootcamps"
       >
         <svg
           className="w-6 h-6 stroke-current"
@@ -70,7 +71,7 @@ const Sidebar = () => {
           />
         </svg>
         <span className="ml-2 text-sm font-medium">Bootcamps</span>
-      </a>
+      </Link>
       
     </div>
   </div>
