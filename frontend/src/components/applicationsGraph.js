@@ -5,19 +5,21 @@ import { closedCurvePropKeys } from "@nivo/core";
 import { Defs } from "@nivo/core";
 import { line } from "d3-shape";
 
- 
 function AppsGraph(props) {
 
   const [requestedData, setRequestedData] = useState([]);
   const [chartData, setChartData] = useState([])
   const originalColors = ["#82c91e", "#228be6", "#fa5252", "#000000", "#868e96"]
   const [chartColors, setChartColors] = useState(originalColors)
+  const [toggleValue, setValue] = useState(true);
 
+  //checking the toggle value to show all or only filtered values
   useEffect(() => {
-    setRequestedData(props.data);
-    setChartData(getChartData(props.data));
-  }, [props.data])
+    toggleValue ? setRequestedData(props.data) : setRequestedData(props.filteredData);
+    toggleValue ? setChartData(getChartData(props.data)) : setChartData(getChartData(props.filteredData));
+  }, [props, toggleValue])
 
+  //function to convert API data into a format that can be used by Nivo Charts
   function getChartData(requestedData) {
 
     const data = ["part_time_bootcamps", "short_courses", "immersive_bootcamps", "total"].map(function (item, index) {
@@ -37,16 +39,40 @@ function AppsGraph(props) {
     }
       )
     })
-    
     return data;
   }
   
   const data = getChartData(requestedData);
-  console.log(data)
-  console.log(chartData)
-  console.log(requestedData)
+
+  //toggle component for filtering data
+  const Switch = ({ isOn, handleToggle }) => {
+    return (
+      <>
+        <input
+          checked={isOn}
+          onChange={handleToggle}
+          className="react-switch-checkbox"
+          id={`react-switch-new`}
+          type="checkbox"
+        />
+        <label
+          className="react-switch-label"
+          htmlFor={`react-switch-new`}
+        >
+          <span className={`react-switch-button`} />
+        </label>
+      </>
+    );
+  };
  
   return (
+    <>
+    <div className="app">
+      <Switch
+        isOn={toggleValue}
+        handleToggle={() => setValue(!toggleValue)}
+      />
+    </div>
     <div style={{ height: "500px", width: "100%" }}>
         <ResponsiveLine
           data={chartData}
@@ -54,7 +80,7 @@ function AppsGraph(props) {
           // blendMode="multiply"
           margin={{
             top: 100,
-            right: 50,
+            right: 100,
             bottom: 50,
             left: 50
           }}
@@ -115,47 +141,21 @@ function AppsGraph(props) {
 
           onMouseEnter={(point, event) => {
 
-            ////set color of selected graph to red
-            // const selectedIndex = data.findIndex(item => item.id === point.serieId)
-            // const selectedColor = "red"
-            ////
-            
-            // const selectedIndex = chartColors[index].value
-            
-            //set color of non-selected graphs to grey
+            //get index of selected chart and get corresponding color
             const selectedIndex = chartData.findIndex(item => item.id === point.serieId)
             const selectedColor = chartColors[selectedIndex]
 
-
-            //resorting data to place selected chart at index 0 so the chart appears in front of all other charts.
-            // const newSortedData = [...chartData]
+            //create new array of only the selected chart
             const newSortedData = []
-            // newSortedData.unshift(newSortedData.splice(selectedIndex, 1)[0])
             newSortedData.push(chartData[selectedIndex])
             setChartData(newSortedData)
-            //
-          
-            ////resorting colors to place the color of the selected chart at index 0 of chartColors to match the newSortedData
-
-            //OPTION 1: change color of selected chart and make it appear in front of other charts
-            // const newColors = [...chartColors]
-            // newColors.splice(selectedIndex, 1)
-            // newColors.unshift(selectedColor)
-            // setChartColors(newColors);
             
-            //OPTION 2: keep color of selected chart but make all others grey
-            // const newColors = [...chartColors]
-            // newColors.splice(selectedIndex, 1)
-            // newColors.unshift(selectedColor)
-            // setChartColors(newColors);
-
-            // const newColors = [selectedColor, "grey", "grey", "grey","grey"]
-            // setChartColors(newColors);
-            // const newData =  data[selectedIndex]
+            // set chart color as the selected color
             setChartColors([selectedColor]);
         }}
           onMouseLeave={(point, event) => {
 
+            //revert the data and chart colors to the original state
             setChartColors(originalColors)
             setChartData(data)
         }}
@@ -165,7 +165,6 @@ function AppsGraph(props) {
           'markers',
           'axes',
           'areas',
-          // Line,
           'crosshair',
           'lines',
           'slices',
@@ -174,11 +173,9 @@ function AppsGraph(props) {
           'mesh',
           ]}
         />
-        
     </div>
-
+    </>
   )
-
 }
 export default AppsGraph;
 
