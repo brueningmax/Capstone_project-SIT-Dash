@@ -10,7 +10,7 @@ module.exports = {
         droppedOut: "#cd13ae",
         accepted: "#09ae7d",
         total: "#000000",
-        
+        background: "#f1f0fa",
       },
     },
   },

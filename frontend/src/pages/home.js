@@ -94,27 +94,27 @@ const Home = () => {
         <Sidebar />
       </div> */}
 
-      <div className="flex flex-col w-full border-blue-600 border-2 border-solid">
-        <div className="flex w-full h-2/4 border-green-600 border-solid border-4">
-          <div className="flex flex-col h-full w-2/4 border-yellow-300  border-solid border-2 justify-evenly items-center">
+      <div className="flex bg-background flex-col w-full ">
+        <div className="flex w-full h-2/4 ">
+          <div className="flex flex-col h-full w-2/4  justify-evenly items-center">
             {applicationsData.map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-full w-2/4 border-black border-2 border-solid">
+          <div className="flex h-full w-2/4 ">
             <AppsGraph
               data={applicationsGraphData}
               filteredData={applicationsGraphDataFiltered}
             />
           </div>
         </div>
-        <div className="flex w-full h-2/4 border-blue-400 border-solid border-4">
-          <div className="flex h-full w-2/4 border-yellow-300  border-solid border-2 justify-evenly items-center">
+        <div className="flex w-full h-2/4 ">
+          <div className="flex h-full w-2/4  justify-evenly items-center">
             {bootcampsData.map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-full w-2/4 border-black border-2 border-solid">
+          <div className="flex h-full w-2/4 items-center justify-center">
             <UpcomingBootcampsGraph data={bootcampsData} />
           </div>
         </div>

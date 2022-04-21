@@ -36,8 +36,8 @@ function UpcomingBootcampsGraph(props) {
 
   return (
     <div
-      className="flex flex-column align-middle p-10"
-      style={{ width: "100%" }}
+      className="flex flex-column align-middle p-10 rounded-lg bg-white shadow-lg  w-11/12 h-5/6"
+      // style={{ width: "90%" }}
     >
       <ResponsiveBar
         data={chartData}
@@ -47,7 +47,7 @@ function UpcomingBootcampsGraph(props) {
         padding={0.3}
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
-        colors={["#bdbdbd", "#969696", "#fbb4ae", "#b3cde3", "#ccebc5"]}
+        colors={["#ff0a54", "#f5d151", "#96F98B", "#09ae7d", "#6085c9"]}
         borderColor={{
           from: "color",
           modifiers: [["darker", 1.6]],
