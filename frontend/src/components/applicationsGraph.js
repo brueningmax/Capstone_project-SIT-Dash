@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import "../style/toggle.css";
 
 function AppsGraph(props) {
   const [requestedData, setRequestedData] = useState([]);
@@ -54,39 +53,30 @@ function AppsGraph(props) {
   const data = getChartData(requestedData);
 
   //toggle component for filtering data
+  
   const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
-      <>
-        <p>Total</p>
-        <input
-          checked={isOn}
-          onChange={handleToggle}
-          className="react-switch-checkbox"
-          id={`react-switch-new`}
-          type="checkbox"
-        />
-        <label
-          style={{ background: isOn && onColor }}
-          className="react-switch-label"
-          htmlFor={`react-switch-new`}
-        >
-          <span className={`react-switch-button`} />
+        <div class="p-5 flex flex-column items-start justify-right">
+          <span class="ml-2 text-base text-gray-800 px-3">Total</span>
+          <label for="toggle" class="relative flex items-center cursor-pointer">
+          <input type="checkbox" id="toggle" class="sr-only peer" checked={isOn}
+          onChange={handleToggle} />
+          <div class="h-6 bg-gray-200 border-2 border-gray-200 rounded-full w-11 after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:bg-green-600 peer-checked:border-green-600 after:transition-all after:duration-300"></div>
+          <span class="ml-2 text-base text-gray-800">Enrolled</span>
         </label>
-        <p>Enrolled</p>
-      </>
+      </div>
     );
   };
 
   return (
     <>
-      <div className="app">
+      <div class="flex flex-column">
         <Switch
           isOn={toggleValue}
-          onColor="#ccebc5"
           handleToggle={() => setValue(!toggleValue)}
         />
       </div>
-      <div style={{ height: "450px", width: "90%" }}>
+      <div class="flex flex-column align-middle h-300 pb-30" style={{width: "100%" }}>
         <ResponsiveLine
           data={chartData}
           curve="monotoneX"
@@ -113,6 +103,16 @@ function AppsGraph(props) {
             tickSize: 10,
             tickPadding: 15,
             tickRotation: 0,
+            format: (v) => {
+              return v.substring(0, 3)
+                
+                == "Jan" ? (
+                v
+              ) : (
+                v.substring(0, 3)
+              );
+            }
+
           }}
           axisLeft={{
             tickSize: 5,

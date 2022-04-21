@@ -37,7 +37,7 @@ function UpcomingBootcampsGraph(props) {
   console.log(chartData)
 
   return (
-    <div style={{ height: "500px", width: "100%" }}>
+    <div class="flex flex-column align-middle p-10" style={{width: "100%" }}>
     <ResponsiveBar
         data={chartData}
         keys={[
@@ -48,7 +48,7 @@ function UpcomingBootcampsGraph(props) {
             'Enrolled'
         ]}
         indexBy="Name"
-        margin={{ top: 50, right: 200, bottom: 150, left: 60 }}
+        margin={{ top: 100, right: 100, bottom: 100, left: 100 }}
         padding={0.3}
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band', round: true }}
