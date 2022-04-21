@@ -41,7 +41,7 @@ function Graph(props) {
   }
 
   return (
-    <div>
+    <div className="border-2 border-black">
       <ResponsiveContainer width={'99%'} height={300}>
       <BarChart
         width={730}

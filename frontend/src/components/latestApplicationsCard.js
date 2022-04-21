@@ -2,7 +2,7 @@ import React from "react";
 
 const LatestApplicationsCard = (props) => {
   return (
-    <div className="h-1/4 w-4/5 flex flex-col border-red-600 border-2 border-solid items-center justify-center">
+    <div className="h-cardsHeight2 w-cardsWidth2 flex flex-col bg-white shadow-lg rounded-lg items-center justify-center">
       <p>
         {props.data.first_name} {props.data.last_name}
       </p>

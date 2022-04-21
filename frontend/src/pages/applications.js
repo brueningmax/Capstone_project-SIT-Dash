@@ -49,9 +49,9 @@ const Applications = () => {
   };
 
   return (
-    <div className="flex  w-full h-screen border-green-800 border-4">
-      <div className="flex flex-col w-full border-blue-600 border-2 border-solid">
-        <div className="flex border-2 w-full  h-2/4  border-red-700 border-solid">
+    <div className="flex  w-full h-screen bg-background ">
+      <div className="flex flex-col w-full ">
+        <div className="flex border-2 w-full  h-2/4  ">
           {/* <form>
         <label>
           Start Date Range:
@@ -64,17 +64,19 @@ const Applications = () => {
         </label>
       </form> */}
 
-          <div className="flex h-full w-full border-yellow-300  border-solid border-2 justify-evenly items-center">
+          <div className="flex h-full w-full  justify-evenly items-center">
             {applicationsData.map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
         </div>
-        <div className="flex h-1/2 w-full border-black border-2 border-solid">
-          <AppsGraph
-            data={applicationsGraphData}
-            filteredData={applicationsGraphDataFiltered}
-          />
+        <div className="flex h-1/2 items-center justify-center ">
+          <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+            <AppsGraph
+              data={applicationsGraphData}
+              filteredData={applicationsGraphDataFiltered}
+            />
+          </div>
         </div>
       </div>
     </div>

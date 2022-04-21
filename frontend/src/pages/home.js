@@ -13,7 +13,7 @@ import { Line } from "../components/applicationsGraph";
 
 const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
-  const [bootcampsData, setLatestBootcamps] = useState([]);
+  const [bootcampsData, setLatestBootcamps, setBootcamps] = useState([]);
   const [applicationsGraphData, setApplicationsGraphData] = useState([]);
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] =
     useState([]);
@@ -22,6 +22,7 @@ const Home = () => {
   const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3);
 
   useEffect(() => {
+    getBootcamps();
     getLatestApplications();
     getLatestBootcamps();
     getApplicationsGraphData();
@@ -47,7 +48,13 @@ const Home = () => {
       `${baseurl}applications/graph_data/dashboard/`
     );
     setApplicationsGraphData(response.data);
-    // console.log(applicationsGraphData);
+    //console.log(applicationsGraphData);
+  };
+
+  const getBootcamps = async () => {
+    const response = await Axios(`${baseurl}bootcamps/upcoming/10`);
+    console.log(response.data);
+    setBootcamps(response.data);
   };
 
   const getApplicationsGraphDataFiltered = async () => {
@@ -90,31 +97,27 @@ const Home = () => {
 
   return (
     <div className="flex w-full h-screen">
-      {/* <div className="flex h-full w-1/8">
-        <Sidebar />
-      </div> */}
-
-      <div className="flex flex-col w-full border-blue-600 border-2 border-solid">
-        <div className="flex w-full h-2/4 border-green-600 border-solid border-4">
-          <div className="flex flex-col h-full w-2/4 border-yellow-300  border-solid border-2 justify-evenly items-center">
+      <div className="flex bg-background flex-col w-full ">
+        <div className="flex w-full h-2/4 justify-start items-center">
+          <div className="flex flex-col h-full w-2/4 justify-around py-2  items-center">
             {applicationsData.map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-full w-2/4 border-black border-2 border-solid">
+          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70">
             <AppsGraph
               data={applicationsGraphData}
               filteredData={applicationsGraphDataFiltered}
             />
           </div>
         </div>
-        <div className="flex w-full h-2/4 border-blue-400 border-solid border-4">
-          <div className="flex h-full w-2/4 border-yellow-300  border-solid border-2 justify-evenly items-center">
+        <div className="flex w-full h-2/4 justify-start items-center">
+          <div className="flex h-full w-2/4  justify-evenly items-center ">
             {bootcampsData.map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-full w-2/4 border-black border-2 border-solid">
+          <div className="flex h-cardsHeight w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70">
             <UpcomingBootcampsGraph data={bootcampsData} />
           </div>
         </div>
