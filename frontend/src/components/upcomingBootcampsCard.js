@@ -3,9 +3,9 @@ import React from "react";
 const UpComingBootcampsCard = (props) => {
   
   return (
-    <div className="h-4/5 w-1/4 flex flex-col border-red-600 border-2 border-solid items-center  justify-center m-0 p-2 rounded-lg">
+    <div className="h-4/5 w-1/4 flex flex-col border-red-600 border-2 border-solid items-center  justify-center m-0 p-0">
       
-      <div className="h-1/5 w-full text-sm m-0 p-0">
+      <div className="h-1/5 w-full m-0 p-0">
         <div className="flex">
           <p>{props.data.name}</p>
         </div>
