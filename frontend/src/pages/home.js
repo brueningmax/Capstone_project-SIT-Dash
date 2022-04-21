@@ -19,7 +19,7 @@ const Home = () => {
     useState([]);
 
   const [numLatestApplications, setNumLatestApplications] = useState(3);
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(5);
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3);
 
   useEffect(() => {
     getLatestApplications();
