@@ -1,6 +1,8 @@
 import React from "react";
+import BootcampPieChart from "./bootcampPieChart";
 
 const UpComingBootcampsCard = (props) => {
+
   return (
     <div className="h-5/6 w-1/4 flex flex-col   shadow-lg rounded-lg bg-white items-center  justify-center m-0 p-2">
       <div className="h-1/5 w-full m-0 p-0">
@@ -12,9 +14,9 @@ const UpComingBootcampsCard = (props) => {
           <p>{props.data.start_date}</p>
         </div>
       </div>
-
+      
       <div className="h-3/6 w-full  m-0 p-0">
-        <p>GRAPH</p>
+        <BootcampPieChart data={props.data.applications}/>
       </div>
 
       <div className="w-full ">
@@ -61,6 +63,7 @@ const UpComingBootcampsCard = (props) => {
               {props.data.applications.total}
             </th>
           </tr>
+        
         </table>
       </div>
     </div>
