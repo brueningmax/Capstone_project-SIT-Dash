@@ -115,7 +115,7 @@ const Home = () => {
             ))}
           </div>
           <div className="flex h-full w-2/4 border-black border-2 border-solid">
-            <UpcomingBootcampsGraph data={bootcampsData}/>
+            <UpcomingBootcampsGraph data={bootcampsData} />
           </div>
         </div>
       </div>

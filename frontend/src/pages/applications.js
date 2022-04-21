@@ -1,8 +1,8 @@
-
 import LatestApplicationsCard from "../components/latestApplicationsCard";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/sidebar";
+import AppsGraph from "../components/applicationsGraph";
 
-import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { baseurl } from "../store/baseurl";
@@ -15,22 +15,47 @@ const Applications = () => {
   const [end_date_applications, setEndDateApplications] = useState("");
   // const [bootcamp_type, setBootcampType] = useState("");
   // const [bootcamp_location, setBootcampLocation] = useState("");
-  const [applicationsData, setApplications] = useState([]);
+  const [applicationsData, setLatestApplications] = useState([]);
+  const [applicationsGraphData, setApplicationsGraphData] = useState([]);
+  const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] =
+    useState([]);
 
   useEffect(() => {
-    getApplications();
+    getLatestApplications();
+    getApplicationsGraphData();
+    getApplicationsGraphDataFiltered();
   }, []);
 
-  const getApplications = async () => {
-    const response = await Axios(`${baseurl}applications/all/`);
-    setApplications(response.data);
-    console.log(response.data);
+  const getLatestApplications = async () => {
+    const response = await Axios(`${baseurl}applications/latest/5`);
+    setLatestApplications(response.data);
+  };
+
+  const getApplicationsGraphData = async () => {
+    const response = await Axios.post(
+      `${baseurl}applications/graph_data/dashboard/`
+    );
+    setApplicationsGraphData(response.data);
+    console.log(applicationsGraphData);
+  };
+
+  const getApplicationsGraphDataFiltered = async () => {
+    const response = await Axios.post(
+      `${baseurl}applications/graph_data/dashboard/`,
+      { filtered: "1" }
+    );
+    setApplicationsGraphDataFiltered(response.data);
+    console.log(applicationsGraphDataFiltered);
   };
 
   return (
-    <div className="flex border-2 border-red-700 ">
-      Filters:
-      <form>
+    <div className="flex w-full h-screen border-green-800 border-4">
+      <div className="flex h-full w-1/8 border-2 border-yellow-400 ">
+        <Sidebar />
+      </div>
+      <div className="flex flex-col w-full border-blue-600 border-2 border-solid">
+        <div className="flex border-2 w-full  h-2/4  border-red-700 border-solid">
+          {/* <form>
         <label>
           Start Date Range:
           <input
@@ -40,14 +65,20 @@ const Applications = () => {
             onChange={(e) => setStartDateApplications(e.target.value)}
           />
         </label>
-      </form>
-      <div className="sidebarleft">
-        <Sidebar />
-      </div>
-      <div className="mainbarright">
-        {applicationsData.map((item) => (
-          <LatestApplicationsCard data={item} key={item.id} />
-        ))}
+      </form> */}
+
+          <div className="flex h-full w-full border-yellow-300  border-solid border-2 justify-evenly items-center">
+            {applicationsData.map((item) => (
+              <LatestApplicationsCard data={item} key={item.id} />
+            ))}
+          </div>
+        </div>
+        <div className="flex h-1/2 w-full border-black border-2 border-solid">
+          <AppsGraph
+            data={applicationsGraphData}
+            filteredData={applicationsGraphDataFiltered}
+          />
+        </div>
       </div>
     </div>
   );
