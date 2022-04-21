@@ -19,7 +19,7 @@ const Home = () => {
     useState([]);
 
   const [numLatestApplications, setNumLatestApplications] = useState(3);
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(5);
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3);
 
   useEffect(() => {
     getLatestApplications();
@@ -47,7 +47,7 @@ const Home = () => {
       `${baseurl}applications/graph_data/dashboard/`
     );
     setApplicationsGraphData(response.data);
-    console.log(applicationsGraphData);
+    // console.log(applicationsGraphData);
   };
 
   const getApplicationsGraphDataFiltered = async () => {
@@ -56,7 +56,7 @@ const Home = () => {
       { filtered: "1" }
     );
     setApplicationsGraphDataFiltered(response.data);
-    console.log(applicationsGraphDataFiltered);
+    // console.log(applicationsGraphDataFiltered);
   };
 
   // const bootcampsTable =

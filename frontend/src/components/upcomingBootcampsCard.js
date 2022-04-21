@@ -1,4 +1,5 @@
 import React from "react";
+import BootcampPieChart from "./bootcampPieChart";
 
 const UpComingBootcampsCard = (props) => {
  
@@ -7,6 +8,7 @@ const UpComingBootcampsCard = (props) => {
       <p>{props.data.name}</p>
       <p>{props.data.bootcampLocation}</p>
       <p>{props.data.start_date}</p>
+      <BootcampPieChart data={props.data.applications}/>
       <div className="enrolled">
         <h5>Enrolled</h5>
         <p>{props.data.applications.enrolled}</p>
