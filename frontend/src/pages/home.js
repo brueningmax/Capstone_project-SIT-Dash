@@ -19,7 +19,7 @@ const Home = () => {
     useState([]);
 
   const [numLatestApplications, setNumLatestApplications] = useState(3);
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3);
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(5);
 
   useEffect(() => {
     getLatestApplications();
@@ -115,10 +115,7 @@ const Home = () => {
             ))}
           </div>
           <div className="flex h-full w-2/4 border-black border-2 border-solid">
-            <AppsGraph
-              data={applicationsGraphData}
-              filteredData={applicationsGraphDataFiltered}
-            />
+            <UpcomingBootcampsGraph data={bootcampsData}/>
           </div>
         </div>
       </div>
