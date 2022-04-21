@@ -50,9 +50,6 @@ const Applications = () => {
 
   return (
     <div className="flex w-full h-screen border-green-800 border-4">
-      <div className="flex h-full w-1/8 border-2 border-yellow-400 ">
-        <Sidebar />
-      </div>
       <div className="flex flex-col w-full border-blue-600 border-2 border-solid">
         <div className="flex border-2 w-full  h-2/4  border-red-700 border-solid">
           {/* <form>
