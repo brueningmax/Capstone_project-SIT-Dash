@@ -53,14 +53,19 @@ function AppsGraph(props) {
   const data = getChartData(requestedData);
 
   //toggle component for filtering data
-  
+
   const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
-        <div className="p-5 flex flex-column items-start justify-right">
-          <span className="ml-2 text-base text-gray-800 px-3">Total</span>
-          <label className="relative flex items-center cursor-pointer">
-          <input type="checkbox" id="toggle" className="sr-only peer" checked={isOn}
-          onChange={handleToggle} />
+      <div className="p-5 flex flex-column items-start justify-right ">
+        <span className="ml-2 text-base text-gray-800 px-3">Total</span>
+        <label className="relative flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            id="toggle"
+            className="sr-only peer"
+            checked={isOn}
+            onChange={handleToggle}
+          />
           <div className="h-6 bg-gray-200 border-2 border-gray-200 rounded-full w-11 after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:bg-green-600 peer-checked:border-green-600 after:transition-all after:duration-300"></div>
           <span className="ml-2 text-base text-gray-800">Enrolled</span>
         </label>
@@ -70,15 +75,20 @@ function AppsGraph(props) {
 
   return (
     <>
-      <div className="flex flex-column">
+      <div className="flex flex-column h-1/6">
         <Switch
           isOn={toggleValue}
           handleToggle={() => setValue(!toggleValue)}
         />
       </div>
 
-      {chartData === [] ? <p>Loading...</p> :
-        <div className="flex flex-column align-middle h-300 pb-30" style={{ width: "100%" }}>
+      {chartData === [] ? (
+        <p>Loading...</p>
+      ) : (
+        <div
+          className="flex flex-column align-middle h-300 pb-30"
+          style={{ width: "100%" }}
+        >
           <ResponsiveLine
             data={chartData}
             curve="monotoneX"
@@ -96,28 +106,20 @@ function AppsGraph(props) {
             }}
             yScale={{
               type: "linear",
-
             }}
             axisTop={null}
             axisRight={null}
             axisBottom={{
-              orient: 'bottom',
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            format: (v) => {
-                return v.substring(0, 3)
-
-                  === "Jan" ? (
-                  v
-                ) : (
-                  v.substring(0, 3)
-                );
-              }
-
+              orient: "bottom",
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: 0,
+              format: (v) => {
+                return v.substring(0, 3) === "Jan" ? v : v.substring(0, 3);
+              },
             }}
             axisLeft={{
-              orient: 'left',
+              orient: "left",
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
@@ -187,7 +189,7 @@ function AppsGraph(props) {
             ]}
           />
         </div>
-      }
+      )}
     </>
   );
 }

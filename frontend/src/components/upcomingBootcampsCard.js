@@ -4,7 +4,7 @@ import BootcampPieChart from "./bootcampPieChart";
 const UpComingBootcampsCard = (props) => {
 
   return (
-    <div className="h-5/6 w-1/4 flex flex-col   shadow-lg rounded-lg bg-white items-center  justify-center m-0 p-2">
+    <div className="h-cardsHeight w-1/4 flex flex-col   shadow-lg rounded-lg bg-white items-center  justify-center m-0 p-2">
       <div className="h-1/5 w-full m-0 p-0">
         <div className="flex">
           <p>{props.data.name}</p>

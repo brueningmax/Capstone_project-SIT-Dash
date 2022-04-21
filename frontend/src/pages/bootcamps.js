@@ -43,9 +43,9 @@ const Bootcamps = () => {
   //     </li>
   // )
   return (
-    <div className="flex w-full h-screen border-green-800 border-4">
-      <div className="flex flex-col w-full h-full">
-        <div className="flex w-full h-full border-red-700 border-solid border-2">
+    <div className="flex w-full h-screen bg-background">
+      <div className="flex flex-col w-full h-full ">
+        <div className="flex w-full h-1/2 ">
           {/* <form>
         <label>
           Start Date Range:
@@ -58,14 +58,16 @@ const Bootcamps = () => {
         </label>
       </form> */}
 
-          <div className="flex h-full w-full border-yellow-300  border-solid border-2 justify-evenly items-center">
+          <div className="flex h-full w-full  justify-evenly items-center">
             {bootcampsData.map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
         </div>
-        <div className="flex h-full w-full border-black border-2 border-solid">
-          <UpcomingBootcampsGraph data={bootcampsData} />
+        <div className="flex h-1/2 items-center justify-center ">
+          <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+            <UpcomingBootcampsGraph data={bootcampsData} />
+          </div>
         </div>
       </div>
     </div>
