@@ -6,7 +6,8 @@ import { baseurl } from "../store/baseurl";
 import Axios from "axios";
 import BootcampGraph from "../components/bootcampGraph";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
-
+import Sidebar from "../components/sidebar";
+import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 const Bootcamps = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,61 +43,34 @@ const Bootcamps = () => {
   //     </li>
   // )
   return (
-    <div>
-      Bootcamps Filters:
-      <form>
+    <div className="flex w-full h-screen border-green-800 border-4">
+      <div className="flex h-full w-1/8">
+        <Sidebar />
+      </div>
+      <div className="flex flex-col w-full h-full">
+        <div className="flex w-full h-full border-red-700 border-solid border-2">
+          {/* <form>
         <label>
           Start Date Range:
           <input
             name="start_date"
             type="date"
-            value={start_date}
-            onChange={(e) => setStartDate(e.target.value)}
+            value={start_date_applications}
+            onChange={(e) => setStartDateApplications(e.target.value)}
           />
         </label>
+      </form> */}
 
-        <label>
-          End Date Range:
-          <input
-            name="end_date"
-            type="date"
-            value={end_date}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </label>
-
-        <label>
-          Bootcamp Type:
-          <select
-            name="bootcamp_type"
-            value={bootcamp_type}
-            onChange={(e) => setBootcampType(e.target.value)}
-          >
-            {/* <option value="default" disabled hidden>Select a value...</option> */}
-            <option value="Full Stack">Full Stack</option>
-            <option value="Data Science">Data Science</option>
-          </select>
-        </label>
-
-        <label>
-          Zurich
-          <input
-            name="bootcamp_location"
-            type="checkbox"
-            value="Zurich"
-            onChange={(e) => setBootcampLocation(e.target.value)}
-          />
-        </label>
-
-        <button type="button" value="Submit" onClick={handleSubmit}>
-          Filter
-        </button>
-      </form>
-      {bootcampsData.map((item) => (
-        <UpComingBootcampsCard data={item} key={item.id} />
-      ))}
-      <BootcampGraph bootcamps={bootcampsData} />
-      {/* <BootcampGraph /> */}
+          <div className="flex h-full w-full border-yellow-300  border-solid border-2 justify-evenly items-center">
+            {bootcampsData.map((item) => (
+              <UpComingBootcampsCard data={item} key={item.id} />
+            ))}
+          </div>
+        </div>
+        <div className="flex h-full w-full border-black border-2 border-solid">
+          <UpcomingBootcampsGraph data={bootcampsData} />
+        </div>
+      </div>
     </div>
   );
 };
