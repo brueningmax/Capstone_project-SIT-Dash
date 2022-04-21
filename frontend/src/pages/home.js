@@ -90,9 +90,9 @@ const Home = () => {
 
   return (
     <div className="flex w-full h-screen">
-      <div className="flex h-full w-1/8">
+      {/* <div className="flex h-full w-1/8">
         <Sidebar />
-      </div>
+      </div> */}
 
       <div className="flex flex-col w-full border-blue-600 border-2 border-solid">
         <div className="flex w-full h-2/4 border-green-600 border-solid border-4">
