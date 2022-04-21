@@ -4,7 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 function AppsGraph(props) {
   const [requestedData, setRequestedData] = useState(props.filteredData);
   const [chartData, setChartData] = useState([]);
-  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#ccebc5"];
+  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#09ae7d"];
   const [chartColors, setChartColors] = useState(originalColors);
   const [toggleValue, setValue] = useState(true);
 
@@ -70,7 +70,6 @@ function AppsGraph(props) {
 
   return (
     <>
-      
       <div className="flex flex-column">
         <Switch
           isOn={toggleValue}
@@ -97,7 +96,7 @@ function AppsGraph(props) {
             }}
             yScale={{
               type: "linear",
-     
+
             }}
             axisTop={null}
             axisRight={null}
@@ -108,7 +107,7 @@ function AppsGraph(props) {
             tickRotation: 0,
             format: (v) => {
                 return v.substring(0, 3)
-                
+
                   === "Jan" ? (
                   v
                 ) : (
