@@ -17,7 +17,7 @@ const UpComingBootcampsCard = (props) => {
       </div>
 
       <div className="h-3/6 w-full  m-0 p-0">
-        <p>GRAPH</p>
+        <BootcampPieChart data={props.data.applications}/>
       </div>
 
       <div className="w-full ">
