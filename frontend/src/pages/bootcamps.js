@@ -44,9 +44,6 @@ const Bootcamps = () => {
   // )
   return (
     <div className="flex w-full h-screen border-green-800 border-4">
-      <div className="flex h-full w-1/8">
-        <Sidebar />
-      </div>
       <div className="flex flex-col w-full h-full">
         <div className="flex w-full h-full border-red-700 border-solid border-2">
           {/* <form>
