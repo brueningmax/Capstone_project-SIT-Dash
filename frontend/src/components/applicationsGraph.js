@@ -4,7 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 function AppsGraph(props) {
   const [requestedData, setRequestedData] = useState([]);
   const [chartData, setChartData] = useState([]);
-  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#ccebc5"];
+  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#09ae7d"];
   const [chartColors, setChartColors] = useState(originalColors);
   const [toggleValue, setValue] = useState(true);
 
