@@ -5,7 +5,7 @@ const EditApplication = () => {
         <div className=" flex flex-col w-full ">
             <div className="flex flex-col w-full h-1/4 border border-b-[2px] border-black-200 p-5">
                 <div><p className="text-lg font-medium">Personal Data</p></div>
-                <div className="flex place-content-between">
+                <div className="flex place-content-between pt-5">
                     <div className="w-1/5">
                         <div className="flex place-content-between">
                             <div className="flex flex-col w-2/5">
