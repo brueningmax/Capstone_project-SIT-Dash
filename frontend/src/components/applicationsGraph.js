@@ -86,8 +86,7 @@ function AppsGraph(props) {
         <p>Loading...</p>
       ) : (
         <div
-          className="flex flex-column align-middle h-300 pb-30"
-          style={{ width: "100%" }}
+          className="flex flex-column align-middle w-full"
         >
           <ResponsiveLine
             data={chartData}
@@ -95,7 +94,7 @@ function AppsGraph(props) {
             // blendMode="multiply"
             margin={{
               top: 100,
-              right: 100,
+              right: 200,
               bottom: 50,
               left: 50,
             }}
@@ -134,7 +133,31 @@ function AppsGraph(props) {
             animate={true}
             motionStiffness={90}
             motionDamping={15}
-            legends={[]}
+            legends={[
+              {
+                  anchor: 'bottom-right',
+                  direction: 'column',
+                  justify: false,
+                  translateX: 120,
+                  translateY: 0,
+                  itemWidth: 100,
+                  itemHeight: 26,
+                  itemsSpacing: 0,
+                  symbolSize: 20,
+                  symbolShape: 'square',
+                  itemDirection: 'left-to-right',
+                  itemTextColor: '#777',
+                  effects: [
+                      {
+                          on: 'hover',
+                          style: {
+                              itemBackground: 'rgba(0, 0, 0, .03)',
+                              itemOpacity: 1
+                          }
+                      }
+                  ]
+              }
+          ]}
             useMesh={true}
             isInteractive={true}
             pointLabelYOffset={0}
