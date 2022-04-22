@@ -104,7 +104,7 @@ const Home = () => {
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70">
+          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70 border border-gray-400">
             <AppsGraph
               data={applicationsGraphData}
               filteredData={applicationsGraphDataFiltered}
@@ -117,7 +117,7 @@ const Home = () => {
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-cardsHeight w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70">
+          <div className="flex h-cardsHeight w-cardsWidth bg-white border border-gray-400shadow-lg rounded-lg bg-opacity-70">
             <UpcomingBootcampsGraph data={bootcampsData} />
           </div>
         </div>
