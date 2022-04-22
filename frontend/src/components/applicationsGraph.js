@@ -94,7 +94,7 @@ function AppsGraph(props) {
             // blendMode="multiply"
             margin={{
               top: 70,
-              right: 50,
+              right: 100,
               bottom: 100,
               left: 50,
             }}
@@ -135,12 +135,12 @@ function AppsGraph(props) {
             motionDamping={15}
             legends={[
               {
-                  anchor: 'bottom-right',
-                  direction: 'column',
+                  anchor: 'top-left',
+                  direction: 'row',
                   justify: false,
-                  translateX: 120,
-                  translateY: 0,
-                  itemWidth: 100,
+                  translateX: 0,
+                  translateY: -70,
+                  itemWidth: 150,
                   itemHeight: 26,
                   itemsSpacing: 0,
                   symbolSize: 20,
