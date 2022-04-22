@@ -26,9 +26,13 @@ const LatestApplicationsCard = (props) => {
           </div>
         </div>
         <div className=" flex flex-col px-8 justify-evenly w-2/4 ">
-          <div>
+          <div className="flex flex-row items-center justify-evenly">
             <p>personal interview: </p>
+            <input type='checkbox'></input>
+          </div>
+          <div className="flex flex-row items-center justify-evenly">
             <p>technical interview: </p>
+            <input type='checkbox'></input>
           </div>
         </div>
       </div>
