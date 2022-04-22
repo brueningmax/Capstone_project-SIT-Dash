@@ -13,10 +13,10 @@ function BootcampPieChart(props) {
     const [chartData, setChartData] = useState([]);
     const colors = {
         serious: "#96F98B",
-        notSerious: "#ff0a54",
-        toReview: "#f5d151",
+        not_serious: "#ff0a54",
+        to_review: "#f5d151",
         enrolled: "#6085c9",
-        droppedOut: "#cd13ae",
+        dropped_out: "#cd13ae",
         accepted: "#09ae7d",
         total: "#000000",
         background: "#f1f0fa",
@@ -44,8 +44,11 @@ function BootcampPieChart(props) {
         chartData.push({
           id: data[index],
           value: value
+        //   color: colors
         })
-      }}
+          }
+      }
+      console.log(chartData)
     return chartData;
   }
   
@@ -168,9 +171,9 @@ function BootcampPieChart(props) {
         //     {
         //         data: chartData.map((item, index) => {
         //             return {
-        //                 color: 
+        //                 id: item.id
         //             }
-        //         })
+        //         }),
         //         anchor: 'bottom',
         //         direction: 'column',
         //         toggleSerie: true,
