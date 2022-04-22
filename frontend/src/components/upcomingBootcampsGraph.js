@@ -47,7 +47,7 @@ function UpcomingBootcampsGraph(props) {
           padding={0.3}
           valueScale={{ type: "linear" }}
           indexScale={{ type: "band", round: true }}
-          colors={["#bdbdbd", "#969696", "#fbb4ae", "#b3cde3", "#ccebc5"]}
+          colors={["#D68D96", "#FDDB93", "#AFDAA3", "#7AB495", "#819FB3"]}
           borderColor={{
             from: "color",
             modifiers: [["darker", 1.6]],
