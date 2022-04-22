@@ -16,9 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/applications" element={<Applications />} />
-          <Route path="/editApplication" element={<EditApplication />} />
+          <Route path="/editApplication/:id" element={<EditApplication />} />
           <Route path="/bootcamps" element={<Bootcamps />} />
-          <Route path="/editBootcamp" element={<EditBootcamp />} />
+          <Route path="/editBootcamp/:id" element={<EditBootcamp />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
