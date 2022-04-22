@@ -5,7 +5,7 @@ module.exports = {
       height: {
         cardsHeight: "90%",
         cardsHeight2: "26%",
-        tenP:"10%",
+        tenP: "10%",
       },
       width: {
         cardsWidth: "48%",
@@ -22,6 +22,10 @@ module.exports = {
         toggelBackgroud: "#DA925E",
         toggelButton: "#698C9E",
         background: "#f1f0fa",
+        partTime: "#F3A5BC",
+        shortC: "#78C1C2",
+        immersiveB: "#4D94D0",
+        totalB: "#F5CF89",
       },
     },
   },

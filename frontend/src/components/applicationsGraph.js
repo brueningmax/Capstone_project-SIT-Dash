@@ -4,7 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 function AppsGraph(props) {
   const [requestedData, setRequestedData] = useState(props.filteredData);
   const [chartData, setChartData] = useState([]);
-  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#AFDAA3"];
+  const originalColors = ["#78C1C2", "#F3A5BC", "#4D94D0", "#F5CF89"];
   const [chartColors, setChartColors] = useState(originalColors);
   const [toggleValue, setValue] = useState(true);
 
@@ -93,10 +93,10 @@ function AppsGraph(props) {
             curve="monotoneX"
             // blendMode="multiply"
             margin={{
-              top: 70,
+              top: 50,
               right: 50,
-              bottom: 100,
-              left: 50,
+              bottom: 50,
+              left: 60,
             }}
             colors={chartData.map((c, index) => chartColors[index])}
             lineWidth={0}
