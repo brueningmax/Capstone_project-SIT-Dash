@@ -15,10 +15,10 @@ const UpComingBootcampsCard = (props) => {
         </div>
       </div>
       
-      <div className="h-3/6 w-full  m-0 p-0">
+      <div className="h-4/5 w-full  m-0 p-0">
         <BootcampPieChart data={props.data.applications}/>
       </div>
-
+{/* 
       <div className="w-full ">
         <table className="table-fixed w-full text-xs">
           <tr>
@@ -65,7 +65,7 @@ const UpComingBootcampsCard = (props) => {
           </tr>
         
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };
