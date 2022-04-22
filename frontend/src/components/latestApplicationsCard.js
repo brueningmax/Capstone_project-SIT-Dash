@@ -26,9 +26,10 @@ const LatestApplicationsCard = (props) => {
           </div>
         </div>
         <div className=" flex flex-col px-8 justify-evenly w-2/4 ">
-          <p>personal interview: </p>
-          <p>technical interview: </p>
-
+          <div>
+            <p>personal interview: </p>
+            <p>technical interview: </p>
+          </div>
         </div>
       </div>
     </div>
