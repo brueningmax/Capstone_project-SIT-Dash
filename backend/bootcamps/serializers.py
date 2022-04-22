@@ -7,7 +7,7 @@ from bootcamps.models import Bootcamp
 class BootcampSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bootcamp
-        fields = '__all__'
+        fields = ('pk' ,'name')
         depth = 1
 
 
