@@ -93,10 +93,10 @@ function AppsGraph(props) {
             curve="monotoneX"
             // blendMode="multiply"
             margin={{
-              top: 50,
+              top: 70,
               right: 50,
-              bottom: 50,
-              left: 60,
+              bottom: 100,
+              left: 50,
             }}
             colors={chartData.map((c, index) => chartColors[index])}
             lineWidth={0}
@@ -133,7 +133,31 @@ function AppsGraph(props) {
             animate={true}
             motionStiffness={90}
             motionDamping={15}
-            legends={[]}
+            legends={[
+              {
+                  anchor: 'top-left',
+                  direction: 'row',
+                  justify: false,
+                  translateX: 0,
+                  translateY: -70,
+                  itemWidth: 150,
+                  itemHeight: 26,
+                  itemsSpacing: 0,
+                  symbolSize: 20,
+                  symbolShape: 'square',
+                  itemDirection: 'left-to-right',
+                  itemTextColor: '#777',
+                  effects: [
+                      {
+                          on: 'hover',
+                          style: {
+                              itemBackground: 'rgba(0, 0, 0, .03)',
+                              itemOpacity: 1
+                          }
+                      }
+                  ]
+              }
+          ]}
             useMesh={true}
             isInteractive={true}
             pointLabelYOffset={0}

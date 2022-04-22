@@ -58,7 +58,7 @@ function UpcomingBootcampsGraph(props) {
             orient: "bottom",
             tickSize: 9,
             tickPadding: 7,
-            tickRotation: -55,
+            tickRotation: 0,
           }}
           axisLeft={{
             orient: "left",
