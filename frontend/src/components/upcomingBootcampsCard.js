@@ -27,27 +27,27 @@ const UpComingBootcampsCard = (props) => {
               {props.data.applications.to_review}
             </th>
           </tr>
-          <tr>
-            <th className="text-left font-normal">not serious:</th>
-            <th className="text-left font-normal">
+          <tr className="text-left font-normal text-notSerious">
+            <th>not serious:</th>
+            <th>
               {props.data.applications.not_serious}
             </th>
           </tr>
           <tr>
-            <th className="text-left font-normal">serious:</th>
-            <th className="text-left font-normal">
+            <th className="text-left font-normal text-serious">serious:</th>
+            <th className="text-left font-normal text-serious">
               {props.data.applications.serious}
             </th>
           </tr>
           <tr>
-            <th className="text-left font-normal">accepted:</th>
+            <th className="text-left font-normal text-accepted">accepted:</th>
             <th className="text-left font-normal">
               {props.data.applications.accepted}
             </th>
           </tr>
-          <tr>
-            <th className="text-left font-normal">enrolled:</th>
-            <th className="text-left font-normal">
+          <tr className="text-left font-normal text-enrolled">
+            <th>enrolled:</th>
+            <th>
               {props.data.applications.enrolled}
             </th>
           </tr>

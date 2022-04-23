@@ -82,7 +82,7 @@ function AppsGraph(props) {
           className="flex flex-col   h-full 
            pb-30 border-blue-500  border-2 w-full"
         >
-          <div className="flex h-tenP items-center justify-end border-green-500  border-2">
+          <div className=" flex h-tenP items-center justify-end border-green-500  border-2">
             <Switch
               isOn={toggleValue}
               handleToggle={() => setValue(!toggleValue)}
