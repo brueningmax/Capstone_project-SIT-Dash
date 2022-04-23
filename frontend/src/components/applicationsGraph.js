@@ -57,7 +57,7 @@ function AppsGraph(props) {
   const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
       
-        <div className=" flex flex-col absolute items-center pl-5 h-fiveP w-togW justify-start border-red-500 border-2 ">
+        <div className="flex flex-col items-center pl-5 h-fiveP w-full justify-start border-red-500 border-2 ">
           <span className="ml-2  text-base text-gray-800 px-3 ">Total</span>
           <label className="relative flex items-center cursor-pointer ">
             <input
