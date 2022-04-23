@@ -38,7 +38,7 @@ const Sidebar = (props) => {
             <span className="ml-2 text-sm font-medium">Dasboard</span>
           </Link>
           <Link
-            className={currentLocation.pathname == '/applications' ? highligted : normal}
+            className={currentLocation.pathname.includes('pplication') ? highligted : normal}
             to="/applications"
           >
             <svg
@@ -58,7 +58,7 @@ const Sidebar = (props) => {
             <span className="ml-2 text-sm font-medium">Applications</span>
           </Link>
           <Link
-            className={currentLocation.pathname == '/bootcamps' ? highligted : normal}
+            className={currentLocation.pathname.includes('ootcamp') ? highligted : normal}
             to="/bootcamps"
           >
             <svg
