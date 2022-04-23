@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from rest_framework.generics import ListAPIView, GenericAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, GenericAPIView, RetrieveUpdateAPIView
 from rest_framework.response import Response
 
 from applications.models import Application
@@ -11,13 +11,7 @@ from rest_framework.response import Response
 from datetime import datetime
 from django.db.models import Q
 
-class RetrieveApplication(RetrieveAPIView):
-    queryset = Application.objects.all()
-    permission_classes = []
-    serializer_class = ApplicationAllSerializer
-    lookup_field = 'pk'
-
-class UpdateApplication(UpdateAPIView):
+class RetrieveUpdateApplication(RetrieveUpdateAPIView):
     queryset = Application.objects.all()
     permission_classes = []
     serializer_class = ApplicationAllSerializer

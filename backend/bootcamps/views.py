@@ -1,10 +1,10 @@
-from rest_framework.generics import ListAPIView, GenericAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, GenericAPIView, RetrieveUpdateAPIView
 from datetime import datetime
 from rest_framework.response import Response
 
 from applications.models import Application
 from bootcamps.models import Bootcamp
-from bootcamps.serializers import BootcampSerializer, BootcampUpComingSerializer
+from bootcamps.serializers import BootcampSerializer, BootcampUpComingSerializer, BootcampAllSerializer
 from rest_framework.views import APIView
 
 
@@ -17,7 +17,11 @@ class ListAllBootcamp(ListAPIView):
     permission_classes = []
     serializer_class = BootcampSerializer
 
-
+class RetrieveUpdateBootcamp(RetrieveUpdateAPIView):
+    queryset = Bootcamp.objects.all()
+    permission_classes = []
+    serializer_class = BootcampAllSerializer
+    lookup_field = 'pk'
 
 # class ListUpcomingBootcamp(GenericAPIView):
 #     #
