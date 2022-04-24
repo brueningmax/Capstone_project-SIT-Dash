@@ -58,8 +58,8 @@ const Applications = () => {
             ))}
           </div>
         </div>
-        <div className="flex h-sixteyP items-center justify-center  ">
-          <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+        <div className="flex h-sixteyP items-center justify-center ">
+          <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75 border-2 border-gray-200">
             <AppsGraph
               data={applicationsGraphData}
               filteredData={applicationsGraphDataFiltered}

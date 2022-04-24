@@ -28,7 +28,7 @@ const LatestApplicationsCard = (props) => {
   }
 
   return (
-    <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col bg-white shadow-lg rounded-lg items-center justify-start text-xs">
+    <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col bg-white shadow-lg rounded-lg border-2 items-center justify-start text-xs">
       <div className="p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center">
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>

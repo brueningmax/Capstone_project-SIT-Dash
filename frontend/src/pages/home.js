@@ -68,12 +68,12 @@ const Home = () => {
     <div className="flex w-full h-screen">
       <div className="flex bg-background flex-col w-full h-full">
         <div className="flex w-full h-2/4 justify-start items-center mt-4">
-          <div className="flex flex-col h-cardsHeight w-2/4 justify-between py-2  items-center">
+          <div className="flex flex-col h-cardsHeight w-2/4 justify-between  items-center">
             {applicationsData.map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70 border border-gray-200">
+          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70 border-2 border-gray-200">
             <AppsGraph
               data={applicationsGraphData}
               filteredData={applicationsGraphDataFiltered}
@@ -89,7 +89,7 @@ const Home = () => {
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-cardsHeight w-cardsWidth bg-white border border-gray-200  shadow-lg rounded-lg bg-opacity-70 ">
+          <div className="flex h-cardsHeight w-cardsWidth bg-white border-2 border-gray-200  shadow-lg rounded-lg bg-opacity-70 ">
             <UpcomingBootcampsGraph data={bootcampsData} />
           </div>
         </div>

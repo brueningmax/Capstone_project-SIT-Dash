@@ -15,11 +15,11 @@ module.exports = {
       },
       width: {
         cardsContainer: "46%",
-        cardsWidth: "47%",
+        cardsWidth: "48%",
         cardsWidth2: "94%",
-        cardsWidth3: "91%",
+        cardsWidth3: "92%",
         togW: "13%",
-        cardWidth4: "27%",
+        cardWidth4: "28%",
         cardWidth5: "30%",
       },
       colors: {
