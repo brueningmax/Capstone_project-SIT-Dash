@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Graph from "../components/graph";
-import Sidebar from "../components/sidebar";
+
 import LatestApplicationsCard from "../components/latestApplicationsCard";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 
@@ -48,7 +48,6 @@ const Home = () => {
       `${baseurl}applications/graph_data/dashboard/`
     );
     setApplicationsGraphData(response.data);
-    //console.log(applicationsGraphData);
   };
 
   const getBootcamps = async () => {
@@ -63,15 +62,14 @@ const Home = () => {
       { filtered: "1" }
     );
     setApplicationsGraphDataFiltered(response.data);
-    // console.log(applicationsGraphDataFiltered);
   };
 
   return (
     <div className="flex w-full h-screen">
-      <div className="flex bg-background flex-col w-full  h-full">
-        <div className="flex w-full h-2/4 justify-start items-center mt-4">
-          <div className="flex flex-col h-cardsHeight w-2/4 justify-between   items-center">
-            {applicationsData.map((item) => (
+      <div className="flex bg-background flex-col w-full ">
+        <div className="flex w-full h-2/4 justify-start items-center">
+          <div className="flex flex-col h-full w-2/4 justify-around py-2  items-center">
+            {applicationsData.splice(0, 3).map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
