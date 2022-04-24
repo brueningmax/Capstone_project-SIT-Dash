@@ -30,8 +30,6 @@ const EditApplication = () => {
         setBootcamps(response.data)
     }
 
-
-
     const onChangeHandler = (event) => {
         let newState = {...applicationData}
         newState[event.target.id] = event.target.value
