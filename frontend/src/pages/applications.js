@@ -52,13 +52,13 @@ const Applications = () => {
       <div className="flex flex-col w-full ">
         <div className="flex  w-full  h-fortyP   justify-center">
        
-          <div className="flex h-full w-cardsWidth2   justify-between items-center">
+          <div className="flex h-full w-cardsWidth2 justify-between items-center">
             {applicationsData.map((item) => (
               <LatestApplicationsCard2 data={item} key={item.id} />
             ))}
           </div>
         </div>
-        <div className="flex h-sixteyP items-center justify-center ">
+        <div className="flex h-sixteyP items-center justify-center  ">
           <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
             <AppsGraph
               data={applicationsGraphData}

@@ -46,7 +46,7 @@ const Bootcamps = () => {
         </div>
       </div>
 
-      <div className="flex h-sixteyP items-center justify-center mb-4">
+      <div className="flex h-sixteyP items-center justify-center mb-4 border-black">
         <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
           <UpcomingBootcampsGraph data={bootcampsData} />
         </div>
