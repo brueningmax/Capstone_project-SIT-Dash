@@ -4,7 +4,6 @@ import { ResponsivePie } from "@nivo/pie";
 // import resolveConfig from 'tailwindcss/resolveConfig'
 // import tailwindConfig from './../tailwind.config.js'
 // const twFullConfig = resolveConfig(tailwindConfig)
-
 // console.log(twFullConfig.theme.colors['serious'])
 
 function BootcampPieChart(props) { 

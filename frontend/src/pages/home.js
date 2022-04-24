@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Graph from "../components/graph";
-import Sidebar from "../components/sidebar";
+
 import LatestApplicationsCard from "../components/latestApplicationsCard";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 
@@ -48,7 +48,6 @@ const Home = () => {
       `${baseurl}applications/graph_data/dashboard/`
     );
     setApplicationsGraphData(response.data);
-    //console.log(applicationsGraphData);
   };
 
   const getBootcamps = async () => {
@@ -63,7 +62,6 @@ const Home = () => {
       { filtered: "1" }
     );
     setApplicationsGraphDataFiltered(response.data);
-    // console.log(applicationsGraphDataFiltered);
   };
 
   // const bootcampsTable =

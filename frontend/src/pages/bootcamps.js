@@ -6,7 +6,6 @@ import { baseurl } from "../store/baseurl";
 import Axios from "axios";
 import BootcampGraph from "../components/bootcampGraph";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
-import Sidebar from "../components/sidebar";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 const Bootcamps = () => {
   const navigate = useNavigate();
@@ -34,14 +33,6 @@ const Bootcamps = () => {
     setBootcamps(response.data);
   };
 
-  // const bootcampsTable =
-  //   bootcampsData.map((item) =>
-  //     <li key={item.name}>
-  //       {item.name}
-  //       <p>{item.bootcamp_location}</p>
-  //       {item.start_date}
-  //     </li>
-  // )
   return (
     <div className="flex w-full h-screen bg-background">
       <div className="flex flex-col w-full h-full ">
