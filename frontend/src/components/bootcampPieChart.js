@@ -6,93 +6,94 @@ import { ResponsivePie } from "@nivo/pie";
 // const twFullConfig = resolveConfig(tailwindConfig)
 // console.log(twFullConfig.theme.colors['serious'])
 
-function BootcampPieChart(props) { 
-  
-    const [data, setData] = useState([]);
-    const [chartData, setChartData] = useState([]);
+function BootcampPieChart(props) {
+  const [data, setData] = useState([]);
+  const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     setData(props.data);
-    setChartData(getChartData(props.data))
-  }, [props])
+    setChartData(getChartData(props.data));
+  }, [props]);
 
-    function getChartData(requestedData) {
-      console.log(requestedData)
+  function getChartData(requestedData) {
+    console.log(requestedData);
     const data = [
-      "Dropped Out",
-      "Enrolled",
-      "Accepted",
       "Serious",
       "Not Serious",
-      "To Review"
-        ]
-        
-    const allColors = {
-        serious: "#AFDAA3",
-        not_serious: "#D68D96",
-        to_review: "#FDDB93",
-        enrolled: "#819FB3",
-        dropped_out: "#996D99",
-        accepted: "#7AB495",
-        total: "#000000"
-      }
+      "Accepted",
+      "Enrolled",
+      "To Review",
+      "Dropped Out",
+    ];
 
-    const chartData = []
-      for (const [index, [key, value]] of Object.entries(Object.entries(requestedData))) {
-          if (key === "total" || key === "else") {}
-          else {
+    const allColors = {
+      enrolled: "#819FB3",
+      serious: "#AFDAA3",
+      accepted: "#7AB495",
+      dropped_out: "#996D99",
+      not_serious: "#D68D96",
+      to_review: "#FDDB93",
+      total: "#000000",
+    };
+
+    const chartData = [];
+    for (const [index, [key, value]] of Object.entries(
+      Object.entries(requestedData)
+    )) {
+      if (key === "total" || key === "else") {
+      } else {
         chartData.push({
           id: data[index],
           value: value,
-          color: allColors[key]
-        })
-          }
+          color: allColors[key],
+        });
       }
-      console.log(chartData)
+    }
+    console.log(chartData);
     return chartData;
   }
-  
+
   const CenteredMetric = ({ dataWithArc, centerX, centerY }) => {
-        let total = 0
-        dataWithArc.forEach(datum => {
-            total += datum.value
-        })
-    
-        return (
-            <text
-                x={centerX}
-                y={centerY}
-                textAnchor="middle"
-                dominantBaseline="central"
-                style={{
-                    fontSize: '52px',
-                    fontWeight: 500,
-                }}
-            >
-                {total}
-            </text>
-        )
-    }
+    let total = 0;
+    dataWithArc.forEach((datum) => {
+      total += datum.value;
+    });
+
+    return (
+      <text
+        x={centerX}
+        y={centerY}
+        textAnchor="middle"
+        dominantBaseline="central"
+        style={{
+          fontSize: "52px",
+          fontWeight: 500,
+        }}
+      >
+        {total}
+      </text>
+    );
+  };
 
   return (
-  <div className="h-full w-full m-0 p-0">
-    <ResponsivePie
+    <div className="h-full w-full m-0 p-0">
+      <ResponsivePie
         data={chartData}
         margin={{
-            top: 15,
-            bottom: 220        
+          top: 15,
+          bottom: 220,
         }}
         valueFormat=" >-"
         innerRadius={0.6}
         padAngle={0.7}
         // cornerRadius={3}
         activeOuterRadiusOffset={8}
-        colors={{ datum: 'data.color' }}
+        colors={{ datum: "data.color" }}
         enableArcLinkLabels={false}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: 'color' }}
+        arcLinkLabelsColor={{ from: "color" }}
         enableArcLabels={false}
         arcLabelsSkipAngle={10}
         // arcLabelsTextColor={{
@@ -105,57 +106,56 @@ function BootcampPieChart(props) {
         //     ]
         // }}
         legends={[
-            {
-                data: chartData.map((item, index) => {
-                    return {
-                        color: item.color,
-                        id: item.id,
-                        label: item.id
-                    }
-                }),
-                anchor: 'bottom',
-                direction: 'column',
-                toggleSerie: true,
-                justify: false,
-                translateX: -20,
-                translateY: 210,
-                itemWidth: 108,
-                itemHeight: 33,
-                itemsSpacing: 0,
-                symbolSize: 24,
-                itemDirection: 'left-to-right'
-            },
-            {
-                data: chartData.map((item, index) => {
-                    return {
-                        color: item.color,
-                        id: item.id,
-                        label: item.value
-                    }
-                }),
-                anchor: 'bottom',
-                direction: 'column',
-                toggleSerie: true,
-                justify: false,
-                translateX: 120,
-                translateY: 210,
-                itemWidth: 108,
-                itemHeight: 33,
-                itemsSpacing: 0,
-                symbolSize: 0,
-                itemDirection: 'left-to-right'
-            }
+          {
+            data: chartData.map((item, index) => {
+              return {
+                color: item.color,
+                id: item.id,
+                label: item.id,
+              };
+            }),
+            anchor: "bottom",
+            direction: "column",
+            toggleSerie: true,
+            justify: false,
+            translateX: -20,
+            translateY: 210,
+            itemWidth: 108,
+            itemHeight: 33,
+            itemsSpacing: 0,
+            symbolSize: 24,
+            itemDirection: "left-to-right",
+          },
+          {
+            data: chartData.map((item, index) => {
+              return {
+                color: item.color,
+                id: item.id,
+                label: item.value,
+              };
+            }),
+            anchor: "bottom",
+            direction: "column",
+            toggleSerie: true,
+            justify: false,
+            translateX: 120,
+            translateY: 210,
+            itemWidth: 108,
+            itemHeight: 33,
+            itemsSpacing: 0,
+            symbolSize: 0,
+            itemDirection: "left-to-right",
+          },
         ]}
-        
         layers={[
-            'arcs',
-            'arcLabels',
-            'arcLinkLabels', 
-            'legends',
-            CenteredMetric,
-          ]}
-    />
+          "arcs",
+          "arcLabels",
+          "arcLinkLabels",
+          "legends",
+          CenteredMetric,
+        ]}
+      />
     </div>
-)
-}   
+  );
+}
 export default BootcampPieChart;

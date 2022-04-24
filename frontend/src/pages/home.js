@@ -64,58 +64,32 @@ const Home = () => {
     setApplicationsGraphDataFiltered(response.data);
   };
 
-  // const bootcampsTable =
-  //   bootcampsData.map((item) =>
-  //     <MiddleBar
-  //       data={item}
-  //       key={item.id}
-
-  // shortBootcampName={item.name}
-  // bootcampLocation={item.bootcamp_location}
-  // bootcampStartDate={item.start_date}
-  // />
-
-  //   <tr key={item.name}>
-  //     <td>{item.name}</td>
-  //     <td>{item.bootcamp_location.location}</td>
-  //     <td>{item.start_date}</td>
-  //   </tr>
-  // )
-
-  // const applicationsTable =
-  //   applicationsData.map((item) =>
-  //     <NarrowBar
-  //       data={item}
-  //       key={item.id}
-  //     />
-  //   )
-
-  // console.log(applicationsGraphData)
-  // console.log(bootcampsData)
-
   return (
     <div className="flex w-full h-screen">
-      <div className="flex bg-background flex-col w-full ">
-        <div className="flex w-full h-2/4 justify-start items-center">
-          <div className="flex flex-col h-full w-2/4 justify-around py-2  items-center">
+      <div className="flex bg-background flex-col w-full h-full">
+        <div className="flex w-full h-2/4 justify-start items-center mt-4">
+          <div className="flex flex-col h-cardsHeight w-2/4 justify-between py-2  items-center">
             {applicationsData.splice(0, 3).map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70 border border-gray-400">
+          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70 border border-gray-200">
             <AppsGraph
               data={applicationsGraphData}
               filteredData={applicationsGraphDataFiltered}
             />
           </div>
         </div>
-        <div className="flex w-full h-2/4 justify-start items-center">
-          <div className="flex h-full w-2/4  justify-evenly items-center ">
+        <div
+          className="flex w-full h-2/4 justify-start items-center mb-4
+        "
+        >
+          <div className="flex h-full px-3 w-1/2  justify-evenly  items-center">
             {bootcampsData.map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-cardsHeight w-cardsWidth bg-white border border-gray-400shadow-lg rounded-lg bg-opacity-70">
+          <div className="flex h-cardsHeight w-cardsWidth bg-white border border-gray-200  shadow-lg rounded-lg bg-opacity-70 ">
             <UpcomingBootcampsGraph data={bootcampsData} />
           </div>
         </div>
