@@ -5,13 +5,22 @@ module.exports = {
       height: {
         cardsHeight: "90%",
         cardsHeight2: "26%",
+        cardsHeight3: "28%",
+        cardsHeight4: "80%",
+        cardsHeight5: "85%",
         tenP: "10%",
-        fiveP: "5%"
+        fiveP: "5%",
+        fortyP: "45%",
+        sixteyP: "55%",
       },
       width: {
-        cardsWidth: "48%",
-        cardsWidth2: "87%",
+        cardsContainer: "46%",
+        cardsWidth: "47%",
+        cardsWidth2: "94%",
+        cardsWidth3: "91%",
         togW: "13%",
+        cardWidth4: "27%",
+        cardWidth5: "30%",
       },
       colors: {
         serious: "#AFDAA3",

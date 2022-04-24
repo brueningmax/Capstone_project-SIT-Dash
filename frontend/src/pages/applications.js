@@ -1,8 +1,7 @@
-import LatestApplicationsCard from "../components/latestApplicationsCard";
+import LatestApplicationsCard2 from "../components/latestApplicationsCard2";
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/sidebar";
 import AppsGraph from "../components/applicationsGraph";
-
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { baseurl } from "../store/baseurl";
@@ -51,26 +50,15 @@ const Applications = () => {
   return (
     <div className="flex  w-full h-screen bg-background ">
       <div className="flex flex-col w-full ">
-        <div className="flex border-2 w-full  h-2/4  ">
-          {/* <form>
-        <label>
-          Start Date Range:
-          <input
-            name="start_date"
-            type="date"
-            value={start_date_applications}
-            onChange={(e) => setStartDateApplications(e.target.value)}
-          />
-        </label>
-      </form> */}
-
-          <div className="flex h-full w-full  justify-evenly items-center">
+        <div className="flex  w-full  h-fortyP   justify-center">
+       
+          <div className="flex h-full w-cardsWidth2   justify-between items-center">
             {applicationsData.map((item) => (
-              <LatestApplicationsCard data={item} key={item.id} />
+              <LatestApplicationsCard2 data={item} key={item.id} />
             ))}
           </div>
         </div>
-        <div className="flex h-1/2 items-center justify-center ">
+        <div className="flex h-sixteyP items-center justify-center ">
           <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
             <AppsGraph
               data={applicationsGraphData}

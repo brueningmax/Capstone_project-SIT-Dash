@@ -56,22 +56,20 @@ function AppsGraph(props) {
 
   const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
-      
-        <div className=" flex flex-col absolute items-center pl-5 h-fiveP w-togW justify-start border-red-500 border-2 ">
-          <span className="ml-2  text-base text-gray-800 px-3 ">Total</span>
-          <label className="relative flex items-center cursor-pointer ">
-            <input
-              type="checkbox"
-              id="toggle"
-              className="sr-only peer "
-              checked={isOn}
-              onChange={handleToggle}
-            />
-            <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.5 after:bg-toggelBackgroud after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-toggelBackgroud  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
-            <span className="ml-2 text-base text-gray-800 ">Enrolled</span>
-          </label>
-        </div>
-      
+      <div className=" flex  items-center  h-1/2 w-full justify-start  ml-10">
+        <span className="ml-2  text-base text-gray-800 px-3 ">Total</span>
+        <label className="relative flex items-center cursor-pointer ">
+          <input
+            type="checkbox"
+            id="toggle"
+            className="sr-only peer "
+            checked={isOn}
+            onChange={handleToggle}
+          />
+          <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.5 after:bg-toggelBackgroud after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-toggelBackgroud  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
+          <span className="ml-2 text-base text-gray-800 ">Enrolled</span>
+        </label>
+      </div>
     );
   };
 
@@ -80,22 +78,24 @@ function AppsGraph(props) {
       {chartData === [] ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex flex-col h-full  w-full">
-          <Switch
-            isOn={toggleValue}
-            handleToggle={() => setValue(!toggleValue)}
-          />
+        <div className="flex flex-col h-full  w-full ">
+          <div className="flex  w-togW items-center h-1/6">
+            <Switch
+              isOn={toggleValue}
+              handleToggle={() => setValue(!toggleValue)}
+            />
+          </div>
 
           {/* <div className="w-full h-full border-black border-2"> */}
-          <ResponsiveLine
+          <ResponsiveLine 
             data={chartData}
             curve="monotoneX"
             // blendMode="multiply"
             margin={{
-              top: 80,
-              right: 50,
-              bottom: 50,
-              left: 50,
+              top: 50,
+              right: 60,
+              bottom: 80,
+              left: 80,
             }}
             colors={chartData.map((c, index) => chartColors[index])}
             lineWidth={0}
@@ -137,9 +137,8 @@ function AppsGraph(props) {
                 anchor: "top-left",
                 direction: "row",
                 justify: false,
-                translateX: 180,
+                translateX: -20,
                 translateY: -55,
-
                 itemWidth: 150,
                 itemHeight: 26,
                 itemsSpacing: -5,
@@ -172,6 +171,7 @@ function AppsGraph(props) {
                   }}
                 >
                   <div>{point.serieId}</div>
+
                   <div>
                     {point.data.x}: {point.data.y}
                   </div>
