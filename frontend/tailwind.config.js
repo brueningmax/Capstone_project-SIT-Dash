@@ -1,18 +1,6 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    screen: {
-      sm: "500px",
-      md: [
-        // Sidebar appears at 768px, so revert to `sm:` styles between 768px
-        // and 868px, after which the main content area is wide enough again to
-        // apply the `md:` styles.
-        { min: "668px", max: "767px" },
-        { min: "868px" },
-      ],
-      lg: "1100px",
-      xl: "1400px",
-    },
     extend: {
       height: {
         cardsHeight: "90%",
@@ -27,13 +15,12 @@ module.exports = {
       },
       width: {
         cardsContainer: "46%",
-        cardsWidth: "48%",
+        cardsWidth: "47%",
         cardsWidth2: "94%",
-        cardsWidth3: "92%",
+        cardsWidth3: "91%",
         togW: "13%",
-        cardWidth4: "28%",
+        cardWidth4: "27%",
         cardWidth5: "30%",
-        cardWidth6: "10%",
       },
       colors: {
         serious: "#AFDAA3",

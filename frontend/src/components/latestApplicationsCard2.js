@@ -3,7 +3,7 @@ import LinkedIn_logo from "../assets/li_logo.png";
 
 const LatestApplicationsCard2 = (props) => {
   return (
-    <div className="h-cardsHeight4 w-1/6 border-2 border-gray-200 p-10  flex flex-col bg-white shadow-lg rounded-lg items-center justify-start text-xs">
+    <div className="h-cardsHeight4 w-1/6  p-10  flex flex-col bg-white shadow-lg rounded-lg items-center justify-start text-xs">
       <div className="p-2 px-14 m-0 w-full h-1/6 flex justify-between border-2">
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>
