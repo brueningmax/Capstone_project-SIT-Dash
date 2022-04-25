@@ -35,6 +35,7 @@ const Home = () => {
       `${baseurl}bootcamps/upcoming/${numUpcomingBootcamps}`
     );
     setLatestBootcamps(response.data);
+    console.log(bootcampsData)
   };
 
   const getApplicationsGraphData = async () => {
@@ -73,7 +74,7 @@ const Home = () => {
         "
         >
           <div className="flex h-full px-3 w-1/2  justify-evenly  items-center">
-            {bootcampsData.splice(0,3).map((item) => (
+            {bootcampsData.slice(0,3).map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
