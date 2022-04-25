@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
 import { BsFillPencilFill } from 'react-icons/bs';
+import BootcampType from '../components/latestApplicationsCardComponents/bootcampType'
+import ApplicationStatus from "./latestApplicationsCardComponents/applicationStatus";
+import BootcampName from "./latestApplicationsCardComponents/bootcampName";
+import ApplyDate from "./latestApplicationsCardComponents/applyDate";
+import ApplicantsCv from "./latestApplicationsCardComponents/applicantsCv";
+import ApplicantsLi from "./latestApplicationsCardComponents/applicantsLi";
 
 
 const LatestApplicationsCard = (props) => {
@@ -30,6 +36,12 @@ const LatestApplicationsCard = (props) => {
 
   return (
     <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs">
+    {/* <BootcampType data={props}/> */}
+    {/* <ApplicationStatus data={props}/> */}
+    {/* <BootcampName data={props.data}/> */}
+    {/* <ApplyDate data={props.data} /> */}
+    {/* <ApplicantsCv data={props.data} />
+    <ApplicantsLi data={props.data} /> */}
       <div className="p-2 px-14 mt-1 m-0 w-full h-1/6 flex justify-between items-end">
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>
@@ -40,6 +52,9 @@ const LatestApplicationsCard = (props) => {
       </div>
 
       <div className="p-2 px-8 m-0 flex flex-row w-full h-full bg-white rounded-bl-lg rounded-br-lg">
+
+
+
         <div className=" w-2/4 text-center ">
          <p>
           {props.data.first_name} {props.data.last_name}
