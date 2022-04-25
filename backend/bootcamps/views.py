@@ -28,6 +28,8 @@ class RetrieveUpdateBootcamp(RetrieveUpdateAPIView):
     lookup_field = 'pk'
 
 class ListUpcomingBootcamp(APIView):
+    permission_classes = []
+    authentication_classes = []
     """
     get:
     lists upcoming Bootcamps with sums of applications total and statuses
