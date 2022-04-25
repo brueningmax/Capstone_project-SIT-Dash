@@ -56,9 +56,7 @@ function AppsGraph(props) {
   function getTickValue(data) {
     const tickValues = []
     for (const key in data) {
-      tickValues.push(parseInt(data[key].total))
-      console.log(tickValues)
-    }
+      tickValues.push(parseInt(data[key].total))}
     return (Math.max(...tickValues))
   }
 
