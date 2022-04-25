@@ -24,6 +24,7 @@ class RetrieveUpdateApplication(RetrieveUpdateAPIView):
 
     queryset = Application.objects.all()
     permission_classes = []
+    authentication_classes = []
     serializer_class = ApplicationAllSerializer
     lookup_field = 'pk'
 
