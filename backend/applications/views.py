@@ -57,7 +57,7 @@ class ListLatestApplications(GenericAPIView):
         return Response(serializer.data, status=200)
 
 class GetDashboardGraphData(APIView):
-
+    permission_classes = []
     """
     post:
     creates a data package for the last 18 months, summing the applications by bootcamp-type they are applying for
@@ -122,7 +122,7 @@ class GetDashboardGraphData(APIView):
 
 class FilteringApplicationView(ListAPIView):
     """
-    get:
+    post:
     returns all Applications, filtered by passed filter
     """
 
@@ -130,7 +130,7 @@ class FilteringApplicationView(ListAPIView):
     permission_classes = []
     serializer_class = LatestApplicationSerializer
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         if request.data.get('status') is not None:
             queryset = queryset.filter(status=request.data['status'])

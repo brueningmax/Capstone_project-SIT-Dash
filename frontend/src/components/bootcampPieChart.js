@@ -4,7 +4,7 @@ import { ResponsivePie } from "@nivo/pie";
 // import resolveConfig from 'tailwindcss/resolveConfig'
 // import tailwindConfig from './../tailwind.config.js'
 // const twFullConfig = resolveConfig(tailwindConfig)
-// console.log(twFullConfig.theme.colors['serious'])
+
 
 function BootcampPieChart(props) {
   const [data, setData] = useState([]);
@@ -16,7 +16,6 @@ function BootcampPieChart(props) {
   }, [props]);
 
   function getChartData(requestedData) {
-    console.log(requestedData);
     const data = [
       "Serious",
       "Not Serious",
@@ -49,7 +48,6 @@ function BootcampPieChart(props) {
         });
       }
     }
-    console.log(chartData);
     return chartData;
   }
 
@@ -106,46 +104,46 @@ function BootcampPieChart(props) {
         //     ]
         // }}
         legends={[
-          {
-            data: chartData.map((item, index) => {
-              return {
-                color: item.color,
-                id: item.id,
-                label: item.id,
-              };
-            }),
-            anchor: "bottom",
-            direction: "column",
-            toggleSerie: true,
-            justify: false,
-            translateX: -20,
-            translateY: 210,
-            itemWidth: 108,
-            itemHeight: 33,
-            itemsSpacing: 0,
-            symbolSize: 24,
-            itemDirection: "left-to-right",
-          },
-          {
-            data: chartData.map((item, index) => {
-              return {
-                color: item.color,
-                id: item.id,
-                label: item.value,
-              };
-            }),
-            anchor: "bottom",
-            direction: "column",
-            toggleSerie: true,
-            justify: false,
-            translateX: 120,
-            translateY: 210,
-            itemWidth: 108,
-            itemHeight: 33,
-            itemsSpacing: 0,
-            symbolSize: 0,
-            itemDirection: "left-to-right",
-          },
+            {
+                data: chartData.map((item, index) => {
+                    return {
+                        color: item.color,
+                        id: item.id,
+                        label: item.id
+                    }
+                }),
+                anchor: 'bottom',
+                direction: 'column',
+                toggleSerie: true,
+                justify: false,
+                translateX: -20,
+                translateY: 210,
+                itemWidth: 108,
+                itemHeight: 30,
+                itemsSpacing: 0,
+                symbolSize: 22,
+                itemDirection: 'left-to-right'
+            },
+            {
+                data: chartData.map((item, index) => {
+                    return {
+                        color: item.color,
+                        id: item.id,
+                        label: item.value
+                    }
+                }),
+                anchor: 'bottom',
+                direction: 'column',
+                toggleSerie: true,
+                justify: false,
+                translateX: 120,
+                translateY: 210,
+                itemWidth: 108,
+                itemHeight: 30,
+                itemsSpacing: 0,
+                symbolSize: 0,
+                itemDirection: 'left-to-right'
+            }
         ]}
         layers={[
           "arcs",

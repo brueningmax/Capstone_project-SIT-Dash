@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
 function UpcomingBootcampsGraph(props) {
-  console.log(props.data);
 
   //   const data = props.data;
   const [chartData, setChartData] = useState([]);
   const [data, setData] = useState([]);
+  const [tickValues, setTickValues] = useState([])
+  const [maxTickValue, setMaxTickValue] = useState(0)
 
   useEffect(() => {
     setData(props.data);
     setChartData(getChartData(props.data));
+    setMaxTickValue(getTickValue(props.data) + 1);
   }, [props]);
 
   function getChartData(data) {
@@ -28,17 +30,24 @@ function UpcomingBootcampsGraph(props) {
     return chartData;
   }
 
-  // setChartData(getChartData(data))
-  //   console.log(chartData)
+  function getTickValue(data) {
+    const tickValues = []
+    data.forEach(item => tickValues.push(parseInt(item.applications.total)))
+    return (Math.max(...tickValues))
+  }
+
+
 
   return (
     <div
       className="flex flex-column align-middle p-4 "
       style={{ width: "100%" }}
     >
-      {chartData === [] ? (
+      <h2>Upcoming Bootcamps</h2>
+      {maxTickValue === 0 ? (
         <p>Loading...</p>
       ) : (
+         
         <ResponsiveBar
           data={chartData}
           keys={["Not Serious", "To Review", "Serious", "Accepted", "Enrolled"]}
@@ -58,23 +67,19 @@ function UpcomingBootcampsGraph(props) {
             orient: "bottom",
             tickSize: 9,
             tickPadding: 7,
-            tickRotation: 0,
+            tickRotation: -40,
           }}
           axisLeft={{
             orient: "left",
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            //   tickValues: {[0, 1, 2, 3, 4]}
-          }}
+            tickValues: 4
+            }}
+          gridYValues={4}
           enableLabel={false}
           labelSkipWidth={12}
           labelSkipHeight={12}
-          //   gridYValues={[0, 1, 2, 3, 4]}
-          labelTextColor={{
-            from: "color",
-            modifiers: [["darker", 1.6]],
-          }}
           //
           legends={[
             {
@@ -86,10 +91,11 @@ function UpcomingBootcampsGraph(props) {
               translateY: 0,
               itemsSpacing: 2,
               itemWidth: 100,
-              itemHeight: 20,
+              itemHeight: 30,
               itemDirection: "left-to-right",
               itemOpacity: 0.85,
-              symbolSize: 20,
+              symbolSize: 22,
+              toggleSerie: true,
               effects: [
                 {
                   on: "hover",
@@ -101,9 +107,6 @@ function UpcomingBootcampsGraph(props) {
             },
           ]}
 
-          // role="application"
-          // ariaLabel="Nivo bar chart demo"
-          // barAriaLabel={function(e){return e.id+": "+e.formattedValue+" in country: "+e.indexValue}}
         />
       )}
     </div>
