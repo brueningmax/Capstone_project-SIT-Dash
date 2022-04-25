@@ -3,6 +3,7 @@ import Axios from "axios";
 import { baseurl } from "../store/baseurl";
 import AppsGraph from "../components/applicationsGraph";
 import LatestApplicationsCard from "../components/latestApplicationsCard";
+import ApplicationCard from "../components/applicationCard";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 
@@ -61,8 +62,8 @@ const Home = () => {
         <div className="flex w-full h-2/4 justify-start items-center mt-4">
           <div className="flex flex-col h-cardsHeight w-2/4 justify-between py-2  items-center">
           <p className="text-left w-full bg-slate-200 ">Latest applications</p>
-            {applicationsData.slice(0,3).map((item) => (
-              <LatestApplicationsCard data={item} key={item.id} />
+            {applicationsData.slice(0, 4).map((item) => (
+              <ApplicationCard data={item} key={item.id} />
             ))}
           </div>
           <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70 border border-gray-200">

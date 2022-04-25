@@ -9,7 +9,7 @@ import ApplicationStatus from "./latestApplicationsCardComponents/applicationSta
 import BootcampName from "./latestApplicationsCardComponents/bootcampName";
 import ApplyDate from "./latestApplicationsCardComponents/applyDate";
 import ApplicantsCv from "./latestApplicationsCardComponents/applicantsCv";
-import ApplicantsLi from "./latestApplicationsCardComponents/applicantsLi";
+import ApplicantsLi from "./latestApplicationsCardComponents/applicantsLinkedIn";
 
 
 const LatestApplicationsCard = (props) => {

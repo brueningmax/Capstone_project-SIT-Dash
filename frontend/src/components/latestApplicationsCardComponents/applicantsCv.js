@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const ApplicantsCv =(props)=>{
     
     return(
-        <div className="w-8 h-8 bg-red-600 rounded-2xl text-white font-bold text-center">
-            <p>CV</p>
-        </div>
+        <button className="flex w-6 h-6 bg-lime-500 rounded-2xl text-white font-bold justify-items-center items-center border border-lime-700">
+            <p className="w-full text-center text-sm">CV</p>
+        </button>
 
     );
 }
