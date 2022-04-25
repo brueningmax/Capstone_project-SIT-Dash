@@ -28,8 +28,8 @@ const LatestApplicationsCard = (props) => {
   }
 
   return (
-    <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col bg-white shadow-lg rounded-lg items-center justify-start text-xs">
-      <div className="p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center">
+    <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col bg-enrolled shadow-lg rounded-lg items-center justify-start text-xs">
+      <div className={props.data.status === 'enrolled'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-enrolled": props.data.status === 'not_serious'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-notSerious": props.data.status === 'serious'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-serious":props.data.status === 'to_review'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-toReview":props.data.status === 'dropped_out'?"p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-droppedOut":"p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-accepted"}>
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>
       </div>
@@ -38,8 +38,8 @@ const LatestApplicationsCard = (props) => {
         <p>Bootcamp date: {props.data.bootcamp.start_date}</p>
       </div>
 
-      <div className="p-2 px-8 m-0 flex flex-row w-full h-full">
-        <div className=" w-2/4 text-center">
+      <div className="p-2 px-8 m-0 flex flex-row w-full h-full bg-white rounded-lg">
+        <div className=" w-2/4 text-center ">
          <p>
           {props.data.first_name} {props.data.last_name}
          </p>
@@ -53,8 +53,8 @@ const LatestApplicationsCard = (props) => {
             <a href={props.data.linkedin_profile}><img className=" w-6 h-6" src={LinkedIn_logo} alt='LinkedIn Logo' /></a>
           </div>
         </div>
-        <div className=" flex flex-col px-8 justify-evenly w-2/4 ">
-          <div className="flex flex-row items-center justify-evenly">
+        <div className=" flex flex-col px-8 justify-evenly w-2/4 border-2 border-solid border-gray-400 rounded-md ">
+          <div className="flex flex-row items-center justify-evenly ">
             <p>personal interview: </p>
             <input type='checkbox'></input>
           </div>
