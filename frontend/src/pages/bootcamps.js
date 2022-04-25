@@ -29,6 +29,7 @@ const Bootcamps = () => {
 
   const getBootcamps = async () => {
     const response = await Axios(`${baseurl}bootcamps/upcoming/10`);
+    console.log(response.data);
     setBootcamps(response.data);
   };
 
