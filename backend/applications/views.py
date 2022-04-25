@@ -24,6 +24,7 @@ class RetrieveUpdateApplication(RetrieveUpdateAPIView):
 
     queryset = Application.objects.all()
     permission_classes = []
+    authentication_classes = []
     serializer_class = ApplicationAllSerializer
     lookup_field = 'pk'
 
@@ -129,6 +130,7 @@ class FilteringApplicationView(ListAPIView):
 
     queryset = Application.objects.all()
     permission_classes = []
+    authentication_classes = []
     serializer_class = LatestApplicationSerializer
 
     def post(self, request, *args, **kwargs):
