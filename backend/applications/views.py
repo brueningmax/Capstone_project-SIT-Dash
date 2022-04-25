@@ -45,20 +45,32 @@ class RetrieveApplicationsCV(APIView):
         #     return Response(response, status=200)
         return HttpResponse(content=pdf, content_type='application/pdf')
 
-
-class ListLatestApplications(GenericAPIView):
-    """
-    get:
-    Returns all applications, ordered by creation date
-    """
-    queryset = Application.objects.all().order_by('-applied')
-    permission_classes = []
-    serializer_class = LatestApplicationSerializer
-
+class ListLatestApplications(APIView):
     def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()[:kwargs.get('num')]
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data, status=200)
+        queryset = Application.objects.all().order_by('-applied')[:kwargs.get('num')]
+        response = []
+        for entry in range(len(queryset)):
+            application = {
+                "id": queryset[entry].id,
+                "first_name": queryset[entry].first_name,
+                "last_name": queryset[entry].last_name,
+                "cv": queryset[entry].cv.name,
+                "applied": queryset[entry].applied,
+                "personal_passed": queryset[entry].personal_passed,
+                "technical_passed": queryset[entry].technical_passed,
+                "linkedin_profile": queryset[entry].linkedin_profile,
+                "status": queryset[entry].status,
+                "bootcamp": {
+                    "name": queryset[entry].bootcamp.name,
+                    "start_date": queryset[entry].bootcamp.start_date,
+                    "location": queryset[entry].bootcamp.bootcamp_location.location,
+                    "type": queryset[entry].bootcamp.bootcamp_type.name,
+                },
+                "time": "part-time" if queryset[entry].bootcamp.is_part_time else "full-time",
+            }
+            response.append(application)
+
+        return Response(response,status=200)
 
 class GetDashboardGraphData(APIView):
     permission_classes = []
