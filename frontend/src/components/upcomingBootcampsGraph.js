@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
 function UpcomingBootcampsGraph(props) {
-  console.log(props.data);
 
   //   const data = props.data;
   const [chartData, setChartData] = useState([]);
