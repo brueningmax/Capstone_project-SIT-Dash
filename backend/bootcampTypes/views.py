@@ -6,7 +6,7 @@ from bootcampTypes.serializers import BootcampTypeSerializer
 class ListAllBootcampType(ListAPIView):
     """
     get:
-    Returns all the restaurants
+    Returns all bootcamptypes
     """
     queryset = BootcampType.objects.all()
     permission_classes = []

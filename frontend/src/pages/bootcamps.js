@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { getBootcamps } from "../store/actions";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
-import BootcampGraph from "../components/bootcampGraph";
-import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
-import Sidebar from "../components/sidebar";
+import UpComingBootcampsCard2 from "../components/upcomingBootcampsCard2";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
+
+
 const Bootcamps = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,40 +33,21 @@ const Bootcamps = () => {
     setBootcamps(response.data);
   };
 
-  // const bootcampsTable =
-  //   bootcampsData.map((item) =>
-  //     <li key={item.name}>
-  //       {item.name}
-  //       <p>{item.bootcamp_location}</p>
-  //       {item.start_date}
-  //     </li>
-  // )
   return (
-    <div className="flex w-full h-screen bg-background">
-      <div className="flex flex-col w-full h-full ">
-        <div className="flex w-full h-1/2 ">
-          {/* <form>
-        <label>
-          Start Date Range:
-          <input
-            name="start_date"
-            type="date"
-            value={start_date_applications}
-            onChange={(e) => setStartDateApplications(e.target.value)}
-          />
-        </label>
-      </form> */}
-
-          <div className="flex h-full w-full  justify-evenly items-center">
-            {bootcampsData.map((item) => (
-              <UpComingBootcampsCard data={item} key={item.id} />
+    <div className="flex flex-col w-full h-screen bg-background">
+      <div className="flex  w-full h-fortyP items-center justify-center mt-4">
+        <div className="flex w-cardsWidth2 h-full  border-black">
+          <div className="flex h-full w-full  justify-between items-center">
+            {bootcampsData.splice(0,8).map((item) => (
+              <UpComingBootcampsCard2 data={item} key={item.id} />
             ))}
           </div>
         </div>
-        <div className="flex h-1/2 items-center justify-center ">
-          <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
-            <UpcomingBootcampsGraph data={bootcampsData} />
-          </div>
+      </div>
+
+      <div className="flex h-sixteyP items-center justify-center mb-4 border-black">
+        <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+          <UpcomingBootcampsGraph data={bootcampsData} />
         </div>
       </div>
     </div>
