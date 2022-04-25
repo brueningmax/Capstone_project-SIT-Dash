@@ -7,9 +7,12 @@ function AppsGraph(props) {
   const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#AFDAA3"];
   const [chartColors, setChartColors] = useState(originalColors);
   const [toggleValue, setValue] = useState(true);
+  const [tickValues, setTickValues] = useState([])
+  const [maxTickValue, setMaxTickValue] = useState(0)
 
   //checking the toggle value to show all or only filtered values
   useEffect(() => {
+    setMaxTickValue(getTickValue(props.data) + 1);
     toggleValue
       ? setRequestedData(props.filteredData)
       : setRequestedData(props.data);
@@ -50,6 +53,16 @@ function AppsGraph(props) {
     return data;
   }
 
+  function getTickValue(data) {
+    const tickValues = []
+    for (const key in data) {
+      tickValues.push(parseInt(data[key].total))
+      console.log(tickValues)
+    }
+    return (Math.max(...tickValues))
+  }
+
+
   const data = getChartData(requestedData);
 
   //toggle component for filtering data
@@ -75,23 +88,24 @@ function AppsGraph(props) {
 
   return (
     <>
-      {chartData === [] ? (
-        <p>Loading...</p>
-      ) : (
         <div
-          className="flex flex-col   h-full 
-           pb-30 border-blue-500  border-2 w-full"
-        >
-          <div className="flex h-tenP items-center justify-end border-green-500  border-2">
+          className="flex flex-col h-full 
+           pb-30 border-blue-500  border-2 w-full">
+        
+        <div className="flex h-tenP items-center justify-between border-green-500  border-2">
+        <div className="p-5 flex flex-column items-center h-tenP">Latest Applications</div>
             <Switch
               isOn={toggleValue}
               handleToggle={() => setValue(!toggleValue)}
             />
-          </div>
+        </div>
+        {maxTickValue === 0 && chartData === [] ? (
+        <p>Loading...</p>
+      ) : (
           <ResponsiveLine
             data={chartData}
             curve="monotoneX"
-            // blendMode="multiply"
+            blendMode="multiply"
             margin={{
               top: 70,
               right: 100,
@@ -105,7 +119,13 @@ function AppsGraph(props) {
             }}
             yScale={{
               type: "linear",
-            }}
+              min: 'auto',
+              max: 'auto',
+              stacked: false,
+              reverse: false
+              }}
+            // yFormat=" >-.2f"
+            gridYValues={10}
             axisTop={null}
             axisRight={null}
             axisBottom={{
@@ -114,14 +134,15 @@ function AppsGraph(props) {
               tickPadding: 5,
               tickRotation: 0,
               format: (v) => {
-                return v.substring(0, 3) === "Jan" ? v : v.substring(0, 3);
-              },
+                return v.substring(0, 3);
+              }
             }}
             axisLeft={{
               orient: "left",
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
+              tickValues: 10
               // legend: 'students',
               // legendOffset: -40,
               // legendPosition: 'middle'
@@ -198,21 +219,9 @@ function AppsGraph(props) {
               setChartColors(originalColors);
               setChartData(data);
             }}
-            layers={[
-              "grid",
-              "markers",
-              "axes",
-              "areas",
-              "crosshair",
-              "lines",
-              "slices",
-              "points",
-              "legends",
-              "mesh",
-            ]}
-          />
+          />)}
         </div>
-      )}
+      
     </>
   );
 }

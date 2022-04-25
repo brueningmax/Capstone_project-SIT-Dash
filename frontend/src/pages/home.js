@@ -13,7 +13,8 @@ import { Line } from "../components/applicationsGraph";
 
 const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
-  const [bootcampsData, setLatestBootcamps, setBootcamps] = useState([]);
+  const [bootcampsData, setLatestBootcamps] = useState([]);
+  const [bootcampsGraphData, setBootcamps] = useState([]);
   const [applicationsGraphData, setApplicationsGraphData] = useState([]);
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] =
     useState([]);
@@ -118,7 +119,7 @@ const Home = () => {
             ))}
           </div>
           <div className="flex h-cardsHeight w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70">
-            <UpcomingBootcampsGraph data={bootcampsData} />
+            <UpcomingBootcampsGraph data={bootcampsGraphData} />
           </div>
         </div>
       </div>
