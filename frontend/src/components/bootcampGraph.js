@@ -15,12 +15,15 @@ import {
 function BootcampGraph(props) {
   const data = props.bootcamps;
 
+  console.log(data);
+
   function getChartData(array) {
     const newArr = data.map(function (item, index) {
       const applicationsArray = item.applications.map(function (item) {
         return item.status;
       });
 
+      console.log(applicationsArray);
       return {
         name: item.name,
         location: item.bootcamp_location,
@@ -34,6 +37,8 @@ function BootcampGraph(props) {
   }
 
   const chartData = getChartData(data);
+
+  console.log(chartData);
 
   return (
     <ResponsiveContainer width={"99%"} height={300}>
