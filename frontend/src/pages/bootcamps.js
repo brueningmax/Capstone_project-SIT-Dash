@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { getBootcamps } from "../store/actions";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
-import BootcampGraph from "../components/bootcampGraph";
 import UpComingBootcampsCard2 from "../components/upcomingBootcampsCard2";
-import Sidebar from "../components/sidebar";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
+
+
 const Bootcamps = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,7 +38,7 @@ const Bootcamps = () => {
       <div className="flex  w-full h-fortyP items-center justify-center mt-4">
         <div className="flex w-cardsWidth2 h-full  border-black">
           <div className="flex h-full w-full  justify-between items-center">
-            {bootcampsData.map((item) => (
+            {bootcampsData.splice(0,8).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id} />
             ))}
           </div>

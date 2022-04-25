@@ -1,19 +1,17 @@
-import LatestApplicationsCard2 from "../components/latestApplicationsCard2";
 import React, { useState, useEffect } from "react";
-import Sidebar from "../components/sidebar";
-import AppsGraph from "../components/applicationsGraph";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import LatestApplicationsCard2 from "../components/latestApplicationsCard2";
+import AppsGraph from "../components/applicationsGraph";
 
 const Applications = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [start_date_applications, setStartDateApplications] = useState("");
   const [end_date_applications, setEndDateApplications] = useState("");
-  // const [bootcamp_type, setBootcampType] = useState("");
-  // const [bootcamp_location, setBootcampLocation] = useState("");
   const [applicationsData, setLatestApplications] = useState([]);
   const [applicationsGraphData, setApplicationsGraphData] = useState([]);
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] =

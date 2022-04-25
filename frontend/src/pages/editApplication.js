@@ -6,7 +6,6 @@ import { baseurl } from "../store/baseurl";
 const EditApplication = () => {
 
     const params = useParams().id
-
     const [applicationData, setApplicationData] = useState({})
     const [bootcamps, setBootcamps] = useState([])
 
