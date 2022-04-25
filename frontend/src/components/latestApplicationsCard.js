@@ -10,7 +10,6 @@ const LatestApplicationsCard = (props) => {
   const editPage = `/editApplication/${props.data.id}`
 
   const openCV = async () => {
-    console.log(props.data)
     const response = await Axios(
       `${baseurl}applications/loadCV/${props.data.id}`, {
         responseType: "blob",
