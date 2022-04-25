@@ -57,7 +57,7 @@ class ListLatestApplications(GenericAPIView):
         return Response(serializer.data, status=200)
 
 class GetDashboardGraphData(APIView):
-
+    permission_classes = []
     """
     post:
     creates a data package for the last 18 months, summing the applications by bootcamp-type they are applying for
