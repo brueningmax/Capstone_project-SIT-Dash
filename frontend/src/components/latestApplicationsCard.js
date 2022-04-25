@@ -36,6 +36,7 @@ const LatestApplicationsCard = (props) => {
     : props.data.status === 'dropped_out'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-droppedOut":"p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-accepted"}
     >
       <div className="p-2 px-14 mt-1 m-0 w-full h-1/6 flex justify-between items-end">
+        
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>
       </div>

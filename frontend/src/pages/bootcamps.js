@@ -38,7 +38,7 @@ const Bootcamps = () => {
       <div className="flex  w-full h-fortyP items-center justify-center mt-4">
         <div className="flex w-cardsWidth2 h-full  border-black">
           <div className="flex h-full w-full  justify-between items-center">
-            {bootcampsData.slice(0,8).map((item) => (
+            {bootcampsData.slice(0,6).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id} />
             ))}
           </div>
