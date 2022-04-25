@@ -15,23 +15,82 @@ const Bootcamps = () => {
   const [bootcamp_type, setBootcampType] = useState("");
   const [bootcamp_location, setBootcampLocation] = useState("");
   const [bootcampsData, setBootcamps] = useState([]);
+  const [toggleValue, setValue] = useState(true);
+  const [bootcampsFilteredData, setBootcampsFilteredData] = useState([])
+  const [locations, setLocations] = useState([])
 
   useEffect(() => {
+    getLocations();
     getBootcamps();
-  }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const url = `${baseurl}bootcamps/upcoming`;
-    const data = { start_date, end_date, bootcamp_type, bootcamp_location };
-    getBootcamps();
-  };
+    // setBootcamps(bootcampsData);
+    // getBootcampsFiltered();
+  }, [bootcamp_location, start_date]);
 
   const getBootcamps = async () => {
-    const response = await Axios(`${baseurl}bootcamps/upcoming/10`);
-    console.log(response.data);
+    if (bootcamp_location === "" && start_date === "") {
+      const response = await Axios.post(`${baseurl}bootcamps/upcoming/10`);
     setBootcamps(response.data);
+    }
+
+    else if (bootcamp_location === "") {
+    const response = await Axios.post(
+      `${baseurl}bootcamps/upcoming/10`,
+      { start_date: start_date }
+    )
+      setBootcamps(response.data)
+      console.log(start_date)
+    }
+
+    else if (start_date === "") {
+      const response = await Axios.post(
+        `${baseurl}bootcamps/upcoming/10`,
+        { bootcamp_location: bootcamp_location }
+      )
+        setBootcamps(response.data)
+      }
+      else {
+        const response = await Axios.post(
+          `${baseurl}bootcamps/upcoming/10`,
+          {
+            bootcamp_location: bootcamp_location,
+            start_date: start_date
+          }
+        )
+      setBootcamps(response.data)
+        }
   };
+
+  // const getBootcamps = async () => {
+  //   const response = await Axios.post(`${baseurl}bootcamps/upcoming/10`);
+  //   setBootcamps(response.data);
+  // };
+
+  const getLocations = async () => {
+    const response = await Axios(`${baseurl}locations/all/`);
+    setLocations(response.data);
+  };
+
+
+  const Switch = ({ isOn, handleToggle, onColor }) => {
+    return (
+      <div className=" flex ml-10 px-90">
+        <span className="ml-2  text-base text-gray-800 px-3 ">All Bootcamps</span>
+        <label className="relative flex items-center cursor-pointer ">
+          <input
+            type="checkbox"
+            id="toggle"
+            className="sr-only peer "
+            checked={isOn}
+            onChange={handleToggle}
+          />
+          <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.5 after:bg-toggelBackgroud after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-toggelBackgroud  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
+          <span className="ml-2 text-base text-gray-800 ">Upcoming Bootcamps</span>
+        </label>
+      </div>
+    );
+  };
+
+
 
   return (
     <div className="flex flex-col w-full h-full bg-background">
@@ -40,6 +99,73 @@ const Bootcamps = () => {
         <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
           <UpcomingBootcampsGraph data={bootcampsData} />
         </div>
+  <div className="flex flex-col w-full h-screen bg-background">
+  <form className="flex w-full h-ten items-center justify-between mt-4 px-20">
+  Filters:
+    {/* <label>
+      Bootcamp Type:
+      <select
+        name="bootcamp_type"
+        value={bootcamp_type}
+        onChange={e => setBootcampType(e.target.value)}>
+          <option value="default">Select a value...</option>
+          <option value="Full Stack">Full Stack</option>
+          <option value="Data Science">Data Science</option>
+      </select>
+    </label> */}
+
+  <label>
+    Location:
+    <select
+      name="bootcamp_location"
+      value={bootcamp_location}
+      onChange={e => setBootcampLocation(e.target.value)}>
+      <option value=""key="">All</option>
+      {locations.map(function (item) {
+        return <option value={item.id} key={item.id}>{item.location}</option>
+      })}
+    </select>
+  </label>
+
+  {/* <label>
+    Location:
+      <button value=""key="" onClick={e => setBootcampLocation(e.target.value)}>All</button>
+      {locations.map(function (item) {
+        return (
+          <button value={item.id} key={item.id} onClick={e => setBootcampLocation(e.target.value)}>{item.location}</button>
+        )
+      })}
+  </label> */}
+
+  <label>
+    Start Date:
+    <input
+      name="start_date"
+      type="date"
+      value={start_date}
+      onChange={e => setStartDate(e.target.value)} />
+  </label>
+
+  {/* <button
+    type='onSubmit'
+    onClick={getBootcamps}
+    className="text-indigo-300 bg-indigo-900 py-2 px-4 rounded"
+  > Filter </button>     */}
+
+
+      </form>
+      <Switch
+              isOn={toggleValue}
+              handleToggle={() => setValue(!toggleValue)}
+            />
+
+      <div className="flex w-full h-fortyP items-center justify-center mt-4">
+        <div className="flex w-cardsWidth2 h-full  border-black">
+          <div className="flex h-full w-full  justify-between items-center">
+            {bootcampsData.slice(0,8).map((item) => (
+              <UpComingBootcampsCard2 data={item} key={item.id} />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -51,7 +177,7 @@ const Bootcamps = () => {
           </div>
 
 
-       
+
       </div>
     </div>
   );
