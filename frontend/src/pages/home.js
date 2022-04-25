@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import Graph from "../components/graph";
-
+import { baseurl } from "../store/baseurl";
+import AppsGraph from "../components/applicationsGraph";
 import LatestApplicationsCard from "../components/latestApplicationsCard";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
-
-import { baseurl } from "../store/baseurl";
-// import MainPageStyle from "../style/main.style";
-import AppsGraph from "../components/applicationsGraph";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
-import { Line } from "../components/applicationsGraph";
 
 const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
-  const [bootcampsData, setLatestBootcamps, setBootcamps] = useState([]);
+  const [bootcampsData, setLatestBootcamps] = useState([]);
   const [applicationsGraphData, setApplicationsGraphData] = useState([]);
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] =
     useState([]);
 
   const [numLatestApplications, setNumLatestApplications] = useState(3);
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(3);
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(10);
 
   useEffect(() => {
-    getBootcamps();
     getLatestApplications();
     getLatestBootcamps();
     getApplicationsGraphData();
@@ -50,12 +44,6 @@ const Home = () => {
     setApplicationsGraphData(response.data);
   };
 
-  const getBootcamps = async () => {
-    const response = await Axios(`${baseurl}bootcamps/upcoming/10`);
-    console.log(response.data);
-    setBootcamps(response.data);
-  };
-
   const getApplicationsGraphDataFiltered = async () => {
     const response = await Axios.post(
       `${baseurl}applications/graph_data/dashboard/`,
@@ -69,7 +57,7 @@ const Home = () => {
       <div className="flex bg-background flex-col w-full h-full">
         <div className="flex w-full h-2/4 justify-start items-center mt-4">
           <div className="flex flex-col h-cardsHeight w-2/4 justify-between py-2  items-center">
-            {applicationsData.map((item) => (
+            {applicationsData.slice(0,3).map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}
           </div>
@@ -85,7 +73,7 @@ const Home = () => {
         "
         >
           <div className="flex h-full px-3 w-1/2  justify-evenly  items-center">
-            {bootcampsData.map((item) => (
+            {bootcampsData.slice(0,3).map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
           </div>
