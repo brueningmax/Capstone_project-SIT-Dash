@@ -3,6 +3,7 @@ import LinkedIn_logo from '../assets/li_logo.png'
 import { Link } from "react-router-dom";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
+import { BsFillPencilFill } from 'react-icons/bs';
 
 
 const LatestApplicationsCard = (props) => {
@@ -28,17 +29,22 @@ const LatestApplicationsCard = (props) => {
   }
 
   return (
-    <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col bg-enrolled shadow-lg rounded-lg items-center justify-start text-xs">
-      <div className={props.data.status === 'enrolled'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-enrolled": props.data.status === 'not_serious'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-notSerious": props.data.status === 'serious'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-serious":props.data.status === 'to_review'? "p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-toReview":props.data.status === 'dropped_out'?"p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-droppedOut":"p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-accepted"}>
+    <div className={props.data.status === 'enrolled'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-enrolled"
+    : props.data.status === 'not_serious'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-notSerious"
+    : props.data.status === 'serious'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-serious"
+    : props.data.status === 'to_review'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-toReview"
+    : props.data.status === 'dropped_out'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-droppedOut":"p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-accepted"}
+    >
+      <div className="p-2 px-14 mt-1 m-0 w-full h-1/6 flex justify-between items-end">
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>
       </div>
-      <div className="p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center">
+      <div className="p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-bootcampsNamesBackground">
         <p>{props.data.bootcamp.name}</p>
         <p>Bootcamp date: {props.data.bootcamp.start_date}</p>
       </div>
 
-      <div className="p-2 px-8 m-0 flex flex-row w-full h-full bg-white rounded-lg">
+      <div className="p-2 px-8 m-0 flex flex-row w-full h-full bg-white rounded-bl-lg rounded-br-lg">
         <div className=" w-2/4 text-center ">
          <p>
           {props.data.first_name} {props.data.last_name}
@@ -62,6 +68,9 @@ const LatestApplicationsCard = (props) => {
             <p>technical interview: </p>
             <input type='checkbox'></input>
           </div>
+        </div>
+        <div className="flex items-center justify-center w-6 pl-2">
+          <BsFillPencilFill className="w-4 h-4 border-solid"/>
         </div>
       </div>
     </div>
