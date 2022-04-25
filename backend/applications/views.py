@@ -14,7 +14,7 @@ from datetime import datetime
 from django.db.models import Q
 
 class RetrieveUpdateApplication(RetrieveUpdateAPIView):
-    """2
+    """
     get:
     Returns Application by ID
 
@@ -58,7 +58,7 @@ class ListLatestApplications(GenericAPIView):
 
 class GetDashboardGraphData(APIView):
     permission_classes = []
-    authentication_classes = ()
+    authentication_classes = []
     """
     post:
     creates a data package for the last 18 months, summing the applications by bootcamp-type they are applying for
