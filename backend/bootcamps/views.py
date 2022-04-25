@@ -24,6 +24,7 @@ class RetrieveUpdateBootcamp(RetrieveUpdateAPIView):
     """
     queryset = Bootcamp.objects.all()
     permission_classes = []
+    authentication_classes = []
     serializer_class = BootcampAllSerializer
     lookup_field = 'pk'
 

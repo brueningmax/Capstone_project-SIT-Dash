@@ -24,6 +24,7 @@ class RetrieveUpdateApplication(RetrieveUpdateAPIView):
 
     queryset = Application.objects.all()
     permission_classes = []
+    authentication_classes = []
     serializer_class = ApplicationAllSerializer
     lookup_field = 'pk'
 
@@ -39,6 +40,9 @@ class ListAllApplications(ListAPIView):
 class RetrieveApplicationsCV(APIView):
     def get(self, request, *args, **kwargs):
         pdf = get_object_or_404(Application, pk=kwargs.get('pk')).cv
+        # if pdf == None:
+        #     response = {'details': 'No CV attached'}
+        #     return Response(response, status=200)
         return HttpResponse(content=pdf, content_type='application/pdf')
 
 
@@ -58,6 +62,7 @@ class ListLatestApplications(GenericAPIView):
 
 class GetDashboardGraphData(APIView):
     permission_classes = []
+    authentication_classes = []
     """
     post:
     creates a data package for the last 18 months, summing the applications by bootcamp-type they are applying for
