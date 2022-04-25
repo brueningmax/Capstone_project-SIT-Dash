@@ -41,8 +41,7 @@ function UpcomingBootcampsGraph(props) {
 
   return (
     <div
-      className="flex flex-column align-middle p-4 "
-      style={{ width: "100%" }}
+      className="flex flex-column align-middle p-4 w-full"
     >
       <h2>Upcoming Bootcamps</h2>
       {maxTickValue === 0 ? (
@@ -53,8 +52,8 @@ function UpcomingBootcampsGraph(props) {
           data={chartData}
           keys={["Not Serious", "To Review", "Serious", "Accepted", "Enrolled"]}
           indexBy="Name"
-          margin={{ top: 60, right: 140, bottom: 60, left: 80 }}
-          padding={0.3}
+          margin={{ top: 60, right: 140, bottom: 100, left: 80 }}
+          padding={0.7}
           valueScale={{ type: "linear" }}
           indexScale={{ type: "band", round: true }}
           colors={["#D68D96", "#FDDB93", "#AFDAA3", "#7AB495", "#819FB3"]}

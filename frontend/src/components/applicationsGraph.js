@@ -165,6 +165,7 @@ function AppsGraph(props) {
                 symbolShape: "square",
                 itemDirection: "left-to-right",
                 itemTextColor: "#777",
+                toggleSerie: true,
                 effects: [
                   {
                     on: "hover",
@@ -219,6 +220,7 @@ function AppsGraph(props) {
             }}
           />)}
         </div>
+
     </>
   );
 }

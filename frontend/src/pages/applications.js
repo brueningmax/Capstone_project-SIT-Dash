@@ -10,18 +10,38 @@ import AppsGraph from "../components/applicationsGraph";
 const Applications = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [start_date_applications, setStartDateApplications] = useState("");
-  const [end_date_applications, setEndDateApplications] = useState("");
+
+  const [start_date, setStartDate] = useState("");
+  const [status, setStatus] = useState("");
+  const [bootcamp_location, setBootcampLocation] = useState("");
+
   const [applicationsData, setLatestApplications] = useState([]);
   const [applicationsGraphData, setApplicationsGraphData] = useState([]);
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] =
     useState([]);
+  
+  const [locations, setLocations] = useState([])
 
   useEffect(() => {
+    getLocations();
     getLatestApplications();
     getApplicationsGraphData();
     getApplicationsGraphDataFiltered();
-  }, []);
+  }, [start_date, status, bootcamp_location]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // const response = Axios.post(
+    //   `${baseurl}applications/filter/`,
+    //   { start_date, bootcamp_location, status}
+    // );
+    // setLatestApplications(response.data);
+  };
+
+  const getLocations = async () => {
+    const response = await Axios(`${baseurl}locations/all/`);
+    setLocations(response.data);
+  };
 
   const getLatestApplications = async () => {
     const response = await Axios(`${baseurl}applications/latest/5`);
@@ -46,9 +66,58 @@ const Applications = () => {
   };
 
   return (
-    <div className="flex  w-full h-screen bg-background ">
-      <div className="flex flex-col w-full ">
-        <div className="flex  w-full  h-fortyP   justify-center">
+    <div className="flex flex-col w-full h-screen bg-background ">
+      <form className="flex w-full h-ten items-center justify-between mt-4 px-20">
+Filters:
+  
+  <label>
+    Location:
+    <select
+      name="bootcamp_location"
+      value={bootcamp_location}
+      onChange={e => setBootcampLocation(e.target.value)}>
+      <option value=""key="">All</option>
+      {locations.map(function (item) {
+        return <option value={item.id} key={item.id}>{item.location}</option>
+      })}
+    </select>
+  </label>
+  
+  <label>
+    Start Date:
+    <input
+      name="start_date"
+      type="date"
+      value={start_date}
+      onChange={e => setStartDate(e.target.value)} />
+  </label>
+
+  <label>
+    Status:
+    <select
+      name="status"
+      value={status}
+      onChange={e => setStatus(e.target.value)}>
+        <option value="">All</option>
+        <option value="enrolled">Enrolled</option>
+        <option value="serious">Serious</option>
+        <option value="accepted">Accepted</option>
+        <option value="to_review">To Review</option>
+        <option value="dropped_out">Dropped Out</option>
+        <option value="not_serious">Not Serious</option>
+    </select>
+  </label>
+  
+  <button
+    type='onSubmit'
+    onClick={handleSubmit}
+    className="text-indigo-300 bg-indigo-900 py-2 px-4 rounded"
+  > Filter </button>         
+</form>
+
+
+      <div className="flex flex-col w-full h-full">
+        <div className="flex  w-full  h-fortyP  justify-center">
        
           <div className="flex h-full w-cardsWidth2 justify-between items-center">
             {applicationsData.map((item) => (
