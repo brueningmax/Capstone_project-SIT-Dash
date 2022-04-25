@@ -74,7 +74,7 @@ function BootcampPieChart(props) {
   };
 
   return (
-    <div className="h-full w-full m-0 p-0">
+    <div className="h-full w-full m-0 p-0 ">
       <ResponsivePie
         data={chartData}
         margin={{
