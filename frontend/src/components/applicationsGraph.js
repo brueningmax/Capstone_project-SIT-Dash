@@ -4,7 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 function AppsGraph(props) {
   const [requestedData, setRequestedData] = useState(props.filteredData);
   const [chartData, setChartData] = useState([]);
-  const originalColors = ["#78C1C2", "#F3A5BC", "#4D94D0", "#F5CF89"];
+  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#AFDAA3"];
   const [chartColors, setChartColors] = useState(originalColors);
   const [toggleValue, setValue] = useState(true);
   const [tickValues, setTickValues] = useState([])
@@ -33,7 +33,7 @@ function AppsGraph(props) {
         "Part-time Bootcamps",
         "Short Courses",
         "Immersive Bootcamps",
-        "Total Bootcamps",
+        "Total",
       ];
 
       const monthData = [];

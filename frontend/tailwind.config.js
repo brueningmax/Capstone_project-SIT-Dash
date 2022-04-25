@@ -33,6 +33,7 @@ module.exports = {
         toggelBackgroud: "#DA925E",
         toggelButton: "#698C9E",
         background: "#f1f0fa",
+        bootcampsNamesBackground:"#d4d4fc",
         partTime: "#F3A5BC",
         shortC: "#78C1C2",
         immersiveB: "#4D94D0",
