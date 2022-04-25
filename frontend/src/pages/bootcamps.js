@@ -34,21 +34,24 @@ const Bootcamps = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen bg-background">
-      <div className="flex  w-full h-fortyP items-center justify-center mt-4">
-        <div className="flex w-cardsWidth2 h-full  border-black">
-          <div className="flex h-full w-full  justify-between items-center">
-            {bootcampsData.slice(0,6).map((item) => (
-              <UpComingBootcampsCard2 data={item} key={item.id} />
-            ))}
-          </div>
+    <div className="flex flex-col w-full h-full bg-background">
+      <div className="flex  w-full h-1/2 items-center justify-center ">
+        <div className="flex w-full h-full items-center  justify-center">
+        <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+          <UpcomingBootcampsGraph data={bootcampsData} />
+        </div>
         </div>
       </div>
 
-      <div className="flex h-sixteyP items-center justify-center mb-4 border-black">
-        <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
-          <UpcomingBootcampsGraph data={bootcampsData} />
-        </div>
+      <div className="flex h-1/2 items-center justify-center mb-4 border-black">
+      <div className="flex flex-wrap  h-full w-cardsWidth2  justify-start gap-10 overflow-auto">
+            {bootcampsData.slice(0,100).map((item) => (
+              <UpComingBootcampsCard2 data={item} key={item.id} />
+            ))}
+          </div>
+
+
+       
       </div>
     </div>
   );

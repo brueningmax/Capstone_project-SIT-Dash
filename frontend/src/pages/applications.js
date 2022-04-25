@@ -24,7 +24,7 @@ const Applications = () => {
   }, []);
 
   const getLatestApplications = async () => {
-    const response = await Axios(`${baseurl}applications/latest/5`);
+    const response = await Axios(`${baseurl}applications/latest/100`);
     setLatestApplications(response.data);
   };
 
@@ -48,20 +48,19 @@ const Applications = () => {
   return (
     <div className="flex  w-full h-screen bg-background ">
       <div className="flex flex-col w-full ">
-        <div className="flex  w-full  h-fortyP   justify-center">
-       
-          <div className="flex h-full w-cardsWidth2 justify-between items-center">
-            {applicationsData.map((item) => (
-              <LatestApplicationsCard2 data={item} key={item.id} />
-            ))}
-          </div>
-        </div>
-        <div className="flex h-sixteyP items-center justify-center  ">
-          <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+        <div className="flex  w-full  h-1/2   justify-center">
+          <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
             <AppsGraph
               data={applicationsGraphData}
               filteredData={applicationsGraphDataFiltered}
             />
+          </div>
+        </div>
+        <div className="flex  h-1/2 items-center haha justify-center  ">
+          <div className="flex flex-wrap  h-full w-cardsWidth2  justify-start gap-10 overflow-auto">
+            {applicationsData.map((item) => (
+              <LatestApplicationsCard2 data={item} key={item.id} />
+            ))}
           </div>
         </div>
       </div>
