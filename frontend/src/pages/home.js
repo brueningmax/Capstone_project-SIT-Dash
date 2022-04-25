@@ -57,6 +57,7 @@ const Home = () => {
       <div className="flex bg-background flex-col w-full h-full">
         <div className="flex w-full h-2/4 justify-start items-center mt-4">
           <div className="flex flex-col h-cardsHeight w-2/4 justify-between py-2  items-center">
+          <p className="text-left w-full bg-slate-200 ">Latest applications</p>
             {applicationsData.slice(0,3).map((item) => (
               <LatestApplicationsCard data={item} key={item.id} />
             ))}

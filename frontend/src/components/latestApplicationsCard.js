@@ -29,12 +29,7 @@ const LatestApplicationsCard = (props) => {
   }
 
   return (
-    <div className={props.data.status === 'enrolled'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-enrolled"
-    : props.data.status === 'not_serious'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-notSerious"
-    : props.data.status === 'serious'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-serious"
-    : props.data.status === 'to_review'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-toReview"
-    : props.data.status === 'dropped_out'? "h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs bg-droppedOut":"p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center bg-accepted"}
-    >
+    <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col shadow-lg rounded-lg items-center justify-start text-xs">
       <div className="p-2 px-14 mt-1 m-0 w-full h-1/6 flex justify-between items-end">
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>
