@@ -58,6 +58,7 @@ class ListLatestApplications(GenericAPIView):
 
 class GetDashboardGraphData(APIView):
     permission_classes = []
+    authentication_classes = []
     """
     post:
     creates a data package for the last 18 months, summing the applications by bootcamp-type they are applying for

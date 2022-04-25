@@ -16,6 +16,9 @@ const Home = () => {
   const [numLatestApplications, setNumLatestApplications] = useState(3);
   const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(10);
 
+  // Axios.defaults.xsrfCookieName = 'csrftoken'
+  // Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
   useEffect(() => {
     getLatestApplications();
     getLatestBootcamps();
