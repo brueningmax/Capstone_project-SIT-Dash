@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LinkedIn_logo from '../assets/li_logo.png'
+import { Link } from "react-router-dom";
+import { baseurl } from "../store/baseurl";
+import Axios from "axios";
 
 
 const LatestApplicationsCard = (props) => {
  
+  const editPage = `/editApplication/${props.data.id}`
+
+  const openCV = async () => {
+    console.log(props.data)
+    const response = await Axios(
+      `${baseurl}applications/loadCV/${props.data.id}`, {
+        responseType: "blob",
+      }
+    )
+    .then((response) => {
+      //Create a Blob from the PDF Stream
+      const file = new Blob([response.data], { type: "application/pdf" });
+      //Build a URL from the file
+      const fileURL = URL.createObjectURL(file);
+      //Open the URL on new Window
+       const pdfWindow = window.open();
+       pdfWindow.location.href = fileURL;            
+    })
+  }
+
   return (
-    <div className="h-cardsHeight2 w-cardsWidth2 p-0 pt-2 m-0 flex flex-col bg-white shadow-lg rounded-lg items-center justify-start text-xs">
+    <div className="h-cardsHeight3 w-cardsWidth3 p-0 pt-2 m-0 flex flex-col bg-white shadow-lg rounded-lg items-center justify-start text-xs">
       <div className="p-2 px-14 m-0 w-full h-1/6 flex justify-between items-center">
         <p>{props.data.status}</p>
         <p>{props.data.applied}</p>
@@ -21,8 +44,13 @@ const LatestApplicationsCard = (props) => {
           {props.data.first_name} {props.data.last_name}
          </p>
           <div className="flex flex-row justify-evenly items-center ">
-            <p className="bg-gray-400 h-6 w-6 flex text-white rounded-3xl items-center justify-center">CV</p>
-            <img className=" w-6 h-6" src={LinkedIn_logo} alt='LinkedIn Logo' ></img>
+            <Link to={editPage} ><p className="bg-gray-400 h-6 w-6 flex text-white rounded-3xl items-center justify-center">E</p> </Link>
+            {/* CONDITIONAL RENDERING OF THE CV */}
+            {/* {props.data.cv !== '' && props.data.cv !== null ? <p onClick={openCV} className="cursor-pointer bg-gray-400 h-6 w-6 flex text-white rounded-3xl items-center justify-center">CV</p> : ''} */}
+            <p onClick={openCV} className="cursor-pointer bg-gray-400 h-6 w-6 flex text-white rounded-3xl items-center justify-center">CV</p>
+            {/* CONDITIONAL RENDERING OF THE LINKEDIN-BUTTON */}
+            {/* {props.data.linkedin_profile !== '' && props.data.linkedin_profile !== null ? <a href={props.data.linkedin_profile}><img className=" w-6 h-6" src={LinkedIn_logo} alt='LinkedIn Logo' /></a> : ''} */}
+            <a href={props.data.linkedin_profile}><img className=" w-6 h-6" src={LinkedIn_logo} alt='LinkedIn Logo' /></a>
           </div>
         </div>
         <div className=" flex flex-col px-8 justify-evenly w-2/4 ">

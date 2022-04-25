@@ -43,7 +43,7 @@ function UpcomingBootcampsGraph(props) {
           data={chartData}
           keys={["Not Serious", "To Review", "Serious", "Accepted", "Enrolled"]}
           indexBy="Name"
-          margin={{ top: 50, right: 120, bottom: 120, left: 60 }}
+          margin={{ top: 60, right: 140, bottom: 60, left: 80 }}
           padding={0.3}
           valueScale={{ type: "linear" }}
           indexScale={{ type: "band", round: true }}

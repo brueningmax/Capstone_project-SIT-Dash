@@ -1,6 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from rest_framework import response
 
-from rest_framework.generics import ListAPIView, GenericAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, GenericAPIView, RetrieveUpdateAPIView, get_object_or_404
 from rest_framework.response import Response
 
 from applications.models import Application
@@ -11,13 +13,15 @@ from rest_framework.response import Response
 from datetime import datetime
 from django.db.models import Q
 
-class RetrieveApplication(RetrieveAPIView):
-    queryset = Application.objects.all()
-    permission_classes = []
-    serializer_class = ApplicationAllSerializer
-    lookup_field = 'pk'
+class RetrieveUpdateApplication(RetrieveUpdateAPIView):
+    """
+    get:
+    Returns Application by ID
 
-class UpdateApplication(UpdateAPIView):
+    patch:
+    Updates Application by ID
+    """
+
     queryset = Application.objects.all()
     permission_classes = []
     serializer_class = ApplicationAllSerializer
@@ -26,17 +30,22 @@ class UpdateApplication(UpdateAPIView):
 class ListAllApplications(ListAPIView):
     """
     get:
-    Returns all the restaurants
+    Returns all Applications
     """
     queryset = Application.objects.all()
     permission_classes = []
     serializer_class = LatestApplicationSerializer
 
+class RetrieveApplicationsCV(APIView):
+    def get(self, request, *args, **kwargs):
+        pdf = get_object_or_404(Application, pk=kwargs.get('pk')).cv
+        return HttpResponse(content=pdf, content_type='application/pdf')
+
 
 class ListLatestApplications(GenericAPIView):
     """
     get:
-    Returns all the restaurants
+    Returns all applications, ordered by creation date
     """
     queryset = Application.objects.all().order_by('-applied')
     permission_classes = []
@@ -48,6 +57,12 @@ class ListLatestApplications(GenericAPIView):
         return Response(serializer.data, status=200)
 
 class GetDashboardGraphData(APIView):
+
+    """
+    post:
+    creates a data package for the last 18 months, summing the applications by bootcamp-type they are applying for
+    """
+
     def post(self, request, *args, **kwargs):
         #building date pairs for the last 18 Months
         current_month = datetime.today().month
@@ -106,6 +121,11 @@ class GetDashboardGraphData(APIView):
 
 
 class FilteringApplicationView(ListAPIView):
+    """
+    get:
+    returns all Applications, filtered by passed filter
+    """
+
     queryset = Application.objects.all()
     permission_classes = []
     serializer_class = LatestApplicationSerializer

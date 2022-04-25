@@ -6,7 +6,7 @@ from bootcampLocations.models import BootcampLocation
 class ListAllBootcampLocation(ListAPIView):
     """
     get:
-    Returns all the restaurants
+    Returns all the bootcamp locations
     """
     queryset = BootcampLocation.objects.all()
     permission_classes = []

@@ -10,6 +10,7 @@ const EditApplication = () => {
     const [applicationData, setApplicationData] = useState({})
     const [bootcamps, setBootcamps] = useState([])
 
+
     useEffect(() => {
         getApplicationData()
         getBootcamps()
@@ -37,12 +38,11 @@ const EditApplication = () => {
 
     const saveChanges = async() => {
         const response = await Axios.patch(
-            `${baseurl}applications/update/${params}`, applicationData
+            `${baseurl}applications/${params}`, applicationData
         );
         if (response.status == 200){
             alert('Changes saved')
-        }
-            
+        }    
     }
 
     return (
@@ -56,7 +56,7 @@ const EditApplication = () => {
                             <div className="flex place-content-between">
                                 <div className="flex flex-col w-full">
                                     <label htmlFor="first_name" >First name</label>
-                                    <input onChange={onChangeHandler} value={applicationData.first_name ?? 'r'} typeof="text" className="w-full border border-black-100 bg-gray-100" id="first_name" />
+                                    <input onChange={onChangeHandler} value={applicationData.first_name ?? ''} typeof="text" className="w-full border border-black-100 bg-gray-100" id="first_name" />
                                 </div>
                             </div>
                             <div className="flex ">

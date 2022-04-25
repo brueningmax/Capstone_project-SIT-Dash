@@ -1,39 +1,37 @@
-from rest_framework.generics import ListAPIView, GenericAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, GenericAPIView, RetrieveUpdateAPIView
 from datetime import datetime
 from rest_framework.response import Response
 
 from applications.models import Application
 from bootcamps.models import Bootcamp
-from bootcamps.serializers import BootcampSerializer, BootcampUpComingSerializer
+from bootcamps.serializers import BootcampSerializer, BootcampUpComingSerializer, BootcampAllSerializer
 from rest_framework.views import APIView
 
 
 class ListAllBootcamp(ListAPIView):
     """
     get:
-    Returns all the restaurants
+    Returns all bootcamps
     """
     queryset = Bootcamp.objects.all()
     permission_classes = []
     serializer_class = BootcampSerializer
 
-
-
-# class ListUpcomingBootcamp(GenericAPIView):
-#     #
-#     queryset = Bootcamp.objects.all().order_by('start_date')
-#     permission_classes = []
-#     serializer_class = BootcampUpComingSerializer
-#     #
-#     def get(self, request, *args, **kwargs):
-#         today = datetime.now().date()
-#         Bootcamp.objects.filter(start_date__gt=today)
-#         queryset = self.get_queryset().filter(start_date__gt=today)[:3]
-#         serializer = self.get_serializer(queryset, many=True)
-#         return Response(serializer.data)
+class RetrieveUpdateBootcamp(RetrieveUpdateAPIView):
+    """
+    get:
+    returns bootcamp by ID
+    """
+    queryset = Bootcamp.objects.all()
+    permission_classes = []
+    serializer_class = BootcampAllSerializer
+    lookup_field = 'pk'
 
 class ListUpcomingBootcamp(APIView):
-    # get upcoming Bootcamps with sums of applications total and statuses
+    """
+    get:
+    lists upcoming Bootcamps with sums of applications total and statuses
+    """
 
     def get(self, request, *args, **kwargs):
         today = datetime.now().date()

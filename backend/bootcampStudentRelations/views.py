@@ -6,7 +6,7 @@ from bootcampStudentRelations.serializers import BootcampStudentRelationSerializ
 class ListAllBootcampStudentRelations(ListAPIView):
     """
     get:
-    Returns all the restaurants
+    Returns all the bootcamp student relations
     """
     queryset = BootcampStudentRelation.objects.all()
     permission_classes = []
