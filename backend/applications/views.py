@@ -40,6 +40,9 @@ class ListAllApplications(ListAPIView):
 class RetrieveApplicationsCV(APIView):
     def get(self, request, *args, **kwargs):
         pdf = get_object_or_404(Application, pk=kwargs.get('pk')).cv
+        # if pdf == None:
+        #     response = {'details': 'No CV attached'}
+        #     return Response(response, status=200)
         return HttpResponse(content=pdf, content_type='application/pdf')
 
 
