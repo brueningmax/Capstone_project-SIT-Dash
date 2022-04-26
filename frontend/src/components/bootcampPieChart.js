@@ -64,7 +64,7 @@ function BootcampPieChart(props) {
         textAnchor="middle"
         dominantBaseline="central"
         style={{
-          fontSize: "46px",
+          fontSize: "52px",
           fontWeight: 500,
         }}
       >
@@ -74,12 +74,12 @@ function BootcampPieChart(props) {
   };
 
   return (
-    <div className="h-full w-full m-0 p-0 ">
+    <div className="h-full w-full m-0 p-0">
       <ResponsivePie
         data={chartData}
         margin={{
-          top: 11,
-          bottom: 210,
+          top: 15,
+          bottom: 220,
         }}
         valueFormat=" >-"
         innerRadius={0.6}

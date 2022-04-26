@@ -11,6 +11,7 @@ module.exports = {
         cardsHeight3: "28%",
         cardsHeight4: "80%",
         cardsHeight5: "85%",
+        cardsHeight6: "45%",
         tenP: "10%",
         fiveP: "5%",
         fortyP: "40%",
