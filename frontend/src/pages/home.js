@@ -14,8 +14,8 @@ const Home = () => {
   const [applicationsGraphDataFiltered, setApplicationsGraphDataFiltered] =
     useState([]);
 
-  const [numLatestApplications, setNumLatestApplications] = useState(3);
-  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(10);
+  const [numLatestApplications, setNumLatestApplications] = useState(100);
+  const [numUpcomingBootcamps, setNumUpcomingBootcamps] = useState(100);
 
   // Axios.defaults.xsrfCookieName = 'csrftoken'
   // Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
@@ -57,33 +57,36 @@ const Home = () => {
   };
 
   return (
-    <div className="flex w-full h-screen">
-      <div className="flex bg-background flex-col w-full h-full">
-        <div className="flex w-full h-2/4 justify-start items-center mt-4">
-          <div className="flex flex-col h-cardsHeight w-2/4 justify-between py-2  items-center">
-          <p className="text-left w-full bg-slate-200 ">Latest applications</p>
-            {applicationsData.slice(0, 4).map((item) => (
+    <div className="flex w-screen h-full ">
+      <div className="flex bg-background  w-full h-full ">
+        <div className="flex flex-col w-1/2 h-full  items-center ">
+          <div className="flex h-1/2 w-cardsWidth3 justify-center items-center ">
+            <div className="flex  w-full h-cardsHeight bg-white shadow-lg rounded-lg bg-opacity-70 ">
+              <AppsGraph
+                data={applicationsGraphData}
+                filteredData={applicationsGraphDataFiltered}
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center">
+            {applicationsData.slice(0, 10).map((item) => (
               <ApplicationCard data={item} key={item.id} />
             ))}
           </div>
-          <div className="flex h-cardsHeight  w-cardsWidth bg-white shadow-lg rounded-lg bg-opacity-70 border border-gray-200">
-            <AppsGraph
-              data={applicationsGraphData}
-              filteredData={applicationsGraphDataFiltered}
-            />
-          </div>
         </div>
-        <div
-          className="flex w-full h-2/4 justify-start items-center mb-4
-        "
-        >
-          <div className="flex h-full px-3 w-1/2  justify-evenly  items-center">
-            {bootcampsData.slice(0,3).map((item) => (
+
+        <div className="flex flex-col w-1/2 h-full border-l-2 ">
+          <div className="flex h-1/2 w-full   items-center justify-center">
+            <div className="flex w-cardsWidth3  h-cardsHeight bg-white border border-gray-200  shadow-lg rounded-lg bg-opacity-70 ">
+              <UpcomingBootcampsGraph data={bootcampsData} />
+            </div>
+          </div>
+
+          <div className="flex flex-col h-1/2 w-full justify-between  items-center overflow-auto ">
+            {bootcampsData.slice(0, 5).map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}
-          </div>
-          <div className="flex h-cardsHeight w-cardsWidth bg-white border border-gray-200  shadow-lg rounded-lg bg-opacity-70 ">
-            <UpcomingBootcampsGraph data={bootcampsData} />
           </div>
         </div>
       </div>
