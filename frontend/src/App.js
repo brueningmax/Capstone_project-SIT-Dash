@@ -13,16 +13,16 @@ import Landing_page from "./pages/Landing_page";
 function App() {
   return (
     <BrowserRouter>
-      <Sidebar>
-        <Routes>
-          <Route path="/" element={<Landing_page />} />
-          <Route path="/dashboard" element={<Home />} />
-          <Route path="/applications" element={<Applications />} />
-          <Route path="/editApplication/:id" element={<EditApplication />} />
-          <Route path="/bootcamps" element={<Bootcamps />} />
-          <Route path="/editBootcamp/:id" element={<EditBootcamp />} />
-        </Routes>
-      </Sidebar>
+            <Sidebar>
+              <Routes>
+                <Route path="/" element={<Landing_page />} />
+                <Route path="/dashboard" element={<Home />} />
+                <Route path="/applications" element={<Applications />} />
+                <Route path="/editApplication/:id" element={<EditApplication />} />
+                <Route path="/bootcamps" element={<Bootcamps />} />
+                <Route path="/editBootcamp/:id" element={<EditBootcamp />} />
+              </Routes>
+            </Sidebar>
     </BrowserRouter>
   );
 }

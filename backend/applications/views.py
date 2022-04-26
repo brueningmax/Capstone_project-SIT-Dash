@@ -152,7 +152,7 @@ class FilteringApplicationView(ListAPIView):
         if request.data.get('status') is not None:
             queryset = queryset.filter(status=request.data['status'])
         if request.data.get('start_date') is not None:
-            queryset = queryset.filter(bootcamp__start_date=request.data['start_date'])
+            queryset = queryset.filter(bootcamp__start_date__gt=request.data['start_date'])
         if request.data.get('bootcamp_location') is not None:
             queryset = queryset.filter(bootcamp__bootcamp_location__location=request.data['bootcamp_location'])
         serializer = self.get_serializer(queryset, many=True)
