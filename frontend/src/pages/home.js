@@ -75,7 +75,7 @@ const Home = () => {
           className="flex w-full h-2/4 justify-start items-center mb-4
         "
         >
-          <div className="flex h-full px-3 w-1/2  justify-evenly  items-center">
+          <div className="flex flex-col h-full px-3 w-1/2  justify-evenly  items-center">
             {bootcampsData.slice(0,3).map((item) => (
               <UpComingBootcampsCard data={item} key={item.id} />
             ))}

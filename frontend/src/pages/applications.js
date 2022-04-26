@@ -44,8 +44,10 @@ const Applications = () => {
   };
 
   const getLatestApplications = async () => {
-    const response = await Axios(`${baseurl}applications/latest/5`);
-    setLatestApplications(response.data);
+    // if (bootcamp_location === "" && start_date === "" && status === "") {
+      const response = await Axios(`${baseurl}applications/filter`);
+      setLatestApplications((response.data).slice(0, 10));
+    // }
   };
 
   const getApplicationsGraphData = async () => {
