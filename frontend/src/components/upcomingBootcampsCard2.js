@@ -3,18 +3,20 @@ import BootcampPieChart from "./bootcampPieChart";
 
 const UpComingBootcampsCard2 = (props) => {
   return (
-    <div className="h-cardsHeight4 w-48 p-4 flex flex-col  shadow-lg rounded-lg bg-white items-center  justify-center ">
-      <div className="h-1/5 w-full m-0 p-0">
-        <div className="flex">
+    <div className="flex flex-col w-1/2 h-5/6  shadow-lg rounded-lg bg-white items-center  justify-start ">
+      <div className="flex  h-1/4 w-full items-center justify-between bg-lavender">
+        <div className="flex h-1/3 w-1/3  justify-center">
           <p>{props.data.name}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex h-1/3 w-1/3 justify-center">
           <p>{props.data.bootcamp_location}</p>
+        </div>
+        <div className="flex h-1/3 w-1/3 justify-center">
           <p>{props.data.start_date}</p>
         </div>
       </div>
 
-      <div className="h-4/5 w-full  m-0 p-0">
+      <div className="flex p-6 h-3/4 w-full">
         <BootcampPieChart data={props.data.applications} />
       </div>
     </div>
