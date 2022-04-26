@@ -41,7 +41,7 @@ const CollapsableApplicationCard = (props) => {
                 <ApplicationStatus status={props.data.status}/>
                 <Bootcamptime time={props.data.time}/>
             </div>
-            <div className="flex justify-between h-1/5 items-center">
+            <div className="flex justify-between h-1/5 items-center py-1">
                 <h1 className="font-bold text-4xl">{props.data.first_name} {props.data.last_name}</h1>
                 <button onClick={() => setCollapsed(!collapsed)} className="border rounded-sm border-black"><BiExpandAlt className="w-6 h-6 color-blue-200"/>
                 </button>
