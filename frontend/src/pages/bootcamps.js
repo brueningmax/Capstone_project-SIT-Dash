@@ -177,10 +177,14 @@ const Bootcamps = () => {
           </div>
 
 
-
+      </div>
+      
       </div>
     </div>
-  );
-};
+    </div>
+    </div>
+  
+    );
+    };
 
 export default Bootcamps;
