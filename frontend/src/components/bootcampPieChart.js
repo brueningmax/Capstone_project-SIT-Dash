@@ -125,8 +125,8 @@ function BootcampPieChart(props) {
             symbolSize: 22,
             itemDirection: "left-to-right",
             text: {
-              fontSize: 18,
-          }
+              fontSize: "25px",
+            },
           },
           {
             data: chartData.map((item, index) => {
