@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import SIT_LOGO from '../assets/SIT_Logo.png'
+import Footer from "./footer";
 
 const Sidebar = (props) => {
   const currentLocation = useLocation();
@@ -10,15 +12,15 @@ const Sidebar = (props) => {
     "flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700";
   return (
     <>
-      <div className="flex flex-col items-center w-44 h-full overflow-hidden text-indigo-300 bg-indigo-900 rounded">
+      <div className={currentLocation.pathname == "/" ? "hidden" : "flex flex-col items-center w-44 h-full overflow-hidden text-indigo-300 bg-indigo-900 rounded-t"}>
         <Link className="flex items-center w-full px-3 mt-3" to="/">
-          <span className="ml-2 text-xl font-bold text-white">SIT Academy</span>
+          <img className="py-3" src={SIT_LOGO}/>
         </Link>
         <div className="w-full px-2">
           <div className="flex flex-col items-center w-full mt-3 border-t border-gray-700">
             <Link
-              className={currentLocation.pathname == "/" ? highligted : normal}
-              to="/"
+              className={currentLocation.pathname == "/dashboard" ? highligted : normal}
+              to="/dashboard"
             >
               <svg
                 className="w-6 h-6 stroke-current"
@@ -87,7 +89,12 @@ const Sidebar = (props) => {
           </div>
         </div>
       </div>
-      <div className=" flex w-full overflow-auto"> {props.children} </div>
+        <div className=" flex flex-col w-full overflow-auto">
+          <div className=" flex h-full w-full overflow-auto">
+            {props.children}
+          </div>
+          <Footer />
+        </div>
     </>
   );
 };

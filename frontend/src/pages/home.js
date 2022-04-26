@@ -6,6 +6,7 @@ import LatestApplicationsCard from "../components/latestApplicationsCard";
 import ApplicationCardGrid from "../components/applicationCardGrid";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
+import Footer from "../components/footer"
 
 const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
@@ -57,7 +58,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex w-screen h-full ">
+    <div className="flex w-screen h-full">
       <div className="flex bg-background  w-full h-full ">
         <div className="flex flex-col w-1/2 h-full  items-center ">
           <div className="flex h-1/2 w-cardsWidth3 justify-center items-center ">
@@ -78,6 +79,12 @@ const Home = () => {
             ))}
           </div>
         </div>
+        {/* <div
+          className="flex w-full h-2/4 justify-start items-center mb-4
+        "
+        >
+          <div className="flex flex-col h-full px-3 w-1/2  justify-evenly  items-center">
+            {bootcampsData.slice(0,3).map((item) => ( */}
 
         <div className="flex flex-col w-1/2 h-full border-l-2 ">
           <div className="flex h-1/2 w-full   items-center justify-center">
