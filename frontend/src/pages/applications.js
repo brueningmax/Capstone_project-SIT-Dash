@@ -23,10 +23,14 @@ const Applications = () => {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
+    const abortController = new AbortController();
     getLocations();
     getLatestApplications();
     getApplicationsGraphData();
     getApplicationsGraphDataFiltered();
+    return () => {
+      abortController.abort();
+  }
   }, [start_date, status, bootcamp_location]);
 
   const handleSubmit = (e) => {
@@ -44,10 +48,74 @@ const Applications = () => {
   };
 
   const getLatestApplications = async () => {
-    // if (bootcamp_location === "" && start_date === "" && status === "") {
-      const response = await Axios(`${baseurl}applications/filter`);
-      setLatestApplications((response.data).slice(0, 10));
-    // }
+    if (bootcamp_location === "" && start_date === "" && status === "") {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`);
+      setLatestApplications((response.data));
+    }
+    else if (bootcamp_location === "" && start_date === "") {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`,
+      { status: status }
+      );
+      setLatestApplications((response.data));
+    }
+    else if (bootcamp_location === "" && status === "") {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`,
+      { start_date: start_date }
+      );
+      console.log(response.data)
+      setLatestApplications((response.data));
+    }
+    else if (start_date === "" && status === "") {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`,
+      { bootcamp_location: bootcamp_location }
+      );
+      setLatestApplications((response.data));
+    }
+    else if (start_date === "") {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`,
+        {
+          bootcamp_location: bootcamp_location,
+          status: status
+        }
+      );
+      setLatestApplications((response.data));
+    }
+    else if (bootcamp_location === "") {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`,
+        {
+          start_date: start_date,
+          status: status
+        }
+      );
+      setLatestApplications((response.data));
+    }
+    else if (status === "") {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`,
+        {
+          start_date: start_date,
+          bootcamp_location: bootcamp_location
+        }
+      );
+      setLatestApplications((response.data));
+    }
+    else {
+      const response = await Axios.post(
+        `${baseurl}applications/filter/`,
+        {
+          start_date: start_date,
+          bootcamp_location: bootcamp_location,
+          status : status
+        }
+      );
+      setLatestApplications((response.data));
+    }
   };
 
   const getApplicationsGraphData = async () => {
@@ -84,7 +152,7 @@ const Applications = () => {
               </option>
               {locations.map(function (item) {
                 return (
-                  <option value={item.id} key={item.id}>
+                  <option value={item.location} key={item.id}>
                     {item.location}
                   </option>
                 );
@@ -116,14 +184,6 @@ const Applications = () => {
               <option value="not_serious">Not Serious</option>
             </select>
           </label>
-          <button
-            type="onSubmit"
-            onClick={handleSubmit}
-            className="text-indigo-300 bg-indigo-900 py-2 px-4 rounded"
-          >
-            {" "}
-            Filter{" "}
-          </button>
         </form>
       </div>
 
@@ -135,7 +195,7 @@ const Applications = () => {
           />
         </div>
       </div>
-      <div className="flex  mt-12 w-full h-cardsFF justify-center items-center">
+      <div className="flex mt-12 w-full h-cardsFF justify-center items-center">
         <div className="flex h-full w-cardsWidth3  ">
           <div className="flex flex-col  h-full w-full items-center justify-start gap-10 overflow-auto">
             {applicationsData.map((item) => (
