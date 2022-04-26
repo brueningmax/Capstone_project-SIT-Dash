@@ -93,8 +93,8 @@ const Bootcamps = () => {
 
 
   return (
-    <div className="flex flex-col  w-full bg-background">
-        <div className="flex flex-col h-ten w-full ">
+    <div className="flex flex-col w-full bg-background">
+        <div className="flex flex-col h-tenP w-full">
           <form className="flex items-center justify-between mt-4 px-20">
           Filters:
           {/* <label>
@@ -137,25 +137,24 @@ const Bootcamps = () => {
             /> */}
       </div>  
 
-      <div className="flex flex-col w-full h-cardsHeight6 items-center justify-center ">
+      <div className="flex  flex-col w-full h-cardsHeight6 items-center justify-center mb-8">
 
           <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
           <UpcomingBootcampsGraph data={bootcampsData} />
         </div>
       </div>
-        <div className="flex flex-col w-full h-cardsHeight6 items-center justify-center ">
+        {/* <div className="haha flex flex-col w-11/12 h-cardsHeight6 mt-1 items-center justify-center "> Michal-----------*/}
 
-  {/* <div className="flex flex-col w-full h-screen bg-background">
-   */}
-        <div className="flex h-full items-center justify-center mb-4 border-black">
-           <div className="flex flex-wrap  h-full w-cardsWidth2  justify-start gap-10 overflow-auto">
+  {/*   <div className="flex flex-col w-full h-screen bg-background"> */}
+        <div className="flex h-cardsHeight6 items-center justify-center mb-4">
+           <div className="flex flex-wrap  mx-10 h-full w-full justify-between  overflow-auto">
             {bootcampsData.slice(0,10).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id} />
             ))}
-          </div>
+        </div>
 
      
-    </div>
+    {/* </div> */}
 
     
 
