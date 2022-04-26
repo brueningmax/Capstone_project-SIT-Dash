@@ -8,6 +8,7 @@ import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 import MyResponsiveLine from "../components/testgraph";
 import Footer from "../components/footer"
+import CollapsableApplicationCard from "../components/collapsableApplicationCard";
 
 const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
@@ -80,8 +81,8 @@ const Home = () => {
           {/* Old flex display */}
           {/* <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center"> */}
           
-            {applicationsData.slice(0, 10).map((item) => (
-              <ApplicationCardGrid data={item} key={item.id} />
+            {applicationsData.slice(0, 1).map((item) => (
+              <CollapsableApplicationCard data={item} key={item.id} />
             ))}
           </div>
         </div>
