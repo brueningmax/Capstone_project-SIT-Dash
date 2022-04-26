@@ -73,7 +73,7 @@ const Bootcamps = () => {
 
   const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
-      <div className=" flex ml-10 px-90">
+      <div className="flex ml-10 px-90">
         <span className="ml-2  text-base text-gray-800 px-3 ">All Bootcamps</span>
         <label className="relative flex items-center cursor-pointer ">
           <input
@@ -93,83 +93,77 @@ const Bootcamps = () => {
 
 
   return (
-  <div className="flex flex-col w-full h-screen bg-background">
-  <form className="flex w-full h-ten items-center justify-between mt-4 px-20">
-  Filters:
-    {/* <label>
-      Bootcamp Type:
-      <select
-        name="bootcamp_type"
-        value={bootcamp_type}
-        onChange={e => setBootcampType(e.target.value)}>
-          <option value="default">Select a value...</option>
-          <option value="Full Stack">Full Stack</option>
-          <option value="Data Science">Data Science</option>
-      </select>
-    </label> */}
-  
-  <label>
-    Location:
-    <select
-      name="bootcamp_location"
-      value={bootcamp_location}
-      onChange={e => setBootcampLocation(e.target.value)}>
-      <option value=""key="">All</option>
-      {locations.map(function (item) {
-        return <option value={item.id} key={item.id}>{item.location}</option>
-      })}
-    </select>
-  </label>
-  
-  {/* <label>
-    Location:
-      <button value=""key="" onClick={e => setBootcampLocation(e.target.value)}>All</button>
-      {locations.map(function (item) {
-        return (
-          <button value={item.id} key={item.id} onClick={e => setBootcampLocation(e.target.value)}>{item.location}</button>
-        )
-      })}
-  </label> */}
-  
-  <label>
-    Start Date:
-    <input
-      name="start_date"
-      type="date"
-      value={start_date}
-      onChange={e => setStartDate(e.target.value)} />
-  </label>
+    <div className="flex flex-col  w-full bg-background">
+        <div className="flex flex-col h-ten w-full ">
+          <form className="flex items-center justify-between mt-4 px-20">
+          Filters:
+          {/* <label>
+          Bootcamp Type:
+          <select
+          name="bootcamp_type"
+          value={bootcamp_type}
+          onChange={e => setBootcampType(e.target.value)}>
+            <option value="default">Select a value...</option>
+            <option value="Full Stack">Full Stack</option>
+            <option value="Data Science">Data Science</option>
+          </select>
+          </label> */}
 
-  {/* <button
-    type='onSubmit'
-    onClick={getBootcamps}
-    className="text-indigo-300 bg-indigo-900 py-2 px-4 rounded"
-  > Filter </button>     */}
-        
-       
-      </form>
-      <Switch
+          <label>
+          Location:
+            <select
+                name="bootcamp_location"
+                value={bootcamp_location}
+                onChange={e => setBootcampLocation(e.target.value)}>
+            <option value=""key="">All</option>
+                {locations.map(function (item) {
+                return <option value={item.id} key={item.id}>{item.location}</option>
+            })}
+            </select>
+          </label>
+
+          <label>
+            Start Date:
+            <input
+            name="start_date"
+            type="date"
+            value={start_date}
+            onChange={e => setStartDate(e.target.value)} />
+          </label>
+          </form>
+        {/* <Switch
               isOn={toggleValue}
               handleToggle={() => setValue(!toggleValue)}
-            />
+            /> */}
+      </div>  
 
-      <div className="flex w-full h-fortyP items-center justify-center mt-4">
-        <div className="flex w-cardsWidth2 h-full  border-black">
-          <div className="flex h-full w-full  justify-between items-center">
-            {bootcampsData.slice(0,8).map((item) => (
-              <UpComingBootcampsCard2 data={item} key={item.id} />
-            ))}
-          </div>
-        </div>
-      </div>
+      <div className="flex flex-col w-full h-cardsHeight6 items-center justify-center ">
 
-      <div className="flex h-sixteyP items-center justify-center mb-4 border-black">
-        <div className="flex h-5/6 w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+          <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
           <UpcomingBootcampsGraph data={bootcampsData} />
         </div>
       </div>
+        <div className="flex flex-col w-full h-cardsHeight6 items-center justify-center ">
+
+  {/* <div className="flex flex-col w-full h-screen bg-background">
+   */}
+        <div className="flex h-full items-center justify-center mb-4 border-black">
+           <div className="flex flex-wrap  h-full w-cardsWidth2  justify-start gap-10 overflow-auto">
+            {bootcampsData.slice(0,10).map((item) => (
+              <UpComingBootcampsCard2 data={item} key={item.id} />
+            ))}
+          </div>
+
+     
     </div>
-  );
-};
+
+    
+
+
+    </div>
+    </div>
+  
+    );
+    };
 
 export default Bootcamps;

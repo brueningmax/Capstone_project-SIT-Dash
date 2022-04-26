@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
 function UpcomingBootcampsGraph(props) {
-
   //   const data = props.data;
   const [chartData, setChartData] = useState([]);
   const [data, setData] = useState([]);
-  const [tickValues, setTickValues] = useState([])
-  const [maxTickValue, setMaxTickValue] = useState(0)
+  const [tickValues, setTickValues] = useState([]);
+  const [maxTickValue, setMaxTickValue] = useState(0);
 
   useEffect(() => {
     setData(props.data);
@@ -31,9 +30,9 @@ function UpcomingBootcampsGraph(props) {
   }
 
   function getTickValue(data) {
-    const tickValues = []
-    data.forEach(item => tickValues.push(parseInt(item.applications.total)))
-    return (Math.max(...tickValues))
+    const tickValues = [];
+    data.forEach((item) => tickValues.push(parseInt(item.applications.total)));
+    return Math.max(...tickValues);
   }
 
 
@@ -42,17 +41,18 @@ function UpcomingBootcampsGraph(props) {
     <div
       className="flex flex-column align-middle p-4 w-full"
     >
-      <h2>Upcoming Bootcamps</h2>
+      <h2>Upcoming</h2>
       {maxTickValue === 0 ? (
         <p>Loading...</p>
       ) : (
-         
         <ResponsiveBar
           data={chartData}
           keys={["Not Serious", "To Review", "Serious", "Accepted", "Enrolled"]}
           indexBy="Name"
           margin={{ top: 60, right: 140, bottom: 100, left: 80 }}
           padding={0.7}
+          margin={{ top: 50, right: 100, bottom: 100, left: 20 }}
+          padding={0.3}
           valueScale={{ type: "linear" }}
           indexScale={{ type: "band", round: true }}
           colors={["#D68D96", "#FDDB93", "#AFDAA3", "#7AB495", "#819FB3"]}
@@ -73,8 +73,8 @@ function UpcomingBootcampsGraph(props) {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            tickValues: 4
-            }}
+            tickValues: 4,
+          }}
           gridYValues={4}
           enableLabel={false}
           labelSkipWidth={12}
@@ -105,7 +105,6 @@ function UpcomingBootcampsGraph(props) {
               ],
             },
           ]}
-
         />
       )}
     </div>

@@ -64,7 +64,7 @@ function BootcampPieChart(props) {
         textAnchor="middle"
         dominantBaseline="central"
         style={{
-          fontSize: "46px",
+          fontSize: "52px",
           fontWeight: 500,
         }}
       >
@@ -78,9 +78,8 @@ function BootcampPieChart(props) {
       <ResponsivePie
         data={chartData}
         margin={{
-          right: 200,
-          top: 20,
-          bottom: 20
+          top: 15,
+          bottom: 220,
         }}
         valueFormat=" >-"
         innerRadius={0.6}
@@ -113,16 +112,16 @@ function BootcampPieChart(props) {
                         label: item.id
                     }
                 }),
-                anchor: 'right',
+                anchor: 'bottom',
                 direction: 'column',
                 toggleSerie: true,
                 justify: false,
-                translateX: 60,
-                translateY: 0,
+                translateX: -20,
+                translateY: 210,
                 itemWidth: 108,
-                itemHeight: 20,
+                itemHeight: 30,
                 itemsSpacing: 0,
-                symbolSize: 15,
+                symbolSize: 22,
                 itemDirection: 'left-to-right'
             },
             {
@@ -133,14 +132,14 @@ function BootcampPieChart(props) {
                         label: item.value
                     }
                 }),
-                anchor: 'right',
+                anchor: 'bottom',
                 direction: 'column',
                 toggleSerie: true,
                 justify: false,
-                translateX: 200,
-                translateY: 0,
+                translateX: 120,
+                translateY: 210,
                 itemWidth: 108,
-                itemHeight: 20,
+                itemHeight: 30,
                 itemsSpacing: 0,
                 symbolSize: 0,
                 itemDirection: 'left-to-right'
