@@ -57,7 +57,7 @@ const ApplicationCard = (props) => {
         </div>
       </div>
       <div className="flex place-content-between pt-2">
-        <ApplyDate applied={props.data.applied} />
+
         <Link to={editPage}><BsFillPencilFill className="w-4 h-4 border-solid"/></Link>
       </div>
     </div>
