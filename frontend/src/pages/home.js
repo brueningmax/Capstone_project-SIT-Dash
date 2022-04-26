@@ -3,6 +3,7 @@ import Axios from "axios";
 import { baseurl } from "../store/baseurl";
 import AppsGraph from "../components/applicationsGraph";
 import LatestApplicationsCard from "../components/latestApplicationsCard";
+import ApplicationCard from "../components/applicationCard";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 

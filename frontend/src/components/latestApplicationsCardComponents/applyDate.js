@@ -5,9 +5,8 @@ const ApplyDate =(props)=>{
     
     return(
         <div>
-            <p>applied: {props.data.applied}</p>
+            <p className="text-xs">applied: {props.applied}</p>
         </div>
-
     );
 }
 
