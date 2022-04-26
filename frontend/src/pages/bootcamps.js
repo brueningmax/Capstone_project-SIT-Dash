@@ -96,7 +96,7 @@ const Bootcamps = () => {
     <div className="flex flex-col w-full  h-full bg-background">
 
 
-<div className="flex  h-full w-full flex-col">
+<div className="flex h-1/2 w-full flex-col">
 
 <form className="flex w-full h-ten items-center justify-between mt-4 px-20">
 Filters:
@@ -124,7 +124,6 @@ return <option value={item.id} key={item.id}>{item.location}</option>
 })}
 </select>
 </label>
-
 
 
 <label>
