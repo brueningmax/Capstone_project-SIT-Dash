@@ -5,7 +5,6 @@ import { ResponsivePie } from "@nivo/pie";
 // import tailwindConfig from './../tailwind.config.js'
 // const twFullConfig = resolveConfig(tailwindConfig)
 
-
 function BootcampPieChart(props) {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState([]);
@@ -78,8 +77,10 @@ function BootcampPieChart(props) {
       <ResponsivePie
         data={chartData}
         margin={{
-          top: 15,
-          bottom: 220,
+          top: 200,
+          bottom: 200,
+          right: 100,
+          left: 400,
         }}
         valueFormat=" >-"
         innerRadius={0.6}
@@ -104,46 +105,49 @@ function BootcampPieChart(props) {
         //     ]
         // }}
         legends={[
-            {
-                data: chartData.map((item, index) => {
-                    return {
-                        color: item.color,
-                        id: item.id,
-                        label: item.id
-                    }
-                }),
-                anchor: 'bottom',
-                direction: 'column',
-                toggleSerie: true,
-                justify: false,
-                translateX: -20,
-                translateY: 210,
-                itemWidth: 108,
-                itemHeight: 30,
-                itemsSpacing: 0,
-                symbolSize: 22,
-                itemDirection: 'left-to-right'
-            },
-            {
-                data: chartData.map((item, index) => {
-                    return {
-                        color: item.color,
-                        id: item.id,
-                        label: item.value
-                    }
-                }),
-                anchor: 'bottom',
-                direction: 'column',
-                toggleSerie: true,
-                justify: false,
-                translateX: 120,
-                translateY: 210,
-                itemWidth: 108,
-                itemHeight: 30,
-                itemsSpacing: 0,
-                symbolSize: 0,
-                itemDirection: 'left-to-right'
-            }
+          {
+            data: chartData.map((item, index) => {
+              return {
+                color: item.color,
+                id: item.id,
+                label: item.id,
+              };
+            }),
+            anchor: "bottom",
+            direction: "column",
+            toggleSerie: true,
+            justify: false,
+            translateX: -350,
+            translateY: 170,
+            itemWidth: 108,
+            itemHeight: 30,
+            itemsSpacing: 0,
+            symbolSize: 22,
+            itemDirection: "left-to-right",
+            text: {
+              fontSize: 18,
+          }
+          },
+          {
+            data: chartData.map((item, index) => {
+              return {
+                color: item.color,
+                id: item.id,
+                label: item.value,
+              };
+            }),
+            anchor: "bottom",
+            direction: "column",
+            toggleSerie: true,
+            justify: false,
+            translateX: -220,
+            translateY: 170,
+            itemWidth: 108,
+            itemHeight: 30,
+            itemsSpacing: 0,
+            symbolSize: 0,
+            itemDirection: "left-to-right",
+          },
         ]}
         layers={[
           "arcs",
