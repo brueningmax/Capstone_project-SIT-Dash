@@ -6,6 +6,7 @@ import LatestApplicationsCard from "../components/latestApplicationsCard";
 import ApplicationCard from "../components/applicationCard";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
+import Footer from "../components/footer"
 
 const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
@@ -57,7 +58,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex w-screen h-full ">
+    <div className="flex w-screen h-full">
       <div className="flex bg-background  w-full h-full ">
         <div className="flex flex-col w-1/2 h-full  items-center ">
           <div className="flex h-1/2 w-cardsWidth3 justify-center items-center ">
