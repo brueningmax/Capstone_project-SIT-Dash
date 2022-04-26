@@ -8,13 +8,15 @@ import React from 'react';
 import '../src/tailwind.css';
 import Sidebar from './components/sidebar';
 import EditBootcamp from './pages/editBootcamp';
+import Landing_page from "./pages/Landing_page";
 
 function App() {
   return (
     <BrowserRouter>
       <Sidebar>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Landing_page />} />
+          <Route path="/dashboard" element={<Home />} />
           <Route path="/applications" element={<Applications />} />
           <Route path="/editApplication/:id" element={<EditApplication />} />
           <Route path="/bootcamps" element={<Bootcamps />} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom"
+import { useLocation, useParams, useNavigate } from "react-router-dom"
 import Axios from "axios";
 import { baseurl } from "../store/baseurl";
 
@@ -9,6 +9,7 @@ const EditApplication = () => {
     const [applicationData, setApplicationData] = useState({})
     const [bootcamps, setBootcamps] = useState([])
 
+    const navigate = useNavigate()
 
     useEffect(() => {
         getApplicationData()
@@ -41,6 +42,7 @@ const EditApplication = () => {
         );
         if (response.status == 200){
             alert('Changes saved')
+            navigate(-1)
         }    
     }
 
@@ -136,7 +138,7 @@ const EditApplication = () => {
                     </div>
                     <div className="w-1/12 h-1/2 flex flex-col place-content-between">
                         <button className="border border-black-300 bg-green-200 w-full" onClick={saveChanges}>SAVE</button>
-                        <button className="border border-black-300 bg-red-300 w-full">CANCEL</button>
+                        <button className="border border-black-300 bg-red-300 w-full" onClick={() => navigate(-1)}>CANCEL</button>
 
                     </div>
                 </div>
