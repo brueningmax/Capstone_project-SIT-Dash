@@ -3,6 +3,9 @@ module.exports = {
   theme: {
     extend: {
       height: {
+        cardsF: "50%",
+        cardsFF: "38%",
+        cardsT: "7%",
         cardsHeight: "90%",
         cardsHeight2: "26%",
         cardsHeight3: "28%",
@@ -77,7 +80,7 @@ module.exports = {
         rem29: "80rem",
         rem30: "82rem",
         rem31: "85rem",
-        cardsContainer: "46%",
+        cardsContainer: "45%",
         cardsWidth: "47%",
         cardsWidth2: "94%",
         cardsWidth3: "90%",

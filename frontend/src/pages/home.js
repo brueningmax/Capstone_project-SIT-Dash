@@ -69,9 +69,9 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex flex-col  h-1/2 w-full justify-between overflow-auto items-center">
-            {applicationsData.slice(0, 100).map((item) => (
-              <LatestApplicationsCard data={item} key={item.id} />
+          <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center">
+            {applicationsData.slice(0, 10).map((item) => (
+              <ApplicationCard data={item} key={item.id} />
             ))}
           </div>
         </div>
