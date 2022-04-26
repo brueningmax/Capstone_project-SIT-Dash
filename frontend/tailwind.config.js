@@ -91,7 +91,6 @@ module.exports = {
         cardWidth4: "27%",
         cardWidth5: "30%",
         sixty: "60%",
-
       },
       colors: {
         serious: "#AFDAA3",
@@ -109,6 +108,8 @@ module.exports = {
         shortC: "#78C1C2",
         immersiveB: "#4D94D0",
         totalB: "#F5CF89",
+        lavender: "#CDB0EE",
+        offwhite: "#FAF9F6",
       },
     },
   },

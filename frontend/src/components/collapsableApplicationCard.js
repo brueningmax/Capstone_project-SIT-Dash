@@ -35,21 +35,21 @@ const CollapsableApplicationCard = (props) => {
     }
 
     return (
-        <div className="flex flex-col w-forty px-6 py-0 haha  bg-white rounded-lg ">
-            <div className="h-tenP flex flex-row justify-start items-center">
+        <div className="flex flex-col w-3/4 px-6 py-0  rounded-lg border-gray-200 border shadow-lg bg-offwhite ">
+            <div className="h-12 flex flex-row justify-start items-center">
                 <BootcampType type={props.data.bootcamp.type}/>
                 <ApplicationStatus status={props.data.status}/>
                 <Bootcamptime time={props.data.time}/>
             </div>
-            <div className="flex justify-between h-1/5 items-center py-1">
-                <h1 className="font-bold text-4xl">{props.data.first_name} {props.data.last_name}</h1>
+            <div className="flex justify-between mb-2  h-12 items-center py-1">
+                <h1 className="font-bold  text-4xl">{props.data.first_name} {props.data.last_name}</h1>
                 <button onClick={() => setCollapsed(!collapsed)} className="border rounded-sm border-black"><BiExpandAlt className="w-6 h-6 color-blue-200"/>
                 </button>
             </div>
             <ApplyDate applied={props.data.applied}/>
 
 
-            <div className={collapsed ? "hidden" : "flex flex-row ease-linear"}>
+            <div className={collapsed ? "hidden" : "flex flex-row  ease-linear"}>
                 <div className="flex grow items-center gap-5 justify-center">
                     <ApplicantsCv cv={props.data.cv} function={openCV}/>
                     <ApplicantsLinkedIn link={props.data.linkedin_profile}/>
