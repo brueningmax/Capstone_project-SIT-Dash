@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LinkedIn_logo from '../assets/li_logo.png'
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
 import { BsFillPencilFill } from 'react-icons/bs';
@@ -15,22 +15,26 @@ import InterviewStatus from "./latestApplicationsCardComponents/interviewStatus"
 const ApplicationCard = (props) => {
   const editPage = `/editApplication/${props.data.id}`
 
+
   const openCV = async () => {
-    console.log('Hello')
-    const response = await Axios(
-      `${baseurl}applications/loadCV/${props.data.id}`, {
-      responseType: "blob",
-    }
-    )
-      .then((response) => {
-        //Create a Blob from the PDF Stream
-        const file = new Blob([response.data], { type: "application/pdf" });
-        //Build a URL from the file
-        const fileURL = URL.createObjectURL(file);
-        //Open the URL on new Window
-        const pdfWindow = window.open();
-        pdfWindow.location.href = fileURL;
-      })
+        const response = await Axios(
+          `${baseurl}applications/loadCV/${props.data.id}`, {
+          responseType: "blob",
+        }
+        )
+          .then((response) => {
+            //Create a Blob from the PDF Stream
+            const file = new Blob([response.data], { type: "application/pdf" });
+            //Build a URL from the file
+            const fileURL = URL.createObjectURL(file);
+            //Open the URL on new Window
+            const pdfWindow = window.open();
+            pdfWindow.location.href = fileURL;
+          })
+      }
+
+  const sayHello = () => {
+      console.log('hello')
   }
   return (
     <div className="w-2/3 bg-white p-5 pt-1 pb-2 rounded-lg">
@@ -43,7 +47,7 @@ const ApplicationCard = (props) => {
       <div className="flex w-full py-1">
         <div className="flex grow items-center gap-5">
           <p className="font-bold text-2xl">{props.data.first_name} {props.data.last_name}</p>
-          <ApplicantsCv onClick={openCV} />
+          <ApplicantsCv cv={props.data.cv} function={openCV} />
           <ApplicantsLinkedIn link={props.data.linkedin_profile}/>
         </div>
         <div className="w-5/12 border-l-2 border-gray-300 flex-col pl-5 items-center">
@@ -54,7 +58,7 @@ const ApplicationCard = (props) => {
       </div>
       <div className="flex place-content-between pt-2">
         <ApplyDate applied={props.data.applied} />
-        <BsFillPencilFill className="w-4 h-4 border-solid"/>
+        <Link to={editPage}><BsFillPencilFill className="w-4 h-4 border-solid"/></Link>
       </div>
     </div>
   )

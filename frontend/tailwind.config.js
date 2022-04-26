@@ -13,6 +13,8 @@ module.exports = {
         cardsHeight5: "85%",
         cardsHeight6: "45%",
         tenP: "10%",
+        twentyP: "20%",
+        sixty: "60%",
         fiveP: "5%",
         fortyP: "40%",
         sixteyP: "55%",
@@ -88,6 +90,8 @@ module.exports = {
         togW: "13%",
         cardWidth4: "27%",
         cardWidth5: "30%",
+        sixty: "60%",
+
       },
       colors: {
         serious: "#AFDAA3",
