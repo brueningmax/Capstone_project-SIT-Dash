@@ -76,15 +76,17 @@ const Home = () => {
               {/* <MyResponsiveLine /> */}
             </div>
           </div>
-
-          <div className="grid grid-cols-2 gap-6 h-1/2 w-full  justify-start overflow-auto items-center">
+          <div className="flex justify-center h-1/2 w-11/12 items-center ">
+          <div className="flex flex-col gap-6  h-full w-full overflow-auto items-center justify-start">
           {/* Old flex display */}
           {/* <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center"> */}
           
-            {applicationsData.slice(0, 1).map((item) => (
+            {applicationsData.slice(0, 10).map((item) => (
               <CollapsableApplicationCard data={item} key={item.id} />
             ))}
           </div>
+          </div>
+          
         </div>
         {/* <div
           className="flex w-full h-2/4 justify-start items-center mb-4
@@ -99,12 +101,13 @@ const Home = () => {
               <UpcomingBootcampsGraph data={bootcampsData} />
             </div>
           </div>
-
-          <div className="flex flex-col gap-y-6 h-1/2 w-full justify-between  items-center overflow-auto ">
+          <div className="flex  justify-center h-1/2 w-full items-center ">
+          <div className="flex flex-col gap-y-6 h-full w-11/12 justify-between  items-center overflow-auto ">
             {bootcampsData.slice(0, 5).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id} />
             ))}
           </div>
+        </div>
         </div>
       </div>
     </div>

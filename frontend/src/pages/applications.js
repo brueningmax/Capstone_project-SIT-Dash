@@ -4,7 +4,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import ApplicationCard from "../components/applicationCard";
+import CollapsableApplicationCard from "../components/collapsableApplicationCard";
 import AppsGraph from "../components/applicationsGraph";
 
 const Applications = () => {
@@ -188,18 +188,18 @@ const Applications = () => {
       </div>
 
       <div className="flex  w-full  h-cardsF    justify-center">
-        <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+        <div className="flex h-full w-cardsWidth2 bg-offwhite shadow-lg rounded-lg opacity-75">
           <AppsGraph
             data={applicationsGraphData}
             filteredData={applicationsGraphDataFiltered}
           />
         </div>
       </div>
-      <div className="flex mt-12 w-full h-cardsFF justify-center items-center">
-        <div className="flex h-full w-cardsWidth3  ">
-          <div className="flex flex-col  h-full w-full items-center justify-start gap-10 overflow-auto">
+      <div className="flex mt-6 w-full h-cardsFF justify-center items-center">
+        <div className="flex h-full w-cardsWidth2 mt-6 ">
+          <div className="grid grid-cols-3 h-full w-full  gap-y-4 overflow-auto">
             {applicationsData.map((item) => (
-              <ApplicationCard data={item} key={item.id} />
+              <CollapsableApplicationCard data={item} key={item.id} />
             ))}
           </div>
         </div>

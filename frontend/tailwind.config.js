@@ -109,6 +109,7 @@ module.exports = {
         immersiveB: "#4D94D0",
         totalB: "#F5CF89",
         lavender: "#CDB0EE",
+        offwhite: "#FAF9F6",
       },
     },
   },
