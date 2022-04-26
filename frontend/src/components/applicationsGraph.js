@@ -12,13 +12,17 @@ function AppsGraph(props) {
 
   //checking the toggle value to show all or only filtered values
   useEffect(() => {
-    setMaxTickValue(getTickValue(props.data) + 1);
+    const abortController = new AbortController();
+    // setMaxTickValue(getTickValue(props.data) + 1);
     toggleValue
       ? setRequestedData(props.filteredData)
       : setRequestedData(props.data);
     toggleValue
       ? setChartData(getChartData(props.filteredData))
       : setChartData(getChartData(props.data));
+    return () => {
+      abortController.abort();
+    }
   }, [props, toggleValue]);
 
   //function to convert API data into a format that can be used by Nivo Charts
@@ -37,7 +41,6 @@ function AppsGraph(props) {
       ];
 
       const monthData = [];
-
       for (const key in requestedData) {
         const obj = {
           x: `${requestedData[key].month} ${requestedData[key].year}`,
@@ -67,8 +70,8 @@ function AppsGraph(props) {
 
   const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
-      <div className=" flex  items-center  h-1/2 w-full justify-start  ml-10">
-        <span className="ml-2  text-base text-gray-800 px-3 ">Total</span>
+      <div className="flex items-center h-1/2 w-full justify-start  ml-10">
+        <span className="ml-2 text-base text-gray-800 px-3 ">Total</span>
         <label className="relative flex items-center cursor-pointer ">
           <input
             type="checkbox"
@@ -94,48 +97,43 @@ function AppsGraph(props) {
               handleToggle={() => setValue(!toggleValue)}
             />
         </div>
-        {maxTickValue === 0 && chartData === [] ? (
+        {props === null && chartData === [] ? (
         <p>Loading...</p>
       ) : (
           <ResponsiveLine
             data={chartData}
-            curve="monotoneX"
-            blendMode="multiply"
-            margin={{
-              top: 50,
-              right: 60,
-              bottom: 80,
-              left: 80,
-            }}
+            curve='monotoneX'
+            blendMode='multiply'
+            margin={{ top: 80, right: 80, bottom: 80, left: 80  }}
             colors={chartData.map((c, index) => chartColors[index])}
-            lineWidth={0}
+              lineWidth={0}
             xScale={{
-              type: "point",
+              type: 'point',
             }}
             yScale={{
-              type: "linear",
+              type: 'linear',
               min: 'auto',
               max: 'auto',
               stacked: false,
               reverse: false
               }}
-            // yFormat=" >-.2f"
+            // yFormat=' >-.2f'
             gridYValues={10}
             axisTop={null}
             axisRight={null}
             axisBottom={{
-              orient: "bottom",
+              orient: 'bottom',
               tickSize: 5,
-              tickPadding: 5,
+              tickPadding: 10,
               tickRotation: 0,
               format: (v) => {
                 return v.substring(0, 3);
               }
             }}
             axisLeft={{
-              orient: "left",
+              orient: 'left',
               tickSize: 5,
-              tickPadding: 5,
+              tickPadding: 10,
               tickRotation: 0,
               tickValues: 10
               // legend: 'students',
@@ -146,29 +144,30 @@ function AppsGraph(props) {
             enableArea={true}
             enableGridX={false}
             areaOpacity={1}
+            areaBlendMode={'normal'}
             animate={true}
             motionStiffness={90}
             motionDamping={15}
             legends={[
               {
-                anchor: "top-left",
-                direction: "row",
+                anchor: 'top-left',
+                direction: 'row',
                 justify: false,
                 translateX: -20,
                 translateY: -55,
-                itemWidth: 150,
+                itemWidth: 120,
                 itemHeight: 26,
                 itemsSpacing: -5,
                 symbolSize: 15,
-                symbolShape: "square",
-                itemDirection: "left-to-right",
-                itemTextColor: "#777",
+                symbolShape: 'square',
+                itemDirection: 'left-to-right',
+                itemTextColor: '#777',
                 toggleSerie: true,
                 effects: [
                   {
-                    on: "hover",
+                    on: 'hover',
                     style: {
-                      itemBackground: "rgba(0, 0, 0, .03)",
+                      itemBackground: 'rgba(0, 0, 0, .03)',
                       itemOpacity: 1,
                     },
                   },
@@ -182,10 +181,10 @@ function AppsGraph(props) {
               return (
                 <div
                   style={{
-                    background: "white",
-                    padding: "9px 10px",
-                    border: "2px solid #ccc",
-                    fontSize: "20px",
+                    background: 'white',
+                    padding: '9px 10px',
+                    border: '2px solid #ccc',
+                    fontSize: '20px',
                   }}
                 >
                   <div>{point.serieId}</div>

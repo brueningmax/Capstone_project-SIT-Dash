@@ -6,6 +6,7 @@ import LatestApplicationsCard from "../components/latestApplicationsCard";
 import ApplicationCard from "../components/applicationCard";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
+import MyResponsiveLine from "../components/testgraph";
 
 const Home = () => {
   const [applicationsData, setLatestApplications] = useState([]);
@@ -21,10 +22,14 @@ const Home = () => {
   // Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
   useEffect(() => {
+    const abortController = new AbortController();
     getLatestApplications();
     getLatestBootcamps();
     getApplicationsGraphData();
     getApplicationsGraphDataFiltered();
+    return () => {
+      abortController.abort();
+    }
   }, []);
 
   const getLatestApplications = async () => {
@@ -66,6 +71,7 @@ const Home = () => {
                 data={applicationsGraphData}
                 filteredData={applicationsGraphDataFiltered}
               />
+              {/* <MyResponsiveLine /> */}
             </div>
           </div>
 
