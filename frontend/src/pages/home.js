@@ -3,7 +3,7 @@ import Axios from "axios";
 import { baseurl } from "../store/baseurl";
 import AppsGraph from "../components/applicationsGraph";
 import LatestApplicationsCard from "../components/latestApplicationsCard";
-import ApplicationCard from "../components/applicationCard";
+import ApplicationCardGrid from "../components/applicationCardGrid";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 import Footer from "../components/footer"
@@ -70,9 +70,12 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center">
+          <div className="grid grid-cols-2 gap-6 h-full w-full  justify-start overflow-auto items-center">
+          {/* Old flex display */}
+          {/* <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center"> */}
+          
             {applicationsData.slice(0, 10).map((item) => (
-              <ApplicationCard data={item} key={item.id} />
+              <ApplicationCardGrid data={item} key={item.id} />
             ))}
           </div>
         </div>
