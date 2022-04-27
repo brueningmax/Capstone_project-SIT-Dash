@@ -136,7 +136,7 @@ const Applications = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen bg-background ">
+    <div className="flex flex-col w-full h-full bg-background ">
       <div className="flex  h-cardsT ">
         <form className="flex w-full h-full  items-center justify-between  px-20">
           Filters:
@@ -196,7 +196,7 @@ const Applications = () => {
         </div>
       </div>
       <div className="flex mt-6 w-full h-cardsFF justify-center items-center">
-        <div className="flex h-full w-cardsWidth2 mt-6 ">
+        <div className="flex h-full w-cardsWidth2">
           <div className="grid grid-cols-3 h-full w-full  gap-y-4 overflow-auto">
             {applicationsData.map((item) => (
               <CollapsableApplicationCard data={item} key={item.id} />
