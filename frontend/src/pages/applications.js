@@ -4,7 +4,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import ApplicationCard from "../components/applicationCard";
+import CollapsableApplicationCard from "../components/collapsableApplicationCard";
 import AppsGraph from "../components/applicationsGraph";
 
 const Applications = () => {
@@ -136,7 +136,7 @@ const Applications = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen bg-background ">
+    <div className="flex flex-col w-full h-full bg-background ">
       <div className="flex  h-cardsT ">
         <form className="flex w-full h-full  items-center justify-between  px-20">
           Filters:
@@ -188,7 +188,7 @@ const Applications = () => {
       </div>
 
       <div className="flex  w-full  h-cardsF    justify-center">
-        <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+        <div className="flex h-full w-cardsWidth2 bg-offwhite shadow-lg rounded-lg opacity-75">
           <AppsGraph
             data={applicationsGraphData}
             filteredData={applicationsGraphDataFiltered}
@@ -196,11 +196,11 @@ const Applications = () => {
         </div>
         
       </div>
-      <div className="flex mt-12 w-full h-cardsFF justify-center items-center">
-        <div className="flex h-full w-cardsWidth3  ">
-          <div className="flex flex-col  h-full w-full items-center justify-start gap-10 overflow-auto">
+      <div className="flex mt-6 w-full h-cardsFF justify-center items-center">
+        <div className="flex h-full w-cardsWidth2">
+          <div className="grid grid-cols-3 h-full w-full  gap-y-4 overflow-auto">
             {applicationsData.map((item) => (
-              <ApplicationCard data={item} key={item.id} />
+              <CollapsableApplicationCard data={item} key={item.id} />
             ))}
           </div>
         </div>
