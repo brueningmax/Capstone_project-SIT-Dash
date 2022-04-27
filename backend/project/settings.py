@@ -66,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://46.101.245.70', 'http://localhost:8000', 'http://stu-dash.propulsion-learn.ch']
+CSRF_TRUSTED_ORIGINS = ['http://46.101.245.70', 'http://localhost:8000', 'http://sit-dash.propulsion-learn.ch']
 
 ROOT_URLCONF = 'project.urls'
 
@@ -75,9 +75,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:8000",
     "http://46.101.245.70",
-    "http://stu-dash.propulsion-learn.ch",
+    "http://sit-dash.propulsion-learn.ch",
 
-#     "https://luna-team-2.propulsion-learn.ch",
 ]
 
 
