@@ -6,8 +6,8 @@ const Bootcamptime =(props)=>{
 
     return (
         <>
-            {props.time == "part-time" || props.time2 == true? <div className={base_styling + " bg-yellow-300"}><p className="text-xs px-2">PART-TIME</p></div> : '' }
-            {props.time == "full-time" || props.time2 == false? <div className={base_styling + " bg-blue-300"}><p className="text-xs px-2">FULL-TIME</p></div> : '' }
+            {props.time == "part-time" || props.time2 == true? <div className={base_styling + " bg-accepted"}><p className="text-xs px-2 text-white">PART-TIME</p></div> : '' }
+            {props.time == "full-time" || props.time2 == false? <div className={base_styling + " bg-blue-300"}><p className="text-xs px-2 text-white">FULL-TIME</p></div> : '' }
         </>
 
     );
