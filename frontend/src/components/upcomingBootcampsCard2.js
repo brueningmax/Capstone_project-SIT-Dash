@@ -1,8 +1,15 @@
 import { BiExpandAlt } from "react-icons/bi";
 import BootcampPieChart from "./bootcampPieChart";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 const UpComingBootcampsCard2 = (props) => {
   const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    if (props.status === true) {
+      setCollapsed(true)
+    } 
+  }, [props]);
+
   return (
     <div className="flex flex-col w-3/4   shadow-lg rounded-lg bg-white items-center  justify-start ">
       <div className="flex  h-24 w-full items-center justify-between rounded-lg bg-lavender">
