@@ -4,13 +4,9 @@ import { AiOutlineFileText } from "react-icons/ai";
 
 const ApplicantsCv =(props)=>{
 
-    useEffect(() => {
-        console.log(props.cv)
-    },[])
-
     return(
         <>
-            { props.cv === undefined || props.cv === "" ?
+            { props.cv === undefined || props.cv === "" || props.cv === null  ?
             <div onClick={props.function} className="flex w-6 h-6 bg-gray-300 rounded text-white font-bold justify-center items-center border border-gray-400 cursor-not-allowed">
                 <AiOutlineFileText/>
             </div>
