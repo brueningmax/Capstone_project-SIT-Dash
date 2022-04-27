@@ -77,11 +77,11 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 px-2 gap-x-2 gap-y-9 h-1/2 mr-2 w-11/12 justify-start overflow-auto items-center">
+          <div className="grid grid-cols-1 px-12 gap-x-2 gap-y-9 h-1/2 mr-2 w-11/12 justify-start overflow-auto items-center">
           {/* Old flex display */}
           {/* <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center"> */}
           
-            {applicationsData.slice(0, 1).map((item) => (
+            {applicationsData.slice(0, 10).map((item) => (
               <CollapsableApplicationCard data={item} key={item.id} />
             ))}
           </div>
