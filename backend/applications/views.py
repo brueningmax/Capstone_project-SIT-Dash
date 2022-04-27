@@ -65,6 +65,9 @@ class ListLatestApplications(APIView):
                     "start_date": queryset[entry].bootcamp.start_date,
                     "location": queryset[entry].bootcamp.bootcamp_location.location,
                     "type": queryset[entry].bootcamp.bootcamp_type.name,
+                    "bootcamp_type": {
+                        "name": "",
+                    }
                 },
                 "time": "part-time" if queryset[entry].bootcamp.is_part_time else "full-time",
             }

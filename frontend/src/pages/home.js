@@ -65,7 +65,7 @@ const Home = () => {
 
   return (
     <div className="flex w-screen h-full">
-      <div className="flex bg-background  w-full h-full ">
+      <div className="flex bg-background w-full h-full ">
         <div className="flex flex-col w-1/2 h-full  items-center ">
           <div className="flex h-1/2 w-cardsWidth3 justify-center items-center ">
             <div className="flex  w-full h-cardsHeight bg-white shadow-lg rounded-lg bg-opacity-70 ">
