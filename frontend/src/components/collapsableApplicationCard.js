@@ -1,7 +1,7 @@
 import BootcampType from "./latestApplicationsCardComponents/bootcampType";
 import ApplicationStatus from "./latestApplicationsCardComponents/applicationStatus";
 import Bootcamptime from "./latestApplicationsCardComponents/bootcampTime";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import ApplyDate from "./latestApplicationsCardComponents/applyDate";
 import {BiExpandAlt} from "react-icons/bi";
 import InterviewStatus from "./latestApplicationsCardComponents/interviewStatus";
@@ -16,6 +16,12 @@ const CollapsableApplicationCard = (props) => {
 
     const [collapsed, setCollapsed] = useState(false)
     const editPage = `/editApplication/${props.data.id}`
+
+    useEffect(() => {
+        if (props.status === true) {
+          setCollapsed(true)
+        } 
+      }, [props]);
 
     const openCV = async () => {
         const response = await Axios(

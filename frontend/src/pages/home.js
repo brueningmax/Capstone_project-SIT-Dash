@@ -82,7 +82,7 @@ const Home = () => {
           {/* <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center"> */}
           
             {applicationsData.slice(0, 10).map((item) => (
-              <CollapsableApplicationCard data={item} key={item.id} />
+              <CollapsableApplicationCard data={item} key={item.id} status={true} />
             ))}
           </div>
           </div>
@@ -104,7 +104,7 @@ const Home = () => {
           <div className="flex  justify-center h-1/2 w-full items-center ">
           <div className="flex flex-col gap-y-6 h-full w-11/12 justify-between  items-center overflow-auto ">
             {bootcampsData.slice(0, 5).map((item) => (
-              <UpComingBootcampsCard2 data={item} key={item.id} />
+              <UpComingBootcampsCard2 data={item} key={item.id} status={true}/>
             ))}
           </div>
         </div>

@@ -151,7 +151,7 @@ const Bootcamps = () => {
         <div className="flex h-full w-full justify-center  ">
            <div className="grid grid-cols-2  h-full w-cardsWidth2   overflow-auto gap-y-6  ">
             {bootcampsData.slice(0,10).map((item) => (
-              <UpComingBootcampsCard2 data={item} key={item.id} />
+              <UpComingBootcampsCard2 data={item} key={item.id}/>
             ))}
         </div>
 
