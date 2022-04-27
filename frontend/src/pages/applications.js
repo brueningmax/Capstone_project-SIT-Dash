@@ -194,6 +194,7 @@ const Applications = () => {
             filteredData={applicationsGraphDataFiltered}
           />
         </div>
+        
       </div>
       <div className="flex mt-12 w-full h-cardsFF justify-center items-center">
         <div className="flex h-full w-cardsWidth3  ">

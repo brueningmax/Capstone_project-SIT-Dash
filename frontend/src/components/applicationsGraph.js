@@ -25,6 +25,8 @@ function AppsGraph(props) {
     }
   }, [props, toggleValue]);
 
+  console.log(props.data)
+
   //function to convert API data into a format that can be used by Nivo Charts
   function getChartData(requestedData) {
     const data = [
@@ -53,6 +55,7 @@ function AppsGraph(props) {
         data: monthData,
       };
     });
+    console.log(data)
     return data;
   }
 
