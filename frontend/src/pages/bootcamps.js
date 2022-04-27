@@ -135,31 +135,33 @@ const Bootcamps = () => {
               isOn={toggleValue}
               handleToggle={() => setValue(!toggleValue)}
             /> */}
-      </div>  
+      </div>
 
-      <div className="flex  flex-col w-full h-cardsHeight6 items-center justify-center mb-8">
+      <div className="flex flex-col w-full  h-cardsHeight6 items-center justify-center ">
 
-          <div className="flex h-full w-cardsWidth2 bg-white shadow-lg rounded-lg opacity-75">
+          <div className="flex h-full w-cardsWidth2 bg-offwhite shadow-lg rounded-lg opacity-75">
           <UpcomingBootcampsGraph data={bootcampsData} />
         </div>
       </div>
-        {/* <div className="haha flex flex-col w-11/12 h-cardsHeight6 mt-1 items-center justify-center "> Michal-----------*/}
+       
 
-  {/*   <div className="flex flex-col w-full h-screen bg-background"> */}
-        <div className="flex h-cardsHeight6 items-center justify-center mb-4">
-           <div className="flex flex-wrap  mx-10 h-full w-full justify-between  overflow-auto">
+  {/* <div className="flex flex-col w-full h-screen bg-background">
+   */}
+        <div className="flex h-cardsHeight6 mt-6  w-full items-center justify-center ">
+        <div className="flex h-full w-full justify-center  ">
+           <div className="grid grid-cols-2  h-full w-cardsWidth2   overflow-auto gap-y-6  ">
             {bootcampsData.slice(0,10).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id} />
             ))}
         </div>
 
-     
-    {/* </div> */}
-
-    
-
 
     </div>
+
+    </div>
+
+
+    
     </div>
   
     );

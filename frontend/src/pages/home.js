@@ -4,7 +4,7 @@ import { baseurl } from "../store/baseurl";
 import AppsGraph from "../components/applicationsGraph";
 import LatestApplicationsCard from "../components/latestApplicationsCard";
 import ApplicationCardGrid from "../components/applicationCardGrid";
-import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
+import UpComingBootcampsCard2 from "../components/upcomingBootcampsCard2";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 import MyResponsiveLine from "../components/testgraph";
 import Footer from "../components/footer"
@@ -76,8 +76,8 @@ const Home = () => {
               {/* <MyResponsiveLine /> */}
             </div>
           </div>
-
-          <div className="grid grid-cols-1 px-12 gap-x-2 gap-y-9 h-1/2 mr-2 w-11/12 justify-start overflow-auto items-center">
+          <div className="flex justify-center h-1/2 w-11/12 items-center ">
+          <div className="flex flex-col gap-6  h-full w-full overflow-auto items-center justify-start">
           {/* Old flex display */}
           {/* <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center"> */}
           
@@ -85,6 +85,8 @@ const Home = () => {
               <CollapsableApplicationCard data={item} key={item.id} />
             ))}
           </div>
+          </div>
+          
         </div>
         {/* <div
           className="flex w-full h-2/4 justify-start items-center mb-4
@@ -99,12 +101,13 @@ const Home = () => {
               <UpcomingBootcampsGraph data={bootcampsData} />
             </div>
           </div>
-
-          <div className="w-cardsWidth3 flex flex-col h-1/2 justify-between ml-8  items-center overflow-auto ">
+          <div className="flex  justify-center h-1/2 w-full items-center ">
+          <div className="flex flex-col gap-y-6 h-full w-11/12 justify-between  items-center overflow-auto ">
             {bootcampsData.slice(0, 5).map((item) => (
-              <UpComingBootcampsCard data={item} key={item.id} />
+              <UpComingBootcampsCard2 data={item} key={item.id} />
             ))}
           </div>
+        </div>
         </div>
       </div>
     </div>
