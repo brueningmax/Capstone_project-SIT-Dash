@@ -19,7 +19,7 @@ module.exports = {
         fortyP: "40%",
         sixteyP: "55%",
         rem1: "5rem",
-        rem2: "10rem",
+        rem2: "8rem",
         rem3: "12rem",
         rem4: "15rem",
         rem5: "20rem",
@@ -110,6 +110,7 @@ module.exports = {
         totalB: "#F5CF89",
         lavender: "#CDB0EE",
         offwhite: "#FAF9F6",
+        
       },
     },
   },

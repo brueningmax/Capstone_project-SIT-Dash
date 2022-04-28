@@ -94,7 +94,7 @@ function AppsGraph(props) {
       <div className="flex flex-col h-full w-full p-4">
         <div className="flex flex-row w-full items-center justify-between p-6">
         <div className="flex font-bold text-xl">
-        Latest Applications</div>
+        Distribution of Applications</div>
             <Switch
               isOn={toggleValue}
               handleToggle={() => setValue(!toggleValue)}

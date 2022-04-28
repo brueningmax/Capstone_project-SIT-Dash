@@ -68,7 +68,7 @@ const Home = () => {
       <div className="flex bg-background w-full h-full ">
         <div className="flex flex-col w-1/2 h-full  items-center ">
           <div className="flex h-1/2 w-cardsWidth3 justify-center items-center ">
-            <div className="flex  w-full h-cardsHeight bg-white shadow-lg rounded-lg bg-opacity-70 ">
+            <div className="flex  w-full h-cardsHeight bg-offwhite shadow-lg rounded-lg ">
               <AppsGraph
                 data={applicationsGraphData}
                 filteredData={applicationsGraphDataFiltered}
@@ -77,11 +77,11 @@ const Home = () => {
             </div>
           </div>
           <div className="flex justify-center h-1/2 w-11/12 items-center ">
-          <div className="flex flex-col gap-6  h-full w-full overflow-auto items-center justify-start">
+          <div className="flex flex-col gap-y-6  h-full w-full overflow-auto items-center justify-start">
           {/* Old flex display */}
           {/* <div className="flex flex-col gap-8 h-1/2 w-full justify-between overflow-auto items-center"> */}
           
-            {applicationsData.slice(0, 10).map((item) => (
+            {applicationsData.slice(0, 20).map((item) => (
               <CollapsableApplicationCard data={item} key={item.id} status={true} />
             ))}
           </div>
@@ -97,13 +97,13 @@ const Home = () => {
 
         <div className="flex flex-col w-1/2 h-full border-l-2 ">
           <div className="flex h-1/2 w-full items-center justify-center">
-            <div className="flex w-cardsWidth3  h-cardsHeight bg-white border border-gray-200  shadow-lg rounded-lg bg-opacity-70 ">
+            <div className="flex w-cardsWidth3  h-cardsHeight bg-offwhite border border-gray-200  shadow-lg rounded-lg  ">
               <UpcomingBootcampsGraph data={bootcampsData} />
             </div>
           </div>
           <div className="flex  justify-center h-1/2 w-full items-center ">
           <div className="flex flex-col gap-y-6 h-full w-11/12 justify-between  items-center overflow-auto ">
-            {bootcampsData.slice(0, 5).map((item) => (
+            {bootcampsData.slice(0, 20).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id} status={true}/>
             ))}
           </div>
