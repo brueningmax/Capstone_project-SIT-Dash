@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Axios from "axios";
 import { baseurl } from "../store/baseurl";
 
@@ -7,6 +7,7 @@ import { baseurl } from "../store/baseurl";
 const EditBootcamp = () => {
 
     const params = useParams().id
+    const navigate = useNavigate()
 
     const [bootcampData, setBootcampData] = useState({})
     const [locations, setLocations] = useState([])
@@ -57,6 +58,7 @@ const EditBootcamp = () => {
         );
         if (response.status == 200){
             alert('Changes saved')
+            navigate(-1)
         }    
     }
 
@@ -128,7 +130,7 @@ const EditBootcamp = () => {
                 </div>
                 <div className="h-1/4 w-1/5 flex flex-col gap-5">
                     <button onClick={saveChanges} className="border border-black-300 bg-green-200 w-4/5">SAVE</button>
-                    <button className="border border-black-300 bg-red-300 w-4/5">CANCEL</button>
+                    <button onClick={() => navigate(-1)} className="border border-black-300 bg-red-300 w-4/5">CANCEL</button>
                 </div>
             </div>
         </div>

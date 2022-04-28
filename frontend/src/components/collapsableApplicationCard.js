@@ -42,7 +42,7 @@ const CollapsableApplicationCard = (props) => {
     }
 
     return (
-        <div className="flex flex-col w-3/4 px-6 py-0  rounded-lg border-gray-200 border shadow-lg bg-offwhite justify-self-center ">
+        <div className="flex flex-col w-3/4 px-5 py-0 rounded-lg border-gray-200 border shadow-lg bg-offwhite justify-self-center ">
             <div className="h-12 flex flex-row justify-start items-center">
                 <BootcampType type={props.data.bootcamp.type} type2={props.data.bootcamp.bootcamp_type.name}/>
                 <ApplicationStatus status={props.data.status}/>
@@ -61,11 +61,14 @@ const CollapsableApplicationCard = (props) => {
 
 
             <div className={collapsed ? "hidden" : "flex flex-row  ease-linear border-t-2"}>
+                <div className="flex place-items-center px-1 border-r-2 pr-5 " >
+                    <Link to={editPage}><BsFillPencilFill className="w-6 h-6 "/></Link>
+                </div>
                 <div className="flex grow items-center gap-5 justify-center">
                     <ApplicantsCv cv={props.data.cv} function={openCV}/>
                     <ApplicantsLinkedIn link={props.data.linkedin_profile}/>
-                    <Link to={editPage}><BsFillPencilFill className="w-4 h-4 border-solid"/></Link>
                 </div>
+
                 <div className="w-5/12 border-l-2 border-gray-300 flex-col pl-5 items-center">
                     <div className="flex place-content-between"><p>Personal Interview</p> <InterviewStatus
                         InterviewStatus={props.data.personal_passed}/></div>
