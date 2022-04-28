@@ -12,7 +12,8 @@ const Landing_page = () => {
                        <div className="flex flex-col gap-5 h-2/3 w-1/3 place-content-between">
                            <div className="flex flex-col gap-5">
                             <p className="text-5xl font-bold text-white">Headline</p>
-                            <p className="text-white">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                            <p className="text-white">The goal was to build a data analytics platform that translates the academy’s data into a visual context making it easier to pull insights and information from. <br></br>The tool should help give an overview to identify patterns and trends in student applications and monitor the performance of students and the academy’s courses alike.
+                            </p>
                             </div>
                            <Link to="/dashboard" ><button className="bg-white drop-shadow-xl rounded-md w-2/3 py-5"><span className="text-indigo-900 font-bold text-3xl">Lets Go!</span></button> </Link>
                        </div>
