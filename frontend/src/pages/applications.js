@@ -53,8 +53,6 @@ const Applications = () => {
     ifExists("status", status);
     ifExists("applied", applied_date);
 
-    console.log(bodyContent)
-
     const response = await Axios.post(
       `${baseurl}applications/filter/`,
      bodyContent
@@ -147,7 +145,7 @@ const Applications = () => {
               <option value="enrolled">Enrolled</option>
               <option value="serious">Serious</option>
               <option value="accepted">Accepted</option>
-              <option value="to_review">To Review</option>
+              <option value= "null" >To Review</option>
               <option value="dropped_out">Dropped Out</option>
               <option value="not_serious">Not Serious</option>
             </select>
