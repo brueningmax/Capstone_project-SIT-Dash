@@ -114,7 +114,7 @@ const Bootcamps = () => {
           </div>
           <div className="border-b-2">
           <label>
-            Start Date:
+            Bootcamp start on or after:
             <input
             className="bg-offwhite"
             name="start_date"
