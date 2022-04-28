@@ -148,6 +148,7 @@ class FilteringApplicationView(ListAPIView):
 
     queryset = Application.objects.all()
     permission_classes = []
+    authentication_classes = []
     serializer_class = LatestApplicationSerializer
 
     def post(self, request, *args, **kwargs):
