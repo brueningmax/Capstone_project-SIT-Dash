@@ -44,8 +44,8 @@ const CollapsableApplicationCard = (props) => {
     return (
         <div className="flex flex-col w-11/12 px-5 py-0 rounded-lg border-gray-200 border shadow-lg bg-offwhite justify-self-center ">
             <div className="h-14 flex flex-row justify-start items-center">
-                <BootcampType type={props.data.bootcamp.type} type2={props.data.bootcamp.bootcamp_type.name}/>
                 <ApplicationStatus status={props.data.status}/>
+                <BootcampType type={props.data.bootcamp.type} type2={props.data.bootcamp.bootcamp_type.name}/>
                 <Bootcamptime time={props.data.time} time2={props.data.bootcamp.is_part_time}/>
             </div>
             <div className="flex justify-between mb-2  h-4 items-center py-1">

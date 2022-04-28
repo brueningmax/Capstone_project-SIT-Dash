@@ -81,7 +81,7 @@ function AppsGraph(props) {
             checked={isOn}
             onChange={handleToggle}
           />
-          <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.6 after:bg-toggelButton after:border after:border-gray-200 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-gray-200  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
+          <div className="h-6 bg-gray-300 border-2 border-toggelButton rounded-full w-11  after:absolute after:left-0.5 after:bg-toggelButton after:border after:border-gray-200 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-toggelButton  peer-checked:bg-backgroud peer-checked:border peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
           
         </label>
         <span className="ml-2 text-s text-gray-900 ">Enrolled</span>
@@ -159,7 +159,7 @@ function AppsGraph(props) {
                 justify: false,
                 translateX: -20,
                 translateY: 85,
-                itemWidth: 120,
+                itemWidth: 130,
                 itemHeight: 26,
                 itemsSpacing: 14,
                 symbolSize: 22,
@@ -182,21 +182,13 @@ function AppsGraph(props) {
             useMesh={true}
             isInteractive={true}
             pointLabelYOffset={0}
-            tooltip={({ point }) => {
+            tooltip={({ point, color }) => {
               return (
-                <div
-                  style={{
-                    background: 'white',
-                    padding: '9px 10px',
-                    border: '2px solid #ccc',
-                    fontSize: '20px',
-                  }}
+                <div className="bg-background px-5 border-toggelButton-200 border shadow-lg rounded-sm text-gray-500 text-center"
                 >
-                  <div>{point.serieId}</div>
+                  <p className="text-m font-semibold">{point.serieId}</p>
 
-                  <div>
-                    {point.data.x}: {point.data.y}
-                  </div>
+                  <p className="text-xl"> {point.data.y} </p>
                 </div>
               );
             }}
