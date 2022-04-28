@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
 import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
-import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
+import UpcominBootcampsGraph2 from "../components/upcominBootcampsGraph2";
 
 
 const Bootcamps = () => {
@@ -114,9 +114,9 @@ const Bootcamps = () => {
           </div>
           <div className="border-b-2">
           <label>
-            Bootcamp start on or after:
+            Bootcamp start on or after: 
             <input
-            className="bg-offwhite"
+            className="bg-offwhite pl-1"
             name="start_date"
             type="date"
             value={start_date}
@@ -132,7 +132,7 @@ const Bootcamps = () => {
 
       <div className="flex flex-col w-full  h-cardsHeight6 items-center justify-center ">
         <div className="flex h-full w-cardsWidth2 bg-offwhite shadow-lg rounded-lg">
-          <UpcomingBootcampsGraph data={bootcampsData} />
+          <UpcominBootcampsGraph2 data={bootcampsData} />
         </div>
       </div>
        

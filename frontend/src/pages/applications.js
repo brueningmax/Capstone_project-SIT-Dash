@@ -162,9 +162,9 @@ const Applications = () => {
         </div>
         
       </div>
-      <div className="flex mt-6 w-full h-cardsFF justify-center items-center">
+      <div className="flex  w-full h-cardsFF justify-center pt-8 items-center">
         <div className="flex h-full w-cardsWidth2">
-          <div className="grid grid-cols-3 h-full w-full gap-y-4 overflow-auto">
+          <div className="grid grid-cols-3 h-full w-full gap-y-6 overflow-auto">
             {applicationsData.map((item) => (
               <CollapsableApplicationCard data={item} key={item.id} />
             ))}
