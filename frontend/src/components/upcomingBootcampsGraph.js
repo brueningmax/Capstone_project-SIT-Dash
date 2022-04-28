@@ -82,20 +82,11 @@ function UpcomingBootcampsGraph(props) {
           enableLabel={false}
           labelSkipWidth={12}
           labelSkipHeight={12}
-          tooltip={({  id, value, color}) => {
+          tooltip={({ id, value, color }) => {
             return (
-                <div
-                    style={{
-                        background: 'black',
-                        padding: '9px 12px',
-                        border: '1px solid #ccc',
-                        color,
-                    }}
-                >
-                    <div className='p-3'>
-                    <p>{id}:</p>
-                    <p>{value}</p>
-                    </div>
+              <div className="bg-background px-5 border-toggelButton-200 border shadow-lg rounded-sm text-gray-500 text-center">
+                  <p className="text-m font-semibold">{id}</p>
+                  <p className="text-xl"> {value} </p>
                 </div>
             )
         }} 
