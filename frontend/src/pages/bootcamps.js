@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { baseurl } from "../store/baseurl";
 import Axios from "axios";
-import UpComingBootcampsCard2 from "../components/upcomingBootcampsCard2";
+import UpComingBootcampsCard from "../components/upcomingBootcampsCard";
 import UpcomingBootcampsGraph from "../components/upcomingBootcampsGraph";
 
 
@@ -93,7 +93,7 @@ const Bootcamps = () => {
 
 
   return (
-    <div className="flex flex-col w-full h-full bg-background">
+    <div className="flex flex-col p-2 w-full h-full bg-background">
         <div className="flex border my-1 bg-offwhite  rounded-xl h-cardsT font-bold shadow-lg">
           <form className="flex w-full h-full  items-center justify-between px-20">
           Filters:
@@ -143,7 +143,7 @@ const Bootcamps = () => {
         <div className="flex h-full w-full justify-center  ">
            <div className="grid grid-cols-2  h-full w-cardsWidth2   overflow-auto gap-y-6  ">
             {bootcampsData.slice(0,10).map((item) => (
-              <UpComingBootcampsCard2 data={item} key={item.id}/>
+              <UpComingBootcampsCard data={item} key={item.id}/>
             ))}
         </div>
 

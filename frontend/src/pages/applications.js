@@ -134,7 +134,7 @@ const Applications = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full bg-background ">
+    <div className="flex flex-col w-full p-2 h-full bg-background ">
       <div className="flex border my-1 bg-offwhite  rounded-xl h-cardsT font-bold shadow-lg">
         <form className="flex w-full h-full  items-center justify-between px-20">
           Filters:
