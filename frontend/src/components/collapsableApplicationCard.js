@@ -42,23 +42,22 @@ const CollapsableApplicationCard = (props) => {
     }
 
     return (
-        <div className="flex flex-col w-3/4 px-5 py-0 rounded-lg border-gray-200 border shadow-lg bg-offwhite justify-self-center ">
+        <div className="flex flex-col w-11/12 px-5 py-0 rounded-lg border-gray-200 border shadow-lg bg-offwhite justify-self-center ">
             <div className="h-14 flex flex-row justify-start items-center">
                 <BootcampType type={props.data.bootcamp.type} type2={props.data.bootcamp.bootcamp_type.name}/>
                 <ApplicationStatus status={props.data.status}/>
                 <Bootcamptime time={props.data.time} time2={props.data.bootcamp.is_part_time}/>
             </div>
-            <div className="flex justify-between mb-2  h-12 items-center py-1">
-                <h1 className="font-bold  text-4xl">{props.data.first_name} {props.data.last_name}</h1>
+            <div className="flex justify-between mb-2  h-4 items-center py-1">
+                <h1 className="font-bold  text-xl">{props.data.first_name} {props.data.last_name}</h1>
+                <ApplyDate applied={props.data.applied}/>
+                <BootcampStartDate start={props.data.bootcamp.start_date}/>
                 <button onClick={() => setCollapsed(!collapsed)} className={props.status ? "border rounded-full border-black" : "hidden" }>{collapsed ? <BsArrowDownCircle className="w-6 h-6 color-blue-200"/> : <BsArrowUpCircle className="w-6 h-6 color-blue-200"/>}
                 </button>
             </div>
-            <div className="flex justify-between pb-1">
-                <ApplyDate applied={props.data.applied}/>
-                <BootcampStartDate start={props.data.bootcamp.start_date}/>
-            </div>
-
-
+            {/*<div className="flex justify-between pb-1">*/}
+            {/*    */}
+            {/*</div>*/}
 
             <div className={collapsed ? "hidden" : "flex flex-row  ease-linear border-t-2"}>
                 <div className="flex place-items-center px-1 border-r-2 pr-5 " >
