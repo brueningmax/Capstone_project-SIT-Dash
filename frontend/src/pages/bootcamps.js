@@ -93,14 +93,15 @@ const Bootcamps = () => {
 
 
   return (
-    <div className="flex flex-col h-full w-full bg-background">
-        <div className="flex  h-cardsT ">
-          <form className="flex w-full h-full items-center justify-between px-20">
+    <div className="flex flex-col w-full h-full bg-background">
+        <div className="flex border my-1 bg-offwhite  rounded-xl h-cardsT font-bold shadow-lg">
+          <form className="flex w-full h-full  items-center justify-between px-20">
           Filters:
-
-          <label>
+          <div className="border-b-2">
+          <label className="pr-1">
           Location:
             <select
+                className="bg-offwhite"
                 name="bootcamp_location"
                 value={bootcamp_location}
                 onChange={e => setBootcampLocation(e.target.value)}>
@@ -110,15 +111,18 @@ const Bootcamps = () => {
             })}
             </select>
           </label>
-
+          </div>
+          <div className="border-b-2">
           <label>
             Bootcamp start on or after:
             <input
+            className="bg-offwhite"
             name="start_date"
             type="date"
             value={start_date}
             onChange={e => setStartDate(e.target.value)} />
           </label>
+          </div>
           </form>
         {/* <Switch
               isOn={toggleValue}
@@ -141,7 +145,7 @@ const Bootcamps = () => {
             {bootcampsData.slice(0,10).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id}/>
             ))}
-          </div>
+        </div>
 
 
     </div>

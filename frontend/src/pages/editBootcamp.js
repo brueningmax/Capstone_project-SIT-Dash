@@ -64,47 +64,47 @@ const EditBootcamp = () => {
 
     return(
         <div className="flex flex-col w-full p-5">
-            <div><p className="text-lg font-medium">Bootcamp data</p></div>
+            <div><p className="text-xl font-bold">Bootcamp data</p></div>
             <div className="flex place-content-between pt-5">
                 <div className="flex w-1/2 gap-20">
                     <div className=" flex flex-col gap-5 w-1/3">
 
                         <div className="flex flex-col">
-                            <label htmlFor="name" >Name</label>
+                            <label className="font-bold" htmlFor="name" >Name</label>
                             <input onChange={onChangeHandler} value={bootcampData.name ?? ''}  typeof="text" className="w-full border border-black-100 bg-gray-100" id="name"/>
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="bootcamp_type" >Bootcamp-type</label>
+                            <label className="font-bold" htmlFor="bootcamp_type" >Bootcamp-type</label>
                             <select onChange={onChangeHandler} value={bootcampData.bootcamp_type ?? ''} className="w-full border border-black-100 bg-gray-100" id="bootcamp_type">
                                 {types.map((type) => <option key={type.id} value={type.id}> {type.name} </option>)}   
                             </select>
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="bootcamp_location" >Bootcamp location</label>
+                            <label className="font-bold" htmlFor="bootcamp_location" >Bootcamp location</label>
                             <select onChange={onChangeHandler} value={bootcampData.bootcamp_location ?? ''} className="w-full border border-black-100 bg-gray-100" id="bootcamp_location">
                                 {locations.map((location) => <option key={location.id} value={location.id}> {location.name} </option>)}
                             </select>
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="early_apply_by" >Early apply by:</label>
+                            <label className="font-bold" htmlFor="early_apply_by" >Early apply by:</label>
                             <input onChange={onChangeHandler} value={bootcampData.early_apply_by ?? ''} typeof="text" className="w-full border border-black-100 bg-gray-100" id="early_apply_by"/>
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="apply_by" >Apply by:</label>
+                            <label className="font-bold" htmlFor="apply_by" >Apply by:</label>
                             <input onChange={onChangeHandler} value={bootcampData.apply_by ?? ''} typeof="text" className="w-full border border-black-100 bg-gray-100" id="apply_by"/>
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="start_date" >Start date:</label>
+                            <label className="font-bold" htmlFor="start_date" >Start date:</label>
                             <input onChange={onChangeHandler} value={bootcampData.start_date ?? ''} typeof="text" className="w-full border border-black-100 bg-gray-100" id="start_date"/>
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="end_date" >End date:</label>
+                            <label className="font-bold" htmlFor="end_date" >End date:</label>
                             <input onChange={onChangeHandler} value={bootcampData.end_date ?? ''} typeof="text" className="w-full border border-black-100 bg-gray-100" id="end_date"/>
                         </div>
 
@@ -112,19 +112,19 @@ const EditBootcamp = () => {
                     <div className=" flex flex-col gap-5">
                         <div className="flex items-center">
                             <input onChange={checkoxChanger} checked={bootcampData.active ?? false} type="checkbox" className="mr-5 border border-black-100 bg-gray-100" id="active"/>
-                            <label htmlFor="active" >Active</label>
+                            <label className="font-bold" htmlFor="active" >Active</label>
                         </div>
                         <div className="flex items-center">
                             <input onChange={checkoxChanger} checked={bootcampData.is_part_time ?? false} type="checkbox" className="mr-5 border border-black-100 bg-gray-100" id="is_part_time"/>
-                            <label htmlFor="is_part_time" >Is part time</label>
+                            <label className="font-bold" htmlFor="is_part_time" >Is part time</label>
                         </div>
                         <div className="flex items-center">
                             <input onChange={checkoxChanger} checked={bootcampData.is_in_person ?? false} type="checkbox" className="mr-5 border border-black-100 bg-gray-100" id="is_in_person"/>
-                            <label htmlFor="is_in_person" >Is in person</label>
+                            <label className="font-bold" htmlFor="is_in_person" >Is in person</label>
                         </div>
                         <div className="flex items-center">
                             <input onChange={checkoxChanger} checked={bootcampData.is_remote ?? false} type="checkbox" className="mr-5 border border-black-100 bg-gray-100" id="is_remote"/>
-                            <label htmlFor="is_remote" >Is remote</label>
+                            <label className="font-bold" htmlFor="is_remote" >Is remote</label>
                         </div>
                     </div>
                 </div>
