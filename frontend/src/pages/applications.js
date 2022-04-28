@@ -123,7 +123,6 @@ const Applications = () => {
       `${baseurl}applications/graph_data/dashboard/`
     );
     setApplicationsGraphData(response.data);
-    console.log(applicationsGraphData);
   };
 
   const getApplicationsGraphDataFiltered = async () => {
@@ -132,7 +131,6 @@ const Applications = () => {
       { filtered: "1" }
     );
     setApplicationsGraphDataFiltered(response.data);
-    console.log(applicationsGraphDataFiltered);
   };
 
   return (
@@ -198,7 +196,7 @@ const Applications = () => {
       </div>
       <div className="flex mt-6 w-full h-cardsFF justify-center items-center">
         <div className="flex h-full w-cardsWidth2">
-          <div className="grid grid-cols-3 h-full w-full  gap-y-4 overflow-auto">
+          <div className="grid grid-cols-3 h-full w-full gap-y-4 overflow-auto">
             {applicationsData.map((item) => (
               <CollapsableApplicationCard data={item} key={item.id} />
             ))}

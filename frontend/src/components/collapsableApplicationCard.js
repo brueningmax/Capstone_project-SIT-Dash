@@ -3,7 +3,7 @@ import ApplicationStatus from "./latestApplicationsCardComponents/applicationSta
 import Bootcamptime from "./latestApplicationsCardComponents/bootcampTime";
 import React, {useState, useEffect} from "react";
 import ApplyDate from "./latestApplicationsCardComponents/applyDate";
-import {BiExpandAlt} from "react-icons/bi";
+import {BsArrowDownCircle, BsArrowUpCircle} from "react-icons/bs";
 import InterviewStatus from "./latestApplicationsCardComponents/interviewStatus";
 import ApplicantsCv from "./latestApplicationsCardComponents/applicantsCv";
 import ApplicantsLinkedIn from "./latestApplicationsCardComponents/applicantsLinkedIn";
@@ -11,6 +11,7 @@ import Axios from "axios";
 import {baseurl} from "../store/baseurl";
 import {BsFillPencilFill} from "react-icons/bs";
 import {Link} from "react-router-dom";
+import BootcampStartDate from "./latestApplicationsCardComponents/BootcampStartDate";
 
 const CollapsableApplicationCard = (props) => {
 
@@ -41,21 +42,25 @@ const CollapsableApplicationCard = (props) => {
     }
 
     return (
-        <div className="flex flex-col w-3/4 px-6 py-0  rounded-lg border-gray-200 border shadow-lg bg-offwhite ">
+        <div className="flex flex-col w-3/4 px-6 py-0  rounded-lg border-gray-200 border shadow-lg bg-offwhite justify-self-center ">
             <div className="h-12 flex flex-row justify-start items-center">
-                <BootcampType type={props.data.bootcamp.type}/>
+                <BootcampType type={props.data.bootcamp.type} type2={props.data.bootcamp.bootcamp_type.name}/>
                 <ApplicationStatus status={props.data.status}/>
-                <Bootcamptime time={props.data.time}/>
+                <Bootcamptime time={props.data.time} time2={props.data.bootcamp.is_part_time}/>
             </div>
             <div className="flex justify-between mb-2  h-12 items-center py-1">
                 <h1 className="font-bold  text-4xl">{props.data.first_name} {props.data.last_name}</h1>
-                <button onClick={() => setCollapsed(!collapsed)} className="border rounded-sm border-black"><BiExpandAlt className="w-6 h-6 color-blue-200"/>
+                <button onClick={() => setCollapsed(!collapsed)} className={props.status ? "border rounded-full border-black" : "hidden" }>{collapsed ? <BsArrowDownCircle className="w-6 h-6 color-blue-200"/> : <BsArrowUpCircle className="w-6 h-6 color-blue-200"/>}
                 </button>
             </div>
-            <ApplyDate applied={props.data.applied}/>
+            <div className="flex justify-between pb-1">
+                <ApplyDate applied={props.data.applied}/>
+                <BootcampStartDate start={props.data.bootcamp.start_date}/>
+            </div>
 
 
-            <div className={collapsed ? "hidden" : "flex flex-row  ease-linear"}>
+
+            <div className={collapsed ? "hidden" : "flex flex-row  ease-linear border-t-2"}>
                 <div className="flex grow items-center gap-5 justify-center">
                     <ApplicantsCv cv={props.data.cv} function={openCV}/>
                     <ApplicantsLinkedIn link={props.data.linkedin_profile}/>
