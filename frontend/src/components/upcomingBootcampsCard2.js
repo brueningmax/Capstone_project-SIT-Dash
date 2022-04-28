@@ -37,7 +37,7 @@ const UpComingBootcampsCard2 = (props) => {
               <BsFillPencilFill className="w-6 h-6 color-blue-200" />
             </button>
           </Link>
-          <div className="flex h-1/3  justify-center font-bold  text-xl">
+          <div className="flex h-1/3  justify-center font-bold  text-lg">
             <p>{props.data.name}</p>
           </div>
         </div>
