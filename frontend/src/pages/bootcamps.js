@@ -141,7 +141,7 @@ const Bootcamps = () => {
             {bootcampsData.slice(0,10).map((item) => (
               <UpComingBootcampsCard2 data={item} key={item.id}/>
             ))}
-          </div>
+        </div>
 
 
     </div>

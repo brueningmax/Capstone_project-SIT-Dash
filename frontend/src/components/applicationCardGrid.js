@@ -34,7 +34,7 @@ const ApplicationCardGrid = (props) => {
   }
   return (
     // <div className="flex border-blue-500 border-4 w-sixty ">
-    <div className="flex flex-col w-forty p-6 haha  bg-white rounded-lg ">
+    <div className="flex flex-col w-forty p-6 bg-white rounded-lg ">
       {/* TAGS */}
       <div className="h-tenP flex flex-row justify-center items-center">
         <BootcampType type={props.data.bootcamp.type}/>

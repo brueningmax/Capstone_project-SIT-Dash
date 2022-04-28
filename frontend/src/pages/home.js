@@ -96,7 +96,7 @@ const Home = () => {
             {bootcampsData.slice(0,3).map((item) => ( */}
 
         <div className="flex flex-col w-1/2 h-full border-l-2 ">
-          <div className="flex h-1/2 w-full   items-center justify-center">
+          <div className="flex h-1/2 w-full items-center justify-center">
             <div className="flex w-cardsWidth3  h-cardsHeight bg-white border border-gray-200  shadow-lg rounded-lg bg-opacity-70 ">
               <UpcomingBootcampsGraph data={bootcampsData} />
             </div>
