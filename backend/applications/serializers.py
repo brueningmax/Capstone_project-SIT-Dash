@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from applications.models import Application
 from bootcampLocations.models import BootcampLocation
+from bootcampTypes.models import BootcampType
 
 from bootcamps.models import Bootcamp
 
@@ -28,13 +29,18 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
     bootcamp = BootcampsFilterSerializer(read_only=True)
 
+class BootcampTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BootcampType
+        fields = ('name',)
 
 class BootcampsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bootcamp
-        fields = ('name', 'start_date', 'bootcamp_location',)
+        fields = ('name', 'start_date', 'bootcamp_location', 'bootcamp_type', 'is_part_time')
 
     bootcamp_location = BootcampsLocationLatestSerializer(read_only=True)
+    bootcamp_type = BootcampTypeSerializer(read_only=True)
 
 
 class LatestApplicationSerializer(serializers.ModelSerializer):

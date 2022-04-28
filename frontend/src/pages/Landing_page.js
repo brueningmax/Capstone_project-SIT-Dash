@@ -6,7 +6,7 @@ const Landing_page = () => {
         <div className="flex w-full h-full bg-indigo-900 place-content-center gap-5 py-5">
                 <div className=" flex flex-col w-3/6 h-full">
                     <div className=" flex flex-col w-full h-1/6">
-                        <p className="text-5xl font-bold text-white" >SIT<span className="italic text-red-300">Dash</span> <span className="text-sm">yet another student project</span></p>
+                        <p className="text-5xl font-bold text-white" >SIT<span className="italic text-red-500">Dash</span> <span className="text-sm">academy data - visualized</span></p>
                     </div>
                     <div className=" flex w-full place-content-between gap-5 items-center">
                        <div className="flex flex-col gap-5 h-2/3 w-1/3 place-content-between">
