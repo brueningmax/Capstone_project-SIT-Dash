@@ -4,7 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 function AppsGraph(props) {
   const [requestedData, setRequestedData] = useState(props.filteredData);
   const [chartData, setChartData] = useState([]);
-  const originalColors = ["#bdbdbd", "#fbb4ae", "#b3cde3", "#AFDAA3"];
+  const originalColors = ["#FDDB93", "#D68D96", "#819FB3", "#AFDAA3"];
   const [chartColors, setChartColors] = useState(originalColors);
   const [toggleValue, setValue] = useState(true);
   const [tickValues, setTickValues] = useState([])
@@ -38,8 +38,8 @@ function AppsGraph(props) {
       const courseNames = [
         "Part-time Bootcamps",
         "Short Courses",
-        "Immersive Bootcamps",
-        "Total",
+        "Full-time Bootcamps",
+        "Total Bootcamps",
       ];
 
       const monthData = [];
@@ -73,8 +73,8 @@ function AppsGraph(props) {
 
   const Switch = ({ isOn, handleToggle, onColor }) => {
     return (
-      <div className="flex items-center h-1/2 w-full justify-start  ml-10">
-        <span className="ml-2 text-base text-gray-800 px-3 ">Total</span>
+      <div className="flex flex-row ml-10">
+        <span className="text-s text-gray-900 px-3 justify-content">Total</span>
         <label className="relative flex items-center cursor-pointer ">
           <input
             type="checkbox"
@@ -83,18 +83,20 @@ function AppsGraph(props) {
             checked={isOn}
             onChange={handleToggle}
           />
-          <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.5 after:bg-toggelBackgroud after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-toggelBackgroud  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
-          <span className="ml-2 text-base text-gray-800 ">Enrolled</span>
+          <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.6 after:bg-toggelBackground after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-toggelBackground  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
+          
         </label>
+        <span className="ml-2 text-s text-gray-900 ">Enrolled</span>
       </div>
     );
   };
 
   return (
     <>
-      <div className="flex flex-col h-full w-full ">
-        <div className="flex  w-togW items-center h-1/6">
-          <div className="p-5 flex flex-column items-center h-tenP">Latest Applications</div>
+      <div className="flex flex-col h-full w-full p-4">
+        <div className="flex flex-row w-full items-center justify-between p-6">
+        <div className="flex font-bold text-xl">
+        Latest Applications</div>
             <Switch
               isOn={toggleValue}
               handleToggle={() => setValue(!toggleValue)}
@@ -107,7 +109,7 @@ function AppsGraph(props) {
             data={chartData}
             curve='monotoneX'
             blendMode='multiply'
-            margin={{ top: 80, right: 80, bottom: 80, left: 80  }}
+            margin={{ top: 20, right: 80, bottom: 110, left: 80  }}
             colors={chartData.map((c, index) => chartColors[index])}
               lineWidth={0}
             xScale={{
@@ -115,13 +117,13 @@ function AppsGraph(props) {
             }}
             yScale={{
               type: 'linear',
-              min: 'auto',
-              max: 'auto',
+              min: '0',
+              max: '10',
               stacked: false,
               reverse: false
               }}
             // yFormat=' >-.2f'
-            gridYValues={10}
+            gridYValues={11}
             axisTop={null}
             axisRight={null}
             axisBottom={{
@@ -129,6 +131,7 @@ function AppsGraph(props) {
               tickSize: 5,
               tickPadding: 10,
               tickRotation: 0,
+              tickValues: 11,
               format: (v) => {
                 return v.substring(0, 3);
               }
@@ -153,19 +156,20 @@ function AppsGraph(props) {
             motionDamping={15}
             legends={[
               {
-                anchor: 'top-left',
+                anchor: 'bottom-left',
                 direction: 'row',
                 justify: false,
                 translateX: -20,
-                translateY: -55,
+                translateY: 85,
                 itemWidth: 120,
                 itemHeight: 26,
-                itemsSpacing: -5,
-                symbolSize: 15,
+                itemsSpacing: 14,
+                symbolSize: 22,
                 symbolShape: 'square',
                 itemDirection: 'left-to-right',
                 itemTextColor: '#777',
                 toggleSerie: true,
+                symbolBorderColor: 'black',
                 effects: [
                   {
                     on: 'hover',

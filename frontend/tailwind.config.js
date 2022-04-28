@@ -100,7 +100,7 @@ module.exports = {
         droppedOut: "#996D99",
         accepted: "#7AB495",
         total: "#000000",
-        toggelBackgroud: "#DA925E",
+        toggelBackground: "#DA925E",
         toggelButton: "#698C9E",
         background: "#f1f0fa",
         bootcampsNamesBackground: "#d4d4fc",

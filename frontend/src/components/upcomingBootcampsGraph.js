@@ -38,27 +38,27 @@ function UpcomingBootcampsGraph(props) {
 
 
   return (
-    <div
-      className="flex flex-column align-middle p-4 w-full"
-    >
-      <h2>Upcoming</h2>
-      {maxTickValue === 0 ? (
+    <div className="flex flex-col align-middle p-4 w-full">
+      <div className="flex flex-col font-bold text-xl p-6">
+        Upcoming Bootcamps</div>
+          {maxTickValue === 0 ? (
         <p>Loading...</p>
-      ) : (
+        ) : (
         <ResponsiveBar
           data={chartData}
           keys={["Not Serious", "To Review", "Serious", "Accepted", "Enrolled"]}
           indexBy="Name"
-          margin={{ top: 60, right: 140, bottom: 100, left: 80 }}
+            margin={{
+              top: 20, right: 140, bottom: 120, left: 80
+            }}
           padding={0.7}
-          // margin={{ top: 50, right: 100, bottom: 100, left: 20 }}
-          // padding={0.3}
           valueScale={{ type: "linear" }}
+          itemOpacity={1}
           indexScale={{ type: "band", round: true }}
           colors={["#D68D96", "#FDDB93", "#AFDAA3", "#7AB495", "#819FB3"]}
           borderColor={{
             from: "color",
-            modifiers: [["darker", 1.6]],
+            modifiers: [["darker", .6]],
           }}
           axisTop={null}
           axisRight={null}
@@ -67,6 +67,9 @@ function UpcomingBootcampsGraph(props) {
             tickSize: 9,
             tickPadding: 7,
             tickRotation: -40,
+            format: function (value) {
+              return value.split(' ').slice(0,2).join(' ');
+            }
           }}
           axisLeft={{
             orient: "left",
@@ -79,7 +82,23 @@ function UpcomingBootcampsGraph(props) {
           enableLabel={false}
           labelSkipWidth={12}
           labelSkipHeight={12}
-          //
+          tooltip={({  id, value, color}) => {
+            return (
+                <div
+                    style={{
+                        background: 'black',
+                        padding: '9px 12px',
+                        border: '1px solid #ccc',
+                        color,
+                    }}
+                >
+                    <div className='p-3'>
+                    <p>{id}:</p>
+                    <p>{value}</p>
+                    </div>
+                </div>
+            )
+        }} 
           legends={[
             {
               dataFrom: "keys",
