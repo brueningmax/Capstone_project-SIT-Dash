@@ -1,10 +1,12 @@
 import {BiExpandAlt} from "react-icons/bi";
 import BootcampPieChart from "./bootcampPieChart";
 import React, {useState, useEffect} from "react";
-import {BsArrowDownCircle, BsArrowUpCircle} from "react-icons/bs";
+import {BsArrowDownCircle, BsArrowUpCircle, BsFillPencilFill} from "react-icons/bs";
+import {Link} from "react-router-dom";
 
 const UpComingBootcampsCard2 = (props) => {
     const [collapsed, setCollapsed] = useState(false);
+    const editPage = `/editBootcamp/${props.data.id}`
 
     useEffect(() => {
         if (props.status === true) {
@@ -20,6 +22,8 @@ const UpComingBootcampsCard2 = (props) => {
                             className={props.status ? "mr-3" : "hidden"}>{collapsed ?
                         <BsArrowDownCircle className="w-6 h-6 color-blue-200"/> :
                         <BsArrowUpCircle className="w-6 h-6 color-blue-200"/>}</button>
+                    <Link className={props.status ? "hidden" : "mr-3"} to={editPage}><button onClick={() => setCollapsed(!collapsed)}>
+                        <BsFillPencilFill className="w-6 h-6 color-blue-200"/></button></Link>
                     <div className="flex h-1/3  justify-center font-bold  text-2xl">
                         <p>{props.data.name}</p>
                     </div>

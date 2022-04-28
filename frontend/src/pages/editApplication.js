@@ -19,7 +19,8 @@ const EditApplication = () => {
     const getApplicationData = async () => {
         const response = await Axios(
             `${baseurl}applications/${params}`
-          );
+        );
+        console.log(response.data.status)
           setApplicationData(response.data);
         };
 
@@ -126,7 +127,7 @@ const EditApplication = () => {
                         <div className="flex flex-col w-full ">
                             <label htmlFor="status" >Status</label>
                             <select onChange={onChangeHandler} value={applicationData.status ?? ''} placeholder='please enter' className="w-full border border-black-100 bg-gray-100" id="status">
-                                <option value={"none"}>--------</option>
+                                <option value={"None"}>--------</option>
                                 <option value={"not_serious"}>not serious</option>
                                 <option value={"serious"}>serious</option>
                                 <option value={"enrolled"}>enrolled</option>

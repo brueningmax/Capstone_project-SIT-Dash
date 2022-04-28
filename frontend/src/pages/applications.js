@@ -135,12 +135,15 @@ const Applications = () => {
 
   return (
     <div className="flex flex-col w-full h-full bg-background ">
-      <div className="flex  h-cardsT ">
-        <form className="flex w-full h-full  items-center justify-between  px-20">
+      <div className="flex border my-1 bg-offwhite  rounded-xl h-cardsT font-bold shadow-lg">
+        <form className="flex w-full h-full  items-center justify-between px-20">
           Filters:
-          <label>
+          <div className="border-b-2">
+          <label className="pr-1">
             Location:
+          </label>
             <select
+              className="bg-offwhite"
               name="bootcamp_location"
               value={bootcamp_location}
               onChange={(e) => setBootcampLocation(e.target.value)}
@@ -150,27 +153,35 @@ const Applications = () => {
               </option>
               {locations.map(function (item) {
                 return (
-                  <option value={item.location} key={item.id}>
+                  <option  value={item.location} key={item.id}>
                     {item.location}
                   </option>
                 );
               })}
             </select>
-          </label>
-          <label>
+          </div>
+          <div className="border-b-2 border-grey-900">
+          <label  className="pr-1">
             Start Date:
+          </label>
             <input
+
+              className="bg-offwhite"
               name="start_date"
               type="date"
               value={start_date}
               onChange={(e) => setStartDate(e.target.value)}
             />
-          </label>
-          <label>
+          </div>
+          <div className="border-b-2">
+          <label className="pr-1">
             Status:
+          </label>
             <select
+              className="bg-offwhite"
               name="status"
               value={status}
+              id="status"
               onChange={(e) => setStatus(e.target.value)}
             >
               <option value="">All</option>
@@ -181,11 +192,11 @@ const Applications = () => {
               <option value="dropped_out">Dropped Out</option>
               <option value="not_serious">Not Serious</option>
             </select>
-          </label>
+            </div>
         </form>
       </div>
 
-      <div className="flex  w-full  h-cardsF    justify-center">
+      <div className="flex  w-full  h-cardsF justify-center">
         <div className="flex h-full w-cardsWidth2 bg-offwhite shadow-lg rounded-lg opacity-75">
           <AppsGraph
             data={applicationsGraphData}
