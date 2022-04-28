@@ -49,7 +49,7 @@ const CollapsableApplicationCard = (props) => {
                 <Bootcamptime time={props.data.time} time2={props.data.bootcamp.is_part_time}/>
             </div>
             <div className="flex justify-between mb-2  h-4 items-center py-1">
-                <h1 className="font-bold  text-xl">{props.data.first_name} {props.data.last_name}</h1>
+                <h1 className="font-bold  text-lg">{props.data.first_name} {props.data.last_name}</h1>
                 <ApplyDate applied={props.data.applied}/>
                 <BootcampStartDate start={props.data.bootcamp.start_date}/>
                 <button onClick={() => setCollapsed(!collapsed)} className={props.status ? "border rounded-full border-black" : "hidden" }>{collapsed ? <BsArrowDownCircle className="w-6 h-6 color-blue-200"/> : <BsArrowUpCircle className="w-6 h-6 color-blue-200"/>}
