@@ -12,6 +12,7 @@ const Applications = () => {
   const dispatch = useDispatch();
 
   const [start_date, setStartDate] = useState("");
+  const [applied_date, setAppliedDate] = useState("");
   const [status, setStatus] = useState("");
   const [bootcamp_location, setBootcampLocation] = useState("");
 
@@ -31,16 +32,7 @@ const Applications = () => {
     return () => {
       abortController.abort();
   }
-  }, [start_date, status, bootcamp_location]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // const response = Axios.post(
-    //   `${baseurl}applications/filter/`,
-    //   { start_date, bootcamp_location, status}
-    // );
-    // setLatestApplications(response.data);
-  };
+  }, [start_date, status, bootcamp_location, applied_date]);
 
   const getLocations = async () => {
     const response = await Axios(`${baseurl}locations/all/`);
@@ -48,74 +40,26 @@ const Applications = () => {
   };
 
   const getLatestApplications = async () => {
-    if (bootcamp_location === "" && start_date === "" && status === "") {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`);
-      setLatestApplications((response.data));
+    const bodyContent = {}
+    function ifExists(name, data) {
+      if (data === "") {
+        return null
+      } else {
+        bodyContent[name] = data;
+      }
     }
-    else if (bootcamp_location === "" && start_date === "") {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`,
-      { status: status }
-      );
-      setLatestApplications((response.data));
-    }
-    else if (bootcamp_location === "" && status === "") {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`,
-      { start_date: start_date }
-      );
-      console.log(response.data)
-      setLatestApplications((response.data));
-    }
-    else if (start_date === "" && status === "") {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`,
-      { bootcamp_location: bootcamp_location }
-      );
-      setLatestApplications((response.data));
-    }
-    else if (start_date === "") {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`,
-        {
-          bootcamp_location: bootcamp_location,
-          status: status
-        }
-      );
-      setLatestApplications((response.data));
-    }
-    else if (bootcamp_location === "") {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`,
-        {
-          start_date: start_date,
-          status: status
-        }
-      );
-      setLatestApplications((response.data));
-    }
-    else if (status === "") {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`,
-        {
-          start_date: start_date,
-          bootcamp_location: bootcamp_location
-        }
-      );
-      setLatestApplications((response.data));
-    }
-    else {
-      const response = await Axios.post(
-        `${baseurl}applications/filter/`,
-        {
-          start_date: start_date,
-          bootcamp_location: bootcamp_location,
-          status : status
-        }
-      );
-      setLatestApplications((response.data));
-    }
+    ifExists("bootcamp_location", bootcamp_location);
+    ifExists("start_date", start_date);
+    ifExists("status", status);
+    ifExists("applied", applied_date);
+
+    console.log(bodyContent)
+
+    const response = await Axios.post(
+      `${baseurl}applications/filter/`,
+     bodyContent
+    );
+    setLatestApplications((response.data));
   };
 
   const getApplicationsGraphData = async () => {
@@ -162,7 +106,7 @@ const Applications = () => {
           </div>
           <div className="border-b-2 border-grey-900">
           <label  className="pr-1">
-            Start Date:
+            Bootcamp start on or after:
           </label>
             <input
 
@@ -173,6 +117,21 @@ const Applications = () => {
               onChange={(e) => setStartDate(e.target.value)}
             />
           </div>
+
+          <div className="border-b-2 border-grey-900">
+          <label  className="pr-1">
+            Applied on or after:
+          </label>
+            <input
+
+              className="bg-offwhite"
+              name="applied_date"
+              type="date"
+              value={applied_date}
+              onChange={(e) => setAppliedDate(e.target.value)}
+            />
+          </div>
+
           <div className="border-b-2">
           <label className="pr-1">
             Status:

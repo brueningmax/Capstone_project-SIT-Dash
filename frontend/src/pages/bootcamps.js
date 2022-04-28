@@ -112,7 +112,7 @@ const Bootcamps = () => {
           </label>
 
           <label>
-            Start Date:
+            Bootcamp start on or after:
             <input
             name="start_date"
             type="date"
