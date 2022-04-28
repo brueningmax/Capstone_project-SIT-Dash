@@ -93,21 +93,10 @@ const Bootcamps = () => {
 
 
   return (
-    <div className="flex flex-col w-full bg-background">
-        <div className="flex flex-col h-tenP w-full">
-          <form className="flex items-center justify-between mt-4 px-20">
+    <div className="flex flex-col h-full w-full bg-background">
+        <div className="flex  h-cardsT ">
+          <form className="flex w-full h-full items-center justify-between px-20">
           Filters:
-          {/* <label>
-          Bootcamp Type:
-          <select
-          name="bootcamp_type"
-          value={bootcamp_type}
-          onChange={e => setBootcampType(e.target.value)}>
-            <option value="default">Select a value...</option>
-            <option value="Full Stack">Full Stack</option>
-            <option value="Data Science">Data Science</option>
-          </select>
-          </label> */}
 
           <label>
           Location:
@@ -138,8 +127,7 @@ const Bootcamps = () => {
       </div>
 
       <div className="flex flex-col w-full  h-cardsHeight6 items-center justify-center ">
-
-          <div className="flex h-full w-cardsWidth2 bg-offwhite shadow-lg rounded-lg opacity-75">
+        <div className="flex h-full w-cardsWidth2 bg-offwhite shadow-lg rounded-lg">
           <UpcomingBootcampsGraph data={bootcampsData} />
         </div>
       </div>
