@@ -19,9 +19,9 @@ const UpComingBootcampsCard2 = (props) => {
   }, [props]);
 
   return (
-    <div className="flex flex-col h-3/4 w-3/4 shadow-lg rounded-lg bg-offwhite border border-gray-200 items-center  justify-start ">
-      <div className="flex h-rem2  px-5 w-full items-center border-b border to-black justify-between rounded-lg bg-offwhite ">
-        <div className="flex place-items-center  text-black">
+    <div className="flex flex-col  w-11/12 shadow-lg rounded-lg bg-offwhite border border-gray-200 items-center  justify-start ">
+      <div className="flex h-rem1  px-5 w-full items-center border-b border to-black justify-between rounded-lg bg-offwhite ">
+        <div className="flex place-items-center h-full  text-black">
           <button
             onClick={() => setCollapsed(!collapsed)}
             className={props.status ? "mr-3" : "hidden"}
@@ -32,12 +32,12 @@ const UpComingBootcampsCard2 = (props) => {
               <BsArrowUpCircle className="w-6 h-6 color-blue-200" />
             )}
           </button>
-          <Link className={props.status ? "hidden" : "mr-3"} to={editPage}>
+          <Link className={props.status ? "hidden" :  "mr-3"} to={editPage}>
             <button onClick={() => setCollapsed(!collapsed)}>
               <BsFillPencilFill className="w-6 h-6 color-blue-200" />
             </button>
           </Link>
-          <div className="flex h-1/3 justify-center font-bold  text-2xl">
+          <div className="flex h-1/3  justify-center font-bold  text-xl">
             <p>{props.data.name}</p>
           </div>
         </div>
@@ -52,7 +52,7 @@ const UpComingBootcampsCard2 = (props) => {
         </div>
       </div>
 
-      <div className={collapsed ? "hidden" : "flex p-6 h-3/4 w-full "}>
+      <div className={collapsed ? "hidden" : "flex p-6 h-cardsHeight5 w-full "}>
         <BootcampPieChart data={props.data.applications} />
       </div>
     </div>

@@ -81,7 +81,7 @@ function AppsGraph(props) {
             checked={isOn}
             onChange={handleToggle}
           />
-          <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.6 after:bg-toggelBackground after:border after:border-gray-300 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-toggelBackground  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
+          <div className="h-6 bg-gray-200 border-2 border-toggelButton rounded-full w-11  after:absolute after:top-0.5 after:left-0.6 after:bg-toggelButton after:border after:border-gray-200 after:h-5 after:w-5 after:shadow-sm after:rounded-full peer-checked:after:translate-x-full peer-checked:after:border-gray-200  peer-checked:bg-backgroud peer-checked:border-toggelButton after:transition-all after:duration-300"></div>
           
         </label>
         <span className="ml-2 text-s text-gray-900 ">Enrolled</span>
